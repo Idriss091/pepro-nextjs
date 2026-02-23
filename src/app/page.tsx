@@ -1,65 +1,99 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import AboutV6 from "@/components/about/AboutV6";
+import BannerV8 from "@/components/banner/BannerV8";
+import FooterV1 from "@/components/footer/FooterV1";
+import HeaderV1 from "@/components/header/HeaderV1";
+import ServicesV1 from "@/components/services/ServicesV1";
+import MultiSectionPepro from "@/components/multi/MultiSectionPepro";
+import TestimonialV3 from "@/components/testimonial/TestimonialV3";
+import ThemeDark from "@/components/switcher/ThemeDark";
+import {
+  DEFAULT_OG_IMAGE,
+  LINKEDIN_URL,
+  SITE_DESCRIPTION,
+  SITE_EMAIL,
+  SITE_NAME,
+  SITE_PHONE,
+  SITE_URL,
+} from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Pepro - Agence de développement logiciel sur-mesure à Paris",
+  description:
+    "Pepro conçoit des applications web, logiciels métiers, solutions IA et plateformes sur-mesure pour startups, PME et ETI.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Pepro - Agence de développement logiciel sur-mesure à Paris",
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    images: [{ url: DEFAULT_OG_IMAGE, alt: "Pepro - Services numeriques" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pepro - Agence de développement logiciel sur-mesure à Paris",
+    description: SITE_DESCRIPTION,
+    images: [DEFAULT_OG_IMAGE],
+  },
+};
 
 export default function Home() {
+  const webSiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_NAME,
+    url: SITE_URL,
+    description: SITE_DESCRIPTION,
+    inLanguage: "fr-FR",
+  };
+
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: SITE_NAME,
+    url: SITE_URL,
+    description: SITE_DESCRIPTION,
+    email: SITE_EMAIL,
+    telephone: SITE_PHONE,
+    areaServed: ["FR", "EU"],
+    sameAs: [LINKEDIN_URL],
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "FR",
+      addressLocality: "Paris",
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      email: SITE_EMAIL,
+      telephone: SITE_PHONE,
+      areaServed: "FR",
+      availableLanguage: ["fr", "en"],
+    },
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
+
+      <div className="smooth-scroll-container">
+        <HeaderV1 />
+        <BannerV8 />
+        <AboutV6 sectionClass="default-padding" />
+        <ServicesV1 sectionClass="bg-gray default-padding" hasTitle={true} />
+        <TestimonialV3 sectionClass="bg-gray" />
+        <MultiSectionPepro />
+        <FooterV1 />
+        <ThemeDark />
+      </div>
+    </>
   );
 }

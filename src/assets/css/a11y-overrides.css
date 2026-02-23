@@ -1,0 +1,98 @@
+/* Accessibility and interaction overrides loaded after template styles */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--color-primary, #0d6efd) !important;
+  outline-offset: 3px;
+}
+
+.bg-dark a:focus-visible,
+.bg-dark button:focus-visible,
+.bg-dark input:focus-visible,
+.bg-dark textarea:focus-visible,
+.bg-dark select:focus-visible {
+  outline-color: var(--white, #fff) !important;
+}
+
+.navbar .attr-right .attr-nav li.side-menu .side-menu-button {
+  background: transparent;
+  border: 0;
+  margin: 0;
+  color: inherit;
+  cursor: pointer;
+  position: relative;
+  display: block;
+  padding: 9px 20px !important;
+  min-width: 35px;
+  min-height: 18px;
+  box-sizing: content-box;
+}
+
+.navbar .attr-nav .side-menu .side-menu-button:hover span,
+.navbar .attr-nav .side-menu .side-menu-button:focus-visible span {
+  background: var(--color-primary);
+}
+
+.bg-dark .navbar .attr-right .attr-nav li.side-menu .side-menu-button span {
+  background: var(--white) !important;
+}
+
+.navbar.nav-full-width .attr-right .attr-nav li.side-menu .side-menu-button {
+  color: var(--color-heading);
+  display: flex;
+  height: 100%;
+  padding: 39px 20px !important;
+  position: relative;
+  align-items: center;
+  padding-right: 0 !important;
+  min-width: auto;
+  min-height: auto;
+}
+
+.bg-dark .navbar.nav-full-width .attr-right .attr-nav li.side-menu .side-menu-button {
+  color: var(--white);
+}
+
+.navbar.nav-full-width .attr-right .attr-nav li.side-menu .side-menu-button strong {
+  margin-right: 50px;
+  position: relative;
+  font-weight: 600;
+}
+
+.navbar.nav-full-width .attr-right .attr-nav li.side-menu .side-menu-button .line {
+  position: relative;
+  top: -10px;
+}
+
+.side button.close-side {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+}
+
+button.overlay-screen {
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

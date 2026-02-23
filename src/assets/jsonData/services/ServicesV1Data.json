@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "icon": "1.png",
+    "iconLight": "23.png",
+    "title": "Développement Web & Logiciel",
+    "banner": "/assets/img/banner/dev-web.webp",
+    "text": "Création d’applications web modernes, d’architectures cloud résilientes et de plateformes SaaS sur-mesure pour accélérer votre croissance.",
+    "shortDescription": "Création d'applications web modernes, conception de plateformes SaaS sécurisées et développement d'outils métiers sur-mesure.",
+    "promise": "Des outils digitaux robustes et évolutifs qui accélèrent la croissance de votre structure.",
+    "problem": "Les solutions standards SaaS ne répondent pas à la complexité ou à la spécificité de vos besoins métier, limitant ainsi votre efficacité opérationnelle et la croissance de l'entreprise.",
+    "solution": "Pepro conçoit et développe des applications sur-mesure (SaaS, outils métiers, interfaces complexes) en étroite collaboration avec vous. De l'analyse à la livraison, nous codons un outil qui s'intègre parfaitement à votre écosystème.",
+    "longDescription": "Au cœur de l'offre Pepro se trouve notre capacité à traduire vos défis métier les plus complexes en solutions logicielles intuitives, ultra-performantes et sécurisées. Que vous cherchiez à optimiser un processus interne critique, moderniser votre infrastructure existante, lancer une plateforme SaaS innovante ou développer un outil métier sur-mesure, notre équipe d'experts vous accompagne de A à Z. Nous mettons un point d'honneur à livrer un code propre, testé, et maintenable, vous garantissant une tranquillité d'esprit totale sur le long terme.",
+    "keyBenefits": [
+      "Alignement parfait avec vos processus métier spécifiques",
+      "Développement sur-mesure sans les limites des CMS traditionnels",
+      "Expérience utilisateur (UX/UI) soignée pour une adoption maximale",
+      "Scalabilité et flexibilité cloud pour accompagner votre croissance",
+      "Propriété intellectuelle totale de votre solution logicielle"
+    ],
+    "targetAudience": "Startups, PME, et ETI cherchant à se doter d'outils logiciels uniques pour numériser un service, vendre une solution ou structurer leurs processus internes.",
+    "technologies": [
+      "React / Next.js",
+      "Node.js / Python",
+      "PostgreSQL",
+      "TailwindCSS",
+      "Docker",
+      "AWS / Vercel"
+    ],
+    "activeClass": "active"
+  },
+  {
+    "id": 2,
+    "icon": "2.png",
+    "iconLight": "24.png",
+    "title": "Intelligence Artificielle & Automatisation",
+    "banner": "/assets/img/banner/ia.jpg",
+    "text": "Conseil et intégration de solutions IA de pointe (LLMs, RAG) et automatisation intelligente pour optimiser vos processus métiers.",
+    "shortDescription": "Intégration de modèles d'IA pour automatiser les tâches répétitives, chatbots avancés et valorisation des données.",
+    "promise": "Des processus métier automatisés et une productivité propulsée par l'intelligence artificielle.",
+    "problem": "Vous pressentez le potentiel de l'IA pour gagner du temps et réduire les coûts, mais l'intégration technique de ces technologies dans votre activité quotidienne reste un défi.",
+    "solution": "Nous développons et intégrons des solutions d'IA sur-mesure connectées à vos outils : agents RAG, chatbots avancés, algorithmes prédictifs et automatisation de workflows (via n8n/Make).",
+    "longDescription": "Pepro vous guide pour exploiter véritablement le potentiel de l'intelligence artificielle générative et analytique. Fini les concepts flous : nous implémentons des cas d'usage concrets et à fort ROI. Nous connectons en toute sécurité les meilleurs modèles du marché (OpenAI, Anthropic, modèles open-source locaux) à vos propres données privées via des architectures RAG. Que ce soit pour construire un agent d'assistance interne 24/7, extraire automatiquement des données de milliers de documents PDF, ou automatiser un pipeline de création de contenu, nous maîtrisons la chaîne de l'IA de bout en bout.",
+    "keyBenefits": [
+      "Automatisation intelligente des tâches chronophages et répétitives",
+      "Connexion sécurisée des LLMs (IA) à vos données d'entreprise privées",
+      "Expérience client enrichie via des agents conversationnels 24/7",
+      "Extraction et structuration automatique de données non-structurées",
+      "Réduction drastique des coûts opérationnels administratifs"
+    ],
+    "targetAudience": "Entreprises de tous secteurs (industrie, retail, services, juridique) souhaitant intégrer concrètement l'IA dans leur quotidien pour booster exponentiellement leur productivité.",
+    "technologies": [
+      "Python",
+      "OpenAI / Anthropic APIs",
+      "LangChain / LlamaIndex",
+      "Vector Databases",
+      "FastAPI"
+    ],
+    "activeClass": ""
+  },
+  {
+    "id": 3,
+    "icon": "3.png",
+    "iconLight": "25.png",
+    "title": "Logiciels Scientifiques & Data",
+    "banner": "/assets/img/banner/pepro-service-data.jpg",
+    "text": "Expertise approfondie en calcul haute performance (HPC) et traitement de données massives (C++, Rust) pour vos défis techniques complexes.",
+    "shortDescription": "Conception de solutions logicielles complexes adaptées à la recherche, à l'industrie et à la finance (Calcul intensif, Data Science).",
+    "promise": "Une ingénierie logicielle de pointe pour vos défis algorithmiques et mathématiques les plus poussés.",
+    "problem": "La recherche et l'industrie génèrent des volumes de données et des besoins de calculs algorithmiques que les outils de développement traditionnels ne peuvent plus supporter sans ralentissements majeurs.",
+    "solution": "Nous traduisons vos modèles mathématiques et scientifiques en code optimisé et produisons des interfaces de visualisation (tableaux de bord) capables de manipuler de la Big Data fluidement.",
+    "longDescription": "Une de nos grandes forces est la capacité de Pepro à comprendre le langage pointu des chercheurs, des ingénieurs réseau et des analystes financiers pour le retranscrire en logiciels industriels stables. Nous développons des environnements d'exécution ultra-rapides pour vos algorithmes de calcul intensif, des interfaces de modélisation mathématique fluides et des outils de visualisation de Big Data avancés. Notre double expertise en ingénierie logicielle (architecture cloud, optimisation mémoire, langages bas-niveau) et en mathématiques appliquées fait de nous le partenaire idéal pour amener votre prototype du laboratoire jusqu'à un produit déployable à grande échelle.",
+    "keyBenefits": [
+      "Optimisation extrême des performances de calcul (complexité algorithmique)",
+      "Création d'interfaces web fluides même pour des millions de points de données brutes",
+      "Intégration de pipelines de Data Science complexes dans la production IT standard",
+      "Compréhension approfondie des contraintes du milieu scientifique et R&D",
+      "Déploiement sur des architectures Cloud capables d'offrir du calcul intensif (GPU/TPU)"
+    ],
+    "targetAudience": "Laboratoires et centres de recherche, acteurs de l'industrie, de la logistique avancée, et de la finance (Fintech) manipulant des modèles algorithmiques complexes.",
+    "technologies": [
+      "Python (Pandas, NumPy)",
+      "C++ / Rust (Core Engine)",
+      "React / WebGL (Visualisation)",
+      "AWS HPC",
+      "Docker"
+    ],
+    "activeClass": ""
+  }
+]

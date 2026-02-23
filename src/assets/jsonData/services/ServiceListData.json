@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "serviceName": "Développement",
+    "count": "01"
+  },
+  {
+    "id": 2,
+    "serviceName": "Intelligence Artificielle",
+    "count": "02"
+  },
+  {
+    "id": 3,
+    "serviceName": "Data & Science",
+    "count": "03"
+  }
+]

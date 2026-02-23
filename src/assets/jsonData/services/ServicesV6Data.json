@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "icon": "9.png",
+    "subTitle": "Innovation",
+    "title": "Innovation continue",
+    "text": "Nous explorons sans cesse les nouvelles technologies pour vous offrir des solutions avant-gardistes.",
+    "number": "01"
+  },
+  {
+    "id": 2,
+    "icon": "10.png",
+    "subTitle": "Confiance",
+    "title": "Partenariat authentique",
+    "text": "Nous bâtissons des relations de confiance, basées sur la transparence et la collaboration étroite.",
+    "number": "02"
+  },
+  {
+    "id": 3,
+    "icon": "11.png",
+    "subTitle": "Impact",
+    "title": "Orientation résultats",
+    "text": "Votre succès est notre moteur. Nous nous engageons à livrer des solutions qui génèrent un impact réel.",
+    "number": "03"
+  },
+  {
+    "id": 4,
+    "icon": "12.png",
+    "subTitle": "Qualité",
+    "title": "Excellence technique",
+    "text": "Nous visons la plus haute qualité dans chaque projet, avec une attention méticuleuse aux détails.",
+    "number": "04"
+  }
+]

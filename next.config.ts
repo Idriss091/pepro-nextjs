@@ -1,7 +1,14 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import type { NextConfig } from "next";
 
+const configDir = path.dirname(fileURLToPath(import.meta.url));
+
 const nextConfig: NextConfig = {
-  /* config options here */
+  turbopack: {
+    // Pin Turbopack root to this project directory, even if commands are run from parent folders.
+    root: configDir,
+  },
 };
 
 export default nextConfig;

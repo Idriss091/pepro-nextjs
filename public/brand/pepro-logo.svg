@@ -1,0 +1,9 @@
+<svg width="360" height="96" viewBox="0 0 360 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="360" height="96" fill="none"/>
+  <g>
+    <polygon points="18,48 36,22 68,22 86,48 68,74 36,74" fill="#21E6FF"/>
+    <polygon points="34,58 54,30 70,30 50,58" fill="#00B2FF"/>
+    <circle cx="64" cy="60" r="6" fill="#7CFF6B"/>
+  </g>
+  <text x="110" y="64" fill="#FFFFFF" font-family="Poppins, Montserrat, Arial, sans-serif" font-size="52" font-weight="700" letter-spacing="2">PEPRO</text>
+</svg>

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect } from "react";
 import MainMenu from "./MainMenu";
 import SidebarInfo from "./SidebarInfo";
-const logo = "/brand/pepro-logo.svg";
+const logo = "/brand/pepro-logo-dark.svg";
 const logoLight = "/brand/pepro-logo.svg";
 import useSidebarMenu from "../../hooks/useSidebarMenu";
 import useSubMenuToggle from "../../hooks/useSubMenuToggle";

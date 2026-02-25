@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   description:
     "Pepro est votre partenaire pour des solutions web et logistiques innovantes.",
   icons: {
-    icon: "/favicon.png",
+    icon: "/favicon.svg",
   },
   openGraph: {
     type: "website",

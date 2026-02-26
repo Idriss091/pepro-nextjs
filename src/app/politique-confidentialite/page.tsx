@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Pepro - Politique de confidentialité",
   description:
     "Découvrez comment Pepro protège et utilise vos données personnelles conformément au RGPD.",
+  alternates: {
+    canonical: "/politique-confidentialite",
+  },
 };
 
 export default function PrivacyPolicyPage() {
@@ -99,10 +102,7 @@ export default function PrivacyPolicyPage() {
                     <a href="mailto:contact@pepro.fr" className="btn btn-light">
                       <i className="fas fa-envelope" /> contact@pepro.fr
                     </a>
-                    <a
-                      href="tel:+33618663595"
-                      className="btn btn-light"
-                    >
+                    <a href="tel:+33618663595" className="btn btn-light">
                       <i className="fas fa-phone" /> +33 6 18 66 35 95
                     </a>
                   </div>

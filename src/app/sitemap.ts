@@ -3,8 +3,6 @@ import ServicesV1Data from "@/assets/jsonData/services/ServicesV1Data.json";
 import { projectCaseStudies } from "@/data/projectCaseStudies";
 import { SITE_URL } from "@/lib/site";
 
-const now = new Date();
-
 const staticRoutes = [
   "",
   "/about-us",
@@ -19,26 +17,63 @@ const staticRoutes = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
-    url: `${SITE_URL}${route}`,
-    lastModified: now,
-    changeFrequency: route === "" ? "weekly" : "monthly",
-    priority: route === "" ? 1 : route === "/contact-us" ? 0.9 : 0.7,
-  }));
+  const now = new Date();
 
-  const serviceEntries: MetadataRoute.Sitemap = ServicesV1Data.map((service) => ({
-    url: `${SITE_URL}/services/${service.id}`,
-    lastModified: now,
-    changeFrequency: "monthly",
-    priority: 0.8,
-  }));
+  const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((route) => {
+    let priority = 0.5;
+    let changeFrequency:
+      | "always"
+      | "hourly"
+      | "daily"
+      | "weekly"
+      | "monthly"
+      | "yearly"
+      | "never" = "monthly";
 
-  const projectEntries: MetadataRoute.Sitemap = projectCaseStudies.map((project) => ({
-    url: `${SITE_URL}/project-details/${project.id}`,
-    lastModified: now,
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
+    if (route === "") {
+      priority = 1.0;
+      changeFrequency = "weekly";
+    } else if (route === "/services" || route === "/project") {
+      priority = 0.9;
+      changeFrequency = "weekly";
+    } else if (
+      route === "/about-us" ||
+      route === "/contact-us" ||
+      route === "/faq"
+    ) {
+      priority = 0.8;
+      changeFrequency = "monthly";
+    } else {
+      // Pages légales
+      priority = 0.3;
+      changeFrequency = "yearly";
+    }
+
+    return {
+      url: `${SITE_URL}${route}`,
+      lastModified: now,
+      changeFrequency,
+      priority,
+    };
+  });
+
+  const serviceEntries: MetadataRoute.Sitemap = ServicesV1Data.map(
+    (service) => ({
+      url: `${SITE_URL}/services/${service.id}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    }),
+  );
+
+  const projectEntries: MetadataRoute.Sitemap = projectCaseStudies.map(
+    (project) => ({
+      url: `${SITE_URL}/project-details/${project.id}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    }),
+  );
 
   return [...staticEntries, ...serviceEntries, ...projectEntries];
 }

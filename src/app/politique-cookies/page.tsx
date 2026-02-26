@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Pepro - Politique en matière de cookies",
   description:
     "Informations sur l'utilisation des cookies sur le site de Pepro et modalités de gestion de vos préférences.",
+  alternates: {
+    canonical: "/politique-cookies",
+  },
 };
 
 const LAST_UPDATE = "21 septembre 2025";

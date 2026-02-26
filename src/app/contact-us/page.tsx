@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Pepro - Contactez-Nous",
   description:
     "Prêt à discuter de votre projet ? Contactez Pepro par formulaire, email ou téléphone.",
+  alternates: {
+    canonical: "/contact-us",
+  },
 };
 
 export default function ContactUsPage() {

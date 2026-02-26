@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Pepro - Foire Aux Questions",
   description:
     "Trouvez les réponses à vos questions fréquentes sur les services de Pepro, nos processus de développement et notre expertise.",
+  alternates: {
+    canonical: "/faq",
+  },
 };
 
 export default function FaqPage() {

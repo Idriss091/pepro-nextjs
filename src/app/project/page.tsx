@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Pepro - Nos Réalisations",
   description:
     "Découvrez les projets réalisés par Pepro : applications web, logiciels sur-mesure, solutions IA.",
+  alternates: {
+    canonical: "/project",
+  },
 };
 
 export default function ProjectPage() {

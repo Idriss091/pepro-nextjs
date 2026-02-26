@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Pepro - Conditions générales d'utilisation",
   description:
     "Conditions générales d'utilisation du site Pepro et informations clés sur nos engagements.",
+  alternates: {
+    canonical: "/conditions-generales",
+  },
 };
 
 export default function TermsOfServicePage() {

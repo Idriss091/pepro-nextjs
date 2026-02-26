@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Pepro - À propos",
   description:
     "Découvrez l'histoire, la vision et les valeurs de Pepro, votre agence partenaire en solutions logicielles.",
+  alternates: {
+    canonical: "/about-us",
+  },
 };
 
 export default function AboutUsPage() {

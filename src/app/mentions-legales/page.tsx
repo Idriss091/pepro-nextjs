@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Pepro - Mentions Légales",
   description:
     "Mentions légales du site Pepro, société par actions simplifiée immatriculée au RCS de Paris.",
+  alternates: {
+    canonical: "/mentions-legales",
+  },
 };
 
 export default function LegalMentionsPage() {

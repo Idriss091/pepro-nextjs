@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Pepro - Nos Services",
   description:
     "Découvrez notre expertise en développement logiciel, intégration d'Intelligence Artificielle et solutions de calcul scientifique.",
+  alternates: {
+    canonical: "/services",
+  },
 };
 
 export default function ServicesPage() {

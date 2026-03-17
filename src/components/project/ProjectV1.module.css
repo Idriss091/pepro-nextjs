@@ -1,0 +1,268 @@
+.section {
+  background:
+    radial-gradient(circle at top left, rgba(196, 255, 0, 0.18), transparent 30%),
+    radial-gradient(circle at top right, rgba(0, 190, 255, 0.14), transparent 24%),
+    #0d0f12;
+}
+
+.shell {
+  display: grid;
+  gap: 48px;
+}
+
+.header {
+  display: grid;
+  gap: 28px;
+  align-items: end;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.85fr);
+}
+
+.headerCopy {
+  max-width: 760px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 18px;
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  color: #d7ff6f;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.title {
+  margin: 0;
+  color: #f7f8f4;
+  font-size: clamp(2rem, 3vw, 3.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  max-width: 12ch;
+}
+
+.lead {
+  margin: 22px 0 0;
+  color: rgba(236, 238, 242, 0.78);
+  font-size: 18px;
+  line-height: 1.8;
+  max-width: 64ch;
+}
+
+.highlightRail {
+  display: grid;
+  gap: 14px;
+}
+
+.highlightCard {
+  display: grid;
+  gap: 4px;
+  padding: 20px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+}
+
+.highlightCard strong {
+  color: #f7f8f4;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.highlightCard span {
+  color: rgba(236, 238, 242, 0.72);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.cards {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.card {
+  display: grid;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(19, 22, 28, 0.98), rgba(11, 13, 17, 0.96));
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+
+.imageFrame {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: #111;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.cardBody {
+  display: grid;
+  gap: 18px;
+  padding: 24px;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.tag,
+.sector,
+.stackItem {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.tag {
+  background: rgba(212, 255, 84, 0.14);
+  color: #d6ff70;
+}
+
+.sector {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(236, 238, 242, 0.78);
+}
+
+.cardTitle {
+  margin: 0;
+  color: #f7f8f4;
+  font-size: 28px;
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+}
+
+.cardTitleLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+.cardTitleLink:hover,
+.cardTitleLink:focus-visible {
+  color: #d6ff70;
+}
+
+.cardSummary {
+  margin: 0;
+  color: rgba(236, 238, 242, 0.78);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.stackList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stackItem {
+  background: rgba(123, 197, 255, 0.1);
+  color: #b3dbff;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: end;
+  padding-top: 4px;
+}
+
+.clientBlock {
+  display: grid;
+  gap: 6px;
+}
+
+.clientBlock span {
+  color: rgba(236, 238, 242, 0.54);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.clientBlock strong {
+  color: #f7f8f4;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: #d6ff70;
+  color: #111319 !important;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 12px 30px rgba(214, 255, 112, 0.18);
+}
+
+.cardLink:hover {
+  color: #111319 !important;
+  background: #f3ffc9;
+}
+
+@media (max-width: 1199px) {
+  .header,
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .headerCopy {
+    max-width: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .shell {
+    gap: 36px;
+  }
+
+  .lead {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .cardBody {
+    padding: 20px;
+  }
+
+  .cardTitle {
+    font-size: 24px;
+  }
+
+  .cardFooter {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cardLink {
+    width: 100%;
+  }
+}

@@ -1,0 +1,106 @@
+.overviewRow {
+  align-items: stretch;
+}
+
+.proofPoints {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.proofPoints li {
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #dfe5ee;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.textColumn,
+.swapColumn {
+  display: flex;
+}
+
+.swapColumn {
+  align-items: center;
+  justify-content: center;
+}
+
+.textPanel {
+  width: 100%;
+  height: 100%;
+  padding: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(18, 22, 31, 0.92), rgba(11, 14, 20, 0.96));
+}
+
+.textPanel section + section {
+  margin-top: 30px;
+}
+
+.textPanel h4 {
+  margin-bottom: 14px;
+}
+
+.compactList {
+  list-style: disc;
+  margin: 0 0 0 22px;
+  padding: 0;
+}
+
+.compactList li + li {
+  margin-top: 10px;
+}
+
+.outcomeGrid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.outcomeItem {
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #d4d9e1;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+@media (max-width: 1199px) {
+  .textPanel {
+    padding: 26px;
+  }
+}
+
+@media (max-width: 991px) {
+  .proofPoints {
+    margin-top: 20px;
+  }
+
+  .textPanel {
+    margin-top: 32px;
+  }
+}
+
+@media (max-width: 767px) {
+  .proofPoints li {
+    width: 100%;
+  }
+
+  .textPanel {
+    padding: 22px;
+    border-radius: 22px;
+  }
+
+  .outcomeGrid {
+    grid-template-columns: 1fr;
+  }
+}

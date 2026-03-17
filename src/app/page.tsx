@@ -3,6 +3,7 @@ import AboutV6 from "@/components/about/AboutV6";
 import BannerV8 from "@/components/banner/BannerV8";
 import FooterV1 from "@/components/footer/FooterV1";
 import HeaderV1 from "@/components/header/HeaderV1";
+import ProjectV1 from "@/components/project/ProjectV1";
 import ServicesV1 from "@/components/services/ServicesV1";
 import MultiSectionPepro from "@/components/multi/MultiSectionPepro";
 import TestimonialV3 from "@/components/testimonial/TestimonialV3";
@@ -89,6 +90,7 @@ export default function Home() {
         <BannerV8 />
         <AboutV6 sectionClass="default-padding" />
         <ServicesV1 sectionClass="bg-gray default-padding" hasTitle={true} />
+        <ProjectV1 />
         <TestimonialV3 sectionClass="bg-gray" />
         <MultiSectionPepro />
         <FooterV1 />

@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ProjectCaseStudy } from "@/data/projectCaseStudies";
+import ProjectImageCardSwap from "./ProjectImageCardSwap";
+import styles from "./ProjectDetailsContentPepro.module.css";
 
 interface ProjectDetailsContentPeproProps {
   project: ProjectCaseStudy;
@@ -35,6 +37,11 @@ const ProjectDetailsContentPepro = ({
                   <Link href="/project">{project.tag}</Link>
                 </div>
                 <h2 className="title">{project.title}</h2>
+                <ul className={styles.proofPoints}>
+                  {project.proofPoints.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
                 <div className="project-author-details mt-35">
                   <ul>
                     <li>
@@ -55,7 +62,7 @@ const ProjectDetailsContentPepro = ({
                     </li>
                     <li>
                       <div className="left-info">
-                        <h3>Stack / Disciplines</h3>
+                        <h3>Stack</h3>
                       </div>
                       <div className="right-info">
                         <p className="project-inner-tag">{project.stack.join(" / ")}</p>
@@ -79,48 +86,44 @@ const ProjectDetailsContentPepro = ({
 
       <div className="project-details-items bg-gray default-padding">
         <div className="container">
-          <div className="row">
-            <div className="col-lg-7">
-              <div className="thumb-grid">
-                {project.galleryImages.map((imageSrc, index) => (
-                  <Image
-                    key={imageSrc}
-                    src={imageSrc}
-                    alt={`${project.title} - visuel ${index + 1}`}
-                    width={560}
-                    height={420}
-                    unoptimized
-                  />
-                ))}
-              </div>
-            </div>
-            <div className="col-lg-5 pl-50 pl-md-15 pl-xs-15">
-              <div className="check-list">
-                <div className="single-list">
+          <div className={`row ${styles.overviewRow}`}>
+            <div className={`col-lg-6 ${styles.textColumn}`}>
+              <div className={styles.textPanel}>
+                <section>
                   <h4>Enjeux cles</h4>
-                  <ul className="list-disc">
-                    {project.challenges.map((challenge) => (
+                  <ul className={styles.compactList}>
+                    {project.challenges.slice(0, 3).map((challenge) => (
                       <li key={challenge}>{challenge}</li>
                     ))}
                   </ul>
-                </div>
-                <div className="single-list">
-                  <h4>Ce que nous avons livre</h4>
-                  <ul className="list-disc">
-                    {project.deliverables.map((deliverable) => (
+                </section>
+
+                <section>
+                  <h4>Ce que nous avons concu</h4>
+                  <ul className={styles.compactList}>
+                    {project.deliverables.slice(0, 4).map((deliverable) => (
                       <li key={deliverable}>{deliverable}</li>
                     ))}
                   </ul>
-                </div>
-                <div className="single-list">
-                  <h4>Resultats / valeur</h4>
-                  <ul className="list-disc">
-                    {project.outcomes.map((outcome) => (
-                      <li key={outcome}>{outcome}</li>
+                </section>
+
+                <section>
+                  <h4>Valeur apportee</h4>
+                  <div className={styles.outcomeGrid}>
+                    {project.outcomes.slice(0, 4).map((outcome) => (
+                      <div key={outcome} className={styles.outcomeItem}>
+                        {outcome}
+                      </div>
                     ))}
-                  </ul>
-                </div>
+                  </div>
+                </section>
               </div>
+            </div>
+            <div className={`col-lg-6 ${styles.swapColumn}`}>
+              <ProjectImageCardSwap
+                images={project.galleryImages}
+                title={project.title}
+              />
             </div>
           </div>
         </div>
@@ -156,11 +159,11 @@ const ProjectDetailsContentPepro = ({
                   <div className="item-grid-colum">
                     <div className="left-info">
                       <h3>
-                        <strong>02</strong> Defis
+                        <strong>02</strong> Ce que nous avons concu
                       </h3>
                     </div>
                     <div className="right-info">
-                      {project.challenges.map((paragraph) => (
+                      {project.solution.map((paragraph) => (
                         <p key={paragraph}>{paragraph}</p>
                       ))}
                     </div>
@@ -170,19 +173,13 @@ const ProjectDetailsContentPepro = ({
                   <div className="item-grid-colum">
                     <div className="left-info">
                       <h3>
-                        <strong>03</strong> Solution
+                        <strong>03</strong> Ce que cela change
                       </h3>
                     </div>
                     <div className="right-info">
-                      {project.solution.map((paragraph) => (
-                        <p key={paragraph}>{paragraph}</p>
+                      {project.outcomes.map((outcome) => (
+                        <p key={outcome}>{outcome}</p>
                       ))}
-                      <h4>Resultat: un socle concret et evolutif</h4>
-                      <ul className="list-disc">
-                        {project.outcomes.map((outcome) => (
-                          <li key={outcome}>{outcome}</li>
-                        ))}
-                      </ul>
                     </div>
                   </div>
                 </div>

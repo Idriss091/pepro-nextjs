@@ -193,7 +193,7 @@ export const projectCaseStudies: ProjectCaseStudy[] = [
       "Site marketing premium aligne sur la promesse du produit",
     ],
     outcomes: [
-      "Produit plus credibile et plus abouti, avec un vrai workspace, un suivi des projets et une experience complete de creation",
+      "Produit plus fiable et plus abouti, avec un vrai workspace, un suivi des projets et une experience complete de creation",
       "Parcours unifie entre idee, generation, preview, lecture du code et gestion de compte",
       "Produit monnayable avec plans, quotas et abonnements deja integres",
       "Experience plus solide pour creer, suivre et faire evoluer des applications dans le temps",

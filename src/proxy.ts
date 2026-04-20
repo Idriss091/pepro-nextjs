@@ -13,6 +13,14 @@ function shouldBypassCacheControl(pathname: string) {
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const host = request.headers.get("host")?.split(":")[0];
+
+  if (host === "www.pepro.fr") {
+    const redirectUrl = new URL(request.url);
+    redirectUrl.protocol = "https:";
+    redirectUrl.hostname = "pepro.fr";
+    return NextResponse.redirect(redirectUrl, 301);
+  }
 
   if (shouldBypassCacheControl(pathname)) {
     return NextResponse.next();

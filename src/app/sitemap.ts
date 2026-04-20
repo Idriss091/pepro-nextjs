@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
-import ServicesV1Data from "@/assets/jsonData/services/ServicesV1Data.json";
 import { projectCaseStudies } from "@/data/projectCaseStudies";
+import { getServicePath, services } from "@/data/services";
 import { SITE_URL } from "@/lib/site";
 
 const staticRoutes = [
@@ -10,10 +10,6 @@ const staticRoutes = [
   "/project",
   "/faq",
   "/contact-us",
-  "/mentions-legales",
-  "/politique-confidentialite",
-  "/politique-cookies",
-  "/conditions-generales",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -43,10 +39,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ) {
       priority = 0.8;
       changeFrequency = "monthly";
-    } else {
-      // Pages légales
-      priority = 0.3;
-      changeFrequency = "yearly";
     }
 
     return {
@@ -57,9 +49,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
-  const serviceEntries: MetadataRoute.Sitemap = ServicesV1Data.map(
+  const serviceEntries: MetadataRoute.Sitemap = services.map(
     (service) => ({
-      url: `${SITE_URL}/services/${service.id}`,
+      url: `${SITE_URL}${getServicePath(service)}`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,

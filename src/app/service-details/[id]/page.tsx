@@ -1,10 +1,11 @@
 import { permanentRedirect } from "next/navigation";
-import ServicesV1Data from "@/assets/jsonData/services/ServicesV1Data.json";
+import { getServiceByIdentifier, getServicePath, services } from "@/data/services";
 
 export function generateStaticParams() {
-  return ServicesV1Data.map((service) => ({
-    id: String(service.id),
-  }));
+  return services.flatMap((service) => [
+    { id: String(service.id) },
+    { id: service.slug },
+  ]);
 }
 
 export default async function ServiceDetailsPage({
@@ -13,5 +14,7 @@ export default async function ServiceDetailsPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  permanentRedirect(`/services/${id}`);
+  const service = getServiceByIdentifier(id);
+
+  permanentRedirect(service ? getServicePath(service) : "/services");
 }

@@ -1,7 +1,7 @@
-import ServicesV1Data from "@/assets/jsonData/services/ServicesV1Data.json";
 import SplitText from "../animation/SplitText.jsx";
 import Link from "next/link";
 import Image from "next/image";
+import { getServicePath, services } from "@/data/services";
 
 interface DataType {
   hasTitle?: boolean;
@@ -50,7 +50,7 @@ const ServicesV1 = ({ hasTitle, sectionClass }: DataType) => {
         <div className="container">
           <div className="services-style-one-items">
             <div className="row">
-              {ServicesV1Data.slice(0, 3).map((service) => (
+              {services.slice(0, 3).map((service) => (
                 <div
                   className="col-xl-4 col-lg-6 col-md-6 single-item"
                   key={service.id}
@@ -74,14 +74,14 @@ const ServicesV1 = ({ hasTitle, sectionClass }: DataType) => {
                       />
                     </div>
                     <h4>
-                      <Link href={`/services/${service.id}`}>
+                      <Link href={getServicePath(service)}>
                         {service.title}
                       </Link>
                     </h4>
                     <p>{service.text}</p>
                     <Link
                       className="btn-full"
-                      href={`/services/${service.id}`}
+                      href={getServicePath(service)}
                     >
                       En savoir plus <i className="fas fa-arrow-right" />
                     </Link>

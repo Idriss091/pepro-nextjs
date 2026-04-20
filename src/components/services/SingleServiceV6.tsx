@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 
 interface DataType {
@@ -11,7 +10,7 @@ interface DataType {
 }
 
 const SingleServiceV6 = ({ service }: { service: DataType }) => {
-    const { id, icon, subTitle, title, text, number } = service
+    const { icon, subTitle, title, text, number } = service
 
     return (
         <>
@@ -27,7 +26,7 @@ const SingleServiceV6 = ({ service }: { service: DataType }) => {
                 <div className="details">
                     <div className="item-title">
                         <span>{subTitle}</span>
-                        <h3><Link href={`/services/${id}`}>{title}</Link></h3>
+                        <h3>{title}</h3>
                     </div>
                     <p>{text}</p>
                     <span>{number}</span>

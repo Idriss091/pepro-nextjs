@@ -1,6 +1,6 @@
-import ServicesV1Data from "@/assets/jsonData/services/ServicesV1Data.json";
 import Link from "next/link";
 import Image from "next/image";
+import { getServicePath, services } from "@/data/services";
 
 interface DataType {
   id?: number;
@@ -459,7 +459,7 @@ const ServiceDetailsContent = ({
             <div className="services-more mt-100 mt-xs-30">
               <h2 className="mb-20">Services populaires</h2>
               <div className="row">
-                {ServicesV1Data.slice(0, 3).map((service) => (
+                {services.slice(0, 3).map((service) => (
                   <div className="col-lg-4 col-md-6" key={service.id}>
                     <div className="item">
                       <Image
@@ -477,7 +477,7 @@ const ServiceDetailsContent = ({
                         height={60}
                       />
                       <h4>
-                        <Link href={`/services/${service.id}`}>
+                        <Link href={getServicePath(service)}>
                           {service.title}
                         </Link>
                       </h4>

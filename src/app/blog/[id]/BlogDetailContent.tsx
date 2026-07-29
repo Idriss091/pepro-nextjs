@@ -22,7 +22,7 @@ interface BlogPost {
   thumbFull: string;
   thumb: string;
   animationDelay: string;
-  content: string;
+  content?: string;
 }
 
 interface BlogDetailContentProps {
@@ -37,6 +37,8 @@ export default function BlogDetailContent({
   const relatedBlogs = blogData
     .filter((b: BlogPost) => b.id !== blog.id && b.tag === blog.tag)
     .slice(0, 3);
+
+  const blogContent = blog.content || blog.text || blog.excerpt || "Le contenu de cet article n'est pas disponible.";
 
   return (
     <>
@@ -113,7 +115,7 @@ export default function BlogDetailContent({
                   {/* Article Content */}
                   <div className="blog-article-content">
                     <h2>{blog.title}</h2>
-                    {blog.content
+                    {blogContent
                       .split("\n\n")
                       .map((paragraph: string, index: number) => (
                         <p key={index}>{paragraph}</p>

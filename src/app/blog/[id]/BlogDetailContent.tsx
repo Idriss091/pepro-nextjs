@@ -38,7 +38,11 @@ export default function BlogDetailContent({
     .filter((b: BlogPost) => b.id !== blog.id && b.tag === blog.tag)
     .slice(0, 3);
 
-  const blogContent = blog.content || blog.text || blog.excerpt || "Le contenu de cet article n'est pas disponible.";
+  const blogContent =
+    blog.content ||
+    blog.text ||
+    blog.excerpt ||
+    "Le contenu de cet article n'est pas disponible.";
 
   return (
     <>

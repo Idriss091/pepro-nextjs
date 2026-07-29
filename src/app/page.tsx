@@ -8,6 +8,7 @@ import ServicesV1 from "@/components/services/ServicesV1";
 import MultiSectionPepro from "@/components/multi/MultiSectionPepro";
 import TestimonialV3 from "@/components/testimonial/TestimonialV3";
 import ThemeDark from "@/components/switcher/ThemeDark";
+import BlogV1 from "@/components/blog/BlogV1";
 import {
   DEFAULT_OG_IMAGE,
   LINKEDIN_URL,
@@ -92,6 +93,7 @@ export default function Home() {
         <ServicesV1 sectionClass="bg-gray default-padding" hasTitle={true} />
         <ProjectV1 />
         <TestimonialV3 sectionClass="bg-gray" />
+        <BlogV1 sectionClass="default-padding" hasTitle={true} />
         <MultiSectionPepro />
         <FooterV1 />
         <ThemeDark />

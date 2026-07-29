@@ -33,6 +33,11 @@ const MainMenu = ({ navbarPlacement, toggleSubMenu }: DataType) => {
           </Link>
         </li>
         <li>
+          <Link href="/blog" onClick={toggleSubMenu}>
+            Blog
+          </Link>
+        </li>
+        <li>
           <Link href="/contact-us" onClick={toggleSubMenu}>
             Contact
           </Link>

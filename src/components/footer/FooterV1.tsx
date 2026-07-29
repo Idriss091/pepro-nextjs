@@ -2,8 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import NewsletterV2 from "../newsletter/NewsletterV2";
 import FooterSocial from "../social/FooterSocial";
-const logoLight = "/brand/pepro-logo.svg";
-const logo = "/brand/pepro-logo.svg";
+const logoLight = "/brand/pepro-logo-new.png";
+const logo = "/brand/pepro-logo-new.png";
 
 interface DataType {
   sectionClass?: string;

@@ -90,7 +90,7 @@ const ProjectDetailsContentPepro = ({
             <div className={`col-lg-6 ${styles.textColumn}`}>
               <div className={styles.textPanel}>
                 <section>
-                  <h4>Enjeux cles</h4>
+                  <h4>Enjeux clés</h4>
                   <ul className={styles.compactList}>
                     {project.challenges.slice(0, 3).map((challenge) => (
                       <li key={challenge}>{challenge}</li>
@@ -99,7 +99,7 @@ const ProjectDetailsContentPepro = ({
                 </section>
 
                 <section>
-                  <h4>Ce que nous avons concu</h4>
+                  <h4>Ce que nous avons conçu</h4>
                   <ul className={styles.compactList}>
                     {project.deliverables.slice(0, 4).map((deliverable) => (
                       <li key={deliverable}>{deliverable}</li>
@@ -108,7 +108,7 @@ const ProjectDetailsContentPepro = ({
                 </section>
 
                 <section>
-                  <h4>Valeur apportee</h4>
+                  <h4>Valeur apportée</h4>
                   <div className={styles.outcomeGrid}>
                     {project.outcomes.slice(0, 4).map((outcome) => (
                       <div key={outcome} className={styles.outcomeItem}>
@@ -159,7 +159,7 @@ const ProjectDetailsContentPepro = ({
                   <div className="item-grid-colum">
                     <div className="left-info">
                       <h3>
-                        <strong>02</strong> Ce que nous avons concu
+                        <strong>02</strong> Ce que nous avons conçu
                       </h3>
                     </div>
                     <div className="right-info">
@@ -200,7 +200,7 @@ const ProjectDetailsContentPepro = ({
                       <i className="fas fa-angle-double-left" />
                     </div>
                     <div className="nav-title">
-                      Projet precedent
+                      Projet précédent
                       <h5>
                         {previousProject.sliderTitleFirst} {previousProject.sliderTitleLast}
                       </h5>
@@ -208,7 +208,7 @@ const ProjectDetailsContentPepro = ({
                   </Link>
                 </div>
                 <div className="project-all">
-                  <Link href="/project" aria-label="Toutes les realisations">
+                  <Link href="/project" aria-label="Toutes les réalisations">
                     <i className="fas fa-th-large" />
                   </Link>
                 </div>

@@ -91,7 +91,7 @@ const HeaderNewsLetter = () => {
                         required
                     />
                     <span className="input-group-addon">
-                        <button type="submit" disabled={isSubmitting} aria-label="S&apos;inscrire a la newsletter">
+                        <button type="submit" disabled={isSubmitting} aria-label="S&apos;inscrire à la newsletter">
                             <i className="fas fa-arrow-right" />
                         </button>
                     </span>

@@ -22,7 +22,7 @@ const AboutV6 = ({ sectionClass }: DataType) => {
               <div className="thumb-style-four">
                 <Image
                   src={thumb2}
-                  alt="Poste de travail de developpement logiciel moderne"
+                  alt="Poste de travail de développement logiciel moderne"
                   width={1400}
                   height={1039}
                 />

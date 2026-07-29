@@ -28,13 +28,13 @@ const MainMenu = ({ navbarPlacement, toggleSubMenu }: DataType) => {
           </Link>
         </li>
         <li>
-          <Link href="/faq" onClick={toggleSubMenu}>
-            FAQ
+          <Link href="/blog" onClick={toggleSubMenu}>
+            Blog
           </Link>
         </li>
         <li>
-          <Link href="/blog" onClick={toggleSubMenu}>
-            Blog
+          <Link href="/faq" onClick={toggleSubMenu}>
+            FAQ
           </Link>
         </li>
         <li>

@@ -35,7 +35,7 @@ const ContactForm = () => {
       // Fail silently for bots while returning a generic success state.
       setStatus({
         type: "success",
-        message: "Message envoye avec succes ! Notre equipe vous repondra bientot.",
+        message: "Message envoyé avec succès ! Notre équipe vous répondra bientôt.",
       });
       form.reset();
       setIsSubmitting(false);
@@ -46,7 +46,7 @@ const ContactForm = () => {
       setStatus({
         type: "error",
         message:
-          "Veuillez accepter la politique de confidentialite pour envoyer le message.",
+          "Veuillez accepter la politique de confidentialité pour envoyer le message.",
       });
       trackEvent("contact_form_submit_error", {
         error_type: "missing_consent",
@@ -75,7 +75,7 @@ const ContactForm = () => {
         });
         setStatus({
           type: "success",
-          message: "Message envoye avec succes ! Notre equipe vous repondra bientot.",
+          message: "Message envoyé avec succès ! Notre équipe vous répondra bientôt.",
         });
         form.reset();
       } else {
@@ -233,10 +233,10 @@ const ContactForm = () => {
                 }}
               />
               <label className="form-check-label" htmlFor="contact-consent">
-                J&apos;accepte que mes donnees soient utilisees pour etre recontacte
+                J&apos;accepte que mes données soient utilisées pour être recontacté
                 concernant ma demande.{" "}
                 <a href="/politique-confidentialite">
-                  Voir la politique de confidentialite
+                  Voir la politique de confidentialité
                 </a>
                 .
               </label>

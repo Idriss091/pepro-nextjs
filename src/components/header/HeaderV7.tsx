@@ -6,8 +6,8 @@ import useSidebarMenu from "../../hooks/useSidebarMenu";
 import useSubMenuToggle from "../../hooks/useSubMenuToggle";
 import useStickyMenu from "../../hooks/useStickyMenu";
 
-const logo = "/brand/pepro-logo.svg";
-const logoLight = "/brand/pepro-logo.svg";
+const logo = "/brand/pepro-logo-night.png";
+const logoLight = "/brand/pepro-logo-new.png";
 
 const HeaderV7 = () => {
   const { isOpen, openMenu, closeMenu } = useSidebarMenu();

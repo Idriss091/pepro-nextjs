@@ -5,6 +5,7 @@ import "swiper/css/bundle";
 import "animate.css";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import AnalyticsClickTracker from "@/components/analytics/AnalyticsClickTracker";
+import FloatingWhatsApp from "@/components/contact/FloatingWhatsApp";
 import {
   DEFAULT_OG_IMAGE,
   SITE_DESCRIPTION,
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: DEFAULT_OG_IMAGE,
-        alt: "Pepro - Agence de developpement logiciel sur-mesure",
+        alt: "Pepro - Agence de développement logiciel sur-mesure",
       },
     ],
   },
@@ -59,10 +60,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className="bg-dark">
+      <body>
         <GoogleAnalytics />
         <AnalyticsClickTracker />
         {children}
+        <FloatingWhatsApp />
       </body>
     </html>
   );

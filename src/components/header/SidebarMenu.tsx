@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-const logoLight = "/brand/pepro-logo.svg";
+const logoLight = "/brand/pepro-logo-new.png";
 import MainMenuV2 from "./MainMenuV2";
 import SocialShareV3 from "../social/SocialShareV3";
 import HeaderNewsLetter from "./HeaderNewsLetter";

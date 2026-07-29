@@ -18,7 +18,7 @@ const SocialShareV3 = () => {
         <Link
           className="linkedin"
           href="mailto:contact@pepro.fr"
-          aria-label="Envoyer un email a Pepro"
+          aria-label="Envoyer un email à Pepro"
         >
           <i className="fas fa-envelope" aria-hidden="true" />
         </Link>

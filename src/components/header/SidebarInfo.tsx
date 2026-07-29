@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import SocialShareV3 from "../social/SocialShareV3";
 import Image from "next/image";
 import HeaderNewsLetter from "./HeaderNewsLetter";
-const logoLight = "/brand/pepro-logo.svg";
+const logoLight = "/brand/pepro-logo-new.png";
 
 interface SidebarInfoProps {
     openInfoBar?: () => void;

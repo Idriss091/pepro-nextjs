@@ -23,11 +23,72 @@ interface BlogPost {
   thumb: string;
   animationDelay: string;
   content?: string;
+  pricingRows?: PricingRow[];
+}
+
+interface PricingRow {
+  audience: string;
+  price: string;
 }
 
 interface BlogDetailContentProps {
   blog: BlogPost;
   blogData: BlogPost[];
+}
+
+function renderArticleBlock(block: string, index: number) {
+  const lines = block.split("\n");
+  const articleHeadings = new Set([
+    "Le vrai problème n'est pas seulement le manque de contenu",
+    "La super efficacité de l'IA pour produire du contenu",
+    "Ce que vous pouvez produire concrètement",
+    "Ce que vous gagnez à vous former",
+    "La formation Pepro",
+    "Une formation animée par des ingénieurs diplômés",
+    "Une formation adaptée à tous les niveaux",
+    "Pourquoi agir maintenant",
+    "Conclusion",
+  ]);
+
+  if (lines.every((line) => line.startsWith("- "))) {
+    return (
+      <ul className="article-list" key={index}>
+        {lines.map((line) => (
+          <li key={line}>{line.replace("- ", "")}</li>
+        ))}
+      </ul>
+    );
+  }
+
+  if (
+    lines.length > 1 &&
+    lines.slice(1).every((line) => line.startsWith("- "))
+  ) {
+    return (
+      <div className="article-block" key={index}>
+        <p className="article-paragraph">{lines[0]}</p>
+        <ul className="article-list">
+          {lines.slice(1).map((line) => (
+            <li key={line}>{line.replace("- ", "")}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+
+  if (articleHeadings.has(block) || /^[0-9]+\. /.test(block)) {
+    return (
+      <h3 className="article-heading" key={index}>
+        {block}
+      </h3>
+    );
+  }
+
+  return (
+    <p className="article-paragraph" key={index}>
+      {block}
+    </p>
+  );
 }
 
 export default function BlogDetailContent({
@@ -50,7 +111,7 @@ export default function BlogDetailContent({
         <HeaderV1 />
 
         {/* Page Banner */}
-        <div className="page-banner-area bg-gray">
+        <div className="page-banner-area bg-gray compact-blog-banner">
           <div className="container">
             <div className="row">
               <div className="col-xl-12 text-center">
@@ -119,11 +180,49 @@ export default function BlogDetailContent({
                   {/* Article Content */}
                   <div className="blog-article-content">
                     <h2>{blog.title}</h2>
-                    {blogContent
-                      .split("\n\n")
-                      .map((paragraph: string, index: number) => (
-                        <p key={index}>{paragraph}</p>
-                      ))}
+                    {blogContent.split("\n\n").map(renderArticleBlock)}
+                    {blog.pricingRows && blog.pricingRows.length > 0 && (
+                      <div className="pricing-table-section">
+                        <h3>Grille tarifaire</h3>
+                        <div className="pricing-table-wrap">
+                          <table className="pricing-table">
+                            <thead>
+                              <tr>
+                                <th>Participants</th>
+                                <th>Tarif</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {blog.pricingRows.map((row) => (
+                                <tr key={row.audience}>
+                                  <td>{row.audience}</td>
+                                  <td>{row.price}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="advisor-cta">
+                    <div>
+                      <h4>Besoin d&apos;un avis sur votre site ?</h4>
+                      <p>
+                        Échangez avec un conseiller Pepro sur WhatsApp pour voir
+                        comment appliquer cette méthode à votre activité.
+                      </p>
+                    </div>
+                    <a
+                      href="https://wa.me/33618663595?text=Bonjour%2C%20je%20souhaite%20%C3%A9changer%20avec%20un%20conseiller%20Pepro%20au%20sujet%20de%20la%20formation%20IA%20et%20SEO."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="advisor-cta-button"
+                    >
+                      <i className="fab fa-whatsapp" aria-hidden="true" />
+                      Je contacte un conseiller sur WhatsApp
+                    </a>
                   </div>
 
                   {/* Share Article */}
@@ -297,6 +396,124 @@ export default function BlogDetailContent({
         .blog-article-content p {
           margin-bottom: 20px;
           color: #555;
+        }
+
+        .blog-article-content :global(.article-heading) {
+          margin: 34px 0 16px;
+          color: #1f2933;
+          font-size: 22px;
+          font-weight: 700;
+          line-height: 1.35;
+        }
+
+        .blog-article-content :global(.article-paragraph) {
+          margin-bottom: 20px;
+          color: #555;
+        }
+
+        .blog-article-content :global(.article-block) {
+          margin-bottom: 24px;
+        }
+
+        .blog-article-content :global(.article-list) {
+          margin: 0 0 24px 20px;
+          padding: 0;
+          color: #555;
+        }
+
+        .blog-article-content :global(.article-list li) {
+          margin-bottom: 8px;
+          line-height: 1.7;
+        }
+
+        .pricing-table-section {
+          margin-top: 36px;
+        }
+
+        .pricing-table-wrap {
+          overflow-x: auto;
+          border: 1px solid #e5e7eb;
+          border-radius: 8px;
+        }
+
+        .pricing-table {
+          width: 100%;
+          min-width: 420px;
+          border-collapse: collapse;
+          background: #fff;
+        }
+
+        .pricing-table th,
+        .pricing-table td {
+          padding: 16px 18px;
+          border-bottom: 1px solid #e5e7eb;
+          color: #374151;
+          text-align: left;
+        }
+
+        .pricing-table th {
+          background: #f8fafc;
+          color: #111827;
+          font-weight: 700;
+        }
+
+        .pricing-table tr:last-child td {
+          border-bottom: none;
+        }
+
+        .advisor-cta {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 24px;
+          margin: 42px 0;
+          padding: 26px;
+          border-radius: 8px;
+          background: linear-gradient(135deg, #0f766e 0%, #16a34a 100%);
+          box-shadow: 0 18px 45px rgba(15, 118, 110, 0.18);
+          color: #fff;
+        }
+
+        .advisor-cta h4 {
+          margin: 0 0 8px;
+          color: #fff;
+          font-size: 22px;
+          font-weight: 700;
+        }
+
+        .advisor-cta p {
+          margin: 0;
+          color: rgba(255, 255, 255, 0.9);
+          line-height: 1.6;
+        }
+
+        .advisor-cta-button {
+          flex: 0 0 auto;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          min-height: 48px;
+          padding: 13px 22px;
+          border-radius: 999px;
+          background: #ffffff;
+          color: #0f766e;
+          font-weight: 700;
+          text-decoration: none;
+          box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+          transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+        }
+
+        .advisor-cta-button i {
+          font-size: 20px;
+        }
+
+        .advisor-cta-button:hover {
+          color: #065f46;
+          transform: translateY(-2px);
+          box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
         }
 
         .blog-share-area {
@@ -486,14 +703,157 @@ export default function BlogDetailContent({
           color: #666;
         }
 
+        :global(.bg-dark) .blog-detail-area {
+          background: #0b0f14;
+        }
+
+        :global(.bg-dark) .blog-detail-content,
+        :global(.bg-dark) .blog-article-content {
+          color: #d8dee9;
+        }
+
+        :global(.bg-dark) .blog-article-content h2,
+        :global(.bg-dark) .blog-article-content :global(.article-heading),
+        :global(.bg-dark) .pricing-table-section h3,
+        :global(.bg-dark) .blog-share-area h4,
+        :global(.bg-dark) .sidebar-widget h4,
+        :global(.bg-dark) .related-post-item h5 {
+          color: #f8fafc;
+        }
+
+        :global(.bg-dark) .blog-article-content p,
+        :global(.bg-dark) .blog-article-content :global(.article-paragraph),
+        :global(.bg-dark) .blog-article-content :global(.article-list),
+        :global(.bg-dark) .blog-article-content :global(.article-list li) {
+          color: #d1d5db;
+        }
+
+        :global(.bg-dark) .blog-meta-info {
+          color: #cbd5e1;
+        }
+
+        :global(.bg-dark) .blog-tag {
+          background: #1f2937;
+          color: #e5e7eb;
+        }
+
+        :global(.bg-dark) .pricing-table-wrap,
+        :global(.bg-dark) .pricing-table th,
+        :global(.bg-dark) .pricing-table td {
+          border-color: #2f3a48;
+        }
+
+        :global(.bg-dark) .pricing-table {
+          background: #111827;
+        }
+
+        :global(.bg-dark) .pricing-table th {
+          background: #1f2937;
+          color: #f9fafb;
+        }
+
+        :global(.bg-dark) .pricing-table td {
+          color: #e5e7eb;
+        }
+
+        :global(.bg-dark) .blog-share-area,
+        :global(.bg-dark) .sidebar-widget {
+          background: #111827;
+          border: 1px solid #273244;
+        }
+
+        :global(.bg-dark) .share-btn {
+          background: #1f2937;
+          border-color: #374151;
+          color: #e5e7eb;
+        }
+
+        :global(.bg-dark) .share-btn:hover {
+          background: #0ea5e9;
+          border-color: #0ea5e9;
+          color: #ffffff;
+        }
+
+        :global(.bg-dark) .blog-navigation {
+          border-color: #273244;
+        }
+
+        :global(.bg-dark) .prev-blog,
+        :global(.bg-dark) .next-blog,
+        :global(.bg-dark) .category-list a,
+        :global(.bg-dark) .recent-posts a {
+          color: #e5e7eb;
+        }
+
+        :global(.bg-dark) .prev-blog:hover,
+        :global(.bg-dark) .next-blog:hover,
+        :global(.bg-dark) .category-list a:hover,
+        :global(.bg-dark) .recent-posts a:hover {
+          color: #38bdf8;
+        }
+
+        :global(.bg-dark) .recent-posts li {
+          border-color: #273244;
+        }
+
+        :global(.bg-dark) .recent-posts span,
+        :global(.bg-dark) .related-post-item span {
+          color: #94a3b8;
+        }
+
+        :global(.bg-dark) .search-form input {
+          background: #0b1220;
+          border-color: #334155;
+          color: #e5e7eb;
+        }
+
+        :global(.bg-dark) .search-form input::placeholder {
+          color: #94a3b8;
+        }
+
+        :global(.bg-dark) .search-form button {
+          color: #cbd5e1;
+        }
+
+        .compact-blog-banner {
+          min-height: 0 !important;
+          height: auto !important;
+          padding: 92px 0 26px !important;
+          display: flex;
+          align-items: center;
+        }
+
+        :global(nav.navbar.validnavs.no-background .desktop-nav .navbar-nav > li > a),
+        :global(nav.navbar.validnavs.sticked .desktop-nav .navbar-nav > li > a) {
+          color: #374151 !important;
+          font-weight: 600;
+        }
+
+        :global(nav.navbar.validnavs.no-background .desktop-nav .navbar-nav > li > a:hover),
+        :global(nav.navbar.validnavs.sticked .desktop-nav .navbar-nav > li > a:hover) {
+          color: #0ea5e9 !important;
+        }
+
+        :global(.bg-dark nav.navbar.validnavs.no-background .desktop-nav .navbar-nav > li > a),
+        :global(.bg-dark nav.navbar.validnavs.sticked .desktop-nav .navbar-nav > li > a) {
+          color: #e5e7eb !important;
+        }
+
+        :global(.bg-dark nav.navbar.validnavs.no-background .desktop-nav .navbar-nav > li > a:hover),
+        :global(.bg-dark nav.navbar.validnavs.sticked .desktop-nav .navbar-nav > li > a:hover) {
+          color: #38bdf8 !important;
+        }
+
         .page-banner-content {
-          padding: 60px 20px;
+          padding: 8px 20px;
         }
 
         .page-banner-content h1 {
-          font-size: 48px;
-          margin-bottom: 20px;
+          max-width: 880px;
+          margin: 0 auto 10px;
+          font-size: 34px;
           font-weight: 700;
+          line-height: 1.18;
         }
 
         .page-banner-content p {
@@ -525,6 +885,30 @@ export default function BlogDetailContent({
 
         .breadcrumb-item.active {
           color: #999;
+        }
+
+        @media (max-width: 767px) {
+          .compact-blog-banner {
+            padding: 76px 0 22px !important;
+          }
+
+          .page-banner-content {
+            padding: 6px 0;
+          }
+
+          .page-banner-content h1 {
+            font-size: 24px;
+            line-height: 1.24;
+          }
+
+          .advisor-cta {
+            align-items: flex-start;
+            flex-direction: column;
+          }
+
+          .advisor-cta-button {
+            width: 100%;
+          }
         }
       `}</style>
     </>

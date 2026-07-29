@@ -26,7 +26,7 @@ export async function generateMetadata({
   return {
     title: project ? `Pepro - ${project.title}` : "Pepro - Etude de cas",
     description:
-      project?.summary ?? "Etudes de cas Pepro: produits et plateformes sur-mesure.",
+      project?.summary ?? "Études de cas Pepro: produits et plateformes sur-mesure.",
     alternates: {
       canonical: `/project-details/${id}`,
     },
@@ -56,7 +56,7 @@ export default async function ProjectDetailsPage({
   return (
     <LayoutV1>
       <Breadcrumb
-        title="Etudes de cas"
+        title="Études de cas"
         breadCrumb={`${currentProject.sliderTitleFirst} ${currentProject.sliderTitleLast}`}
       />
       <ProjectDetailsContentPepro

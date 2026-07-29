@@ -13,17 +13,17 @@ const faqItems = [
   {
     title: "Cadrage produit & priorisation",
     content:
-      "Nous clarifions les objectifs, les risques et les priorites pour transformer une idee en feuille de route executable, avec un scope realiste et mesurable.",
+      "Nous clarifions les objectifs, les risques et les priorités pour transformer une idée en feuille de route exécutable, avec un scope réaliste et mesurable.",
   },
   {
-    title: "Architecture & execution technique",
+    title: "Architecture & exécution technique",
     content:
-      "Pepro conçoit des architectures robustes (web, data, IA) et livre rapidement des increments utiles, sans sacrifier la maintenabilite ni la performance.",
+      "Pepro conçoit des architectures robustes (web, data, IA) et livre rapidement des incréments utiles, sans sacrifier la maintenabilité ni la performance.",
   },
   {
-    title: "Impact metier & accompagnement",
+    title: "Impact métier & accompagnement",
     content:
-      "Nous restons focalises sur l'adoption, la valeur business et la mise en production: pas seulement du code, mais un resultat exploitable par vos equipes.",
+      "Nous restons focalisés sur l'adoption, la valeur business et la mise en production: pas seulement du code, mais un résultat exploitable par vos équipes.",
   },
 ];
 
@@ -44,7 +44,7 @@ const WhyChoosePepro = ({ sectionClass }: WhyChoosePeproProps) => {
             <div className="thumb-style-one">
               <Image
                 src={thumb3}
-                alt="Setup de travail Pepro pour la conception et le developpement de solutions digitales"
+                alt="Setup de travail Pepro pour la conception et le développement de solutions digitales"
                 width={1280}
                 height={853}
                 unoptimized

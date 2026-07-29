@@ -91,7 +91,7 @@ const NewsletterV2 = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          aria-label="S'inscrire a la newsletter"
+          aria-label="S'inscrire à la newsletter"
         >
           <Image src={arrowRightTwo} alt="Envoyer" width={124} height={84} />
         </button>

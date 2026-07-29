@@ -3,34 +3,30 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect } from "react";
 import MainMenu from "./MainMenu";
-import SidebarInfo from "./SidebarInfo";
-const logo = "/brand/pepro-logo-dark.svg";
-const logoLight = "/brand/pepro-logo.svg";
+const logo = "/brand/pepro-logo-night.png";
+const logoLight = "/brand/pepro-logo-new.png";
 import useSidebarMenu from "../../hooks/useSidebarMenu";
 import useSubMenuToggle from "../../hooks/useSubMenuToggle";
-import useSidebarInfo from "../../hooks/useSidebarInfo";
 import useStickyMenu from "../../hooks/useStickyMenu";
 
 const HeaderV1 = () => {
   const { isOpen, openMenu, closeMenu } = useSidebarMenu();
   const toggleSubMenu = useSubMenuToggle();
-  const { isInfoOpen, openInfoBar, closeInfoBar } = useSidebarInfo();
   const isMenuSticky = useStickyMenu();
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key !== "Escape") return;
       if (isOpen) closeMenu();
-      if (isInfoOpen) closeInfoBar();
     };
 
-    if (!isOpen && !isInfoOpen) return;
+    if (!isOpen) return;
 
     document.addEventListener("keydown", handleEscape);
     return () => {
       document.removeEventListener("keydown", handleEscape);
     };
-  }, [isOpen, isInfoOpen, closeMenu, closeInfoBar]);
+  }, [isOpen, closeMenu]);
 
   return (
     <>
@@ -120,11 +116,6 @@ const HeaderV1 = () => {
                 navbarPlacement="navbar-center"
               />
             </div>
-            <SidebarInfo
-              openInfoBar={openInfoBar}
-              closeInfoBar={closeInfoBar}
-              isInfoOpen={isInfoOpen}
-            />
           </div>
           <button
             type="button"

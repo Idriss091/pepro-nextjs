@@ -4,9 +4,9 @@ import { projectCaseStudies } from "@/data/projectCaseStudies";
 import styles from "./ProjectV1.module.css";
 
 const highlights = [
-  { value: "Sur-mesure", label: "produits alignes sur des contraintes metier reelles" },
-  { value: "35k+", label: "produits e-commerce structures" },
-  { value: "SaaS", label: "interfaces metier et IA" },
+  { value: "Sur-mesure", label: "produits alignés sur des contraintes métier réelles" },
+  { value: "35k+", label: "produits e-commerce structurés" },
+  { value: "SaaS", label: "interfaces métier et IA" },
 ];
 
 const cardContent: Record<
@@ -17,19 +17,19 @@ const cardContent: Record<
     title: "Boutique B2B pour distributeur outillage et EPI",
     tag: "E-commerce B2B",
     summary:
-      "Une boutique en ligne pensee pour les achats professionnels, avec grand catalogue, recherche produit, logistique transporteurs et parcours d'achat adapte aux besoins terrain.",
+      "Une boutique en ligne pensée pour les achats professionnels, avec grand catalogue, recherche produit, logistique transporteurs et parcours d'achat adapté aux besoins terrain.",
   },
   2: {
-    title: "Portail scolaire pour eleves, parents et equipe educative",
+    title: "Portail scolaire pour élèves, parents et équipe éducative",
     tag: "Produit EdTech",
     summary:
-      "Une plateforme scolaire complete pour suivre les notes, les absences, les devoirs, les messages et la vie de l'etablissement depuis des espaces dedies a chaque profil.",
+      "Une plateforme scolaire complète pour suivre les notes, les absences, les devoirs, les messages et la vie de l'établissement depuis des espaces dédiés à chaque profil.",
   },
   3: {
-    title: "Plateforme IA pour creer des applications web",
+    title: "Plateforme IA pour créer des applications web",
     tag: "Produit SaaS IA",
     summary:
-      "Un produit web qui permet de decrire une idee, generer une application avec l'IA, visualiser le resultat en direct et suivre ses projets depuis un meme workspace.",
+      "Un produit web qui permet de décrire une idée, générer une application avec l'IA, visualiser le résultat en direct et suivre ses projets depuis un même workspace.",
   },
 };
 
@@ -40,12 +40,12 @@ const ProjectV1 = () => {
         <div className={styles.shell}>
           <div className={styles.header}>
             <div className={styles.headerCopy}>
-              <span className={styles.eyebrow}>Nos realisations</span>
-              <h2 className={styles.title}>Des produits livres, pas des promesses abstraites.</h2>
+              <span className={styles.eyebrow}>Nos réalisations</span>
+              <h2 className={styles.title}>Des produits livrés, pas des promesses abstraites.</h2>
               <p className={styles.lead}>
-                E-commerce a grand catalogue, logiciel metier pour etablissement scolaire,
-                produit SaaS assiste par IA: chaque projet montre un niveau d&apos;execution
-                concret, avec des interfaces reelles et des usages clairement visibles.
+                E-commerce à grand catalogue, logiciel métier pour établissement scolaire,
+                produit SaaS assisté par IA: chaque projet montre un niveau d&apos;exécution
+                concret, avec des interfaces réelles et des usages clairement visibles.
               </p>
             </div>
 
@@ -113,7 +113,7 @@ const ProjectV1 = () => {
                       className={styles.cardLink}
                       href={`/project-details/${project.id}`}
                     >
-                      Voir l&apos;etude de cas
+                      Voir l&apos;étude de cas
                     </Link>
                   </div>
                 </div>

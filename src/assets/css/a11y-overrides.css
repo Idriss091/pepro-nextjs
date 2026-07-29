@@ -95,4 +95,13 @@ button.overlay-screen {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+
+  .floating-whatsapp {
+    animation: floating-whatsapp-blink 2.2s ease-in-out infinite !important;
+    transition-duration: 0.2s !important;
+  }
+
+  .floating-whatsapp-pulse {
+    animation: floating-whatsapp-pulse 2.2s ease-out infinite !important;
+  }
 }

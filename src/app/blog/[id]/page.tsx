@@ -63,7 +63,11 @@ export async function generateMetadata({
   };
 }
 
-export default async function BlogDetailPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function BlogDetailPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const { id } = await params;
   const blog = blogData.find((b: BlogPost) => b.id.toString() === id);
 

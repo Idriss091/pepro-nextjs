@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "Pepro - Agence de développement logiciel sur-mesure à Paris",
     description: SITE_DESCRIPTION,
     url: SITE_URL,
-    images: [{ url: DEFAULT_OG_IMAGE, alt: "Pepro - Services numeriques" }],
+    images: [{ url: DEFAULT_OG_IMAGE, alt: "Pepro - Services numériques" }],
   },
   twitter: {
     card: "summary_large_image",

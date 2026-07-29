@@ -9,6 +9,21 @@ interface DataType {
   limit?: number;
 }
 
+interface BlogPost {
+  id: number;
+  date: string;
+  dateIcon: string;
+  author: string;
+  authorIcon: string;
+  tag: string;
+  title: string;
+  excerpt: string;
+  btnText: string;
+  btnIcon: string;
+  thumb: string;
+  animationDelay: string;
+}
+
 const BlogV1 = ({ hasTitle, sectionClass, limit = 3 }: DataType) => {
   const displayedBlogs = limit ? blogData.slice(0, limit) : blogData;
 
@@ -53,7 +68,7 @@ const BlogV1 = ({ hasTitle, sectionClass, limit = 3 }: DataType) => {
         <div className="container">
           <div className="blog-style-one-items">
             <div className="row">
-              {displayedBlogs.map((blog: any) => (
+              {displayedBlogs.map((blog: BlogPost) => (
                 <div
                   className="col-xl-4 col-lg-6 col-md-6 single-item"
                   key={blog.id}

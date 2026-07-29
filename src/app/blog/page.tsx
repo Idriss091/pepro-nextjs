@@ -5,7 +5,20 @@ import ThemeDark from "@/components/switcher/ThemeDark";
 import Link from "next/link";
 import Image from "next/image";
 import blogData from "@/assets/jsonData/blog/BlogPeproData.json";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { SITE_URL } from "@/lib/site";
+
+interface BlogPost {
+  id: number;
+  date: string;
+  dateIcon: string;
+  author: string;
+  authorIcon: string;
+  tag: string;
+  title: string;
+  excerpt: string;
+  btnIcon: string;
+  thumb: string;
+}
 
 export const metadata: Metadata = {
   title: "Blog Pepro - Actualités et tendances technologiques",
@@ -30,29 +43,19 @@ export default function BlogPage() {
         <HeaderV1 />
 
         {/* Page Banner */}
-        <div
-          className="page-banner-area bg-gray"
-          style={{ paddingTop: "120px" }}
-        >
+        <div className="page-banner-area bg-gray compact-blog-list-banner">
           <div className="container">
             <div className="row">
               <div className="col-xl-12 text-center">
                 <div className="page-banner-content">
-                  <h1>Notre Blog</h1>
-                  <p>Actualités, tendances et conseils en technologie</p>
-                  <nav aria-label="breadcrumb">
-                    <ol className="breadcrumb">
-                      <li className="breadcrumb-item">
-                        <Link href="/">Accueil</Link>
-                      </li>
-                      <li
-                        className="breadcrumb-item active"
-                        aria-current="page"
-                      >
-                        Blog
-                      </li>
-                    </ol>
-                  </nav>
+                  <span className="pepro-blog-eyebrow">
+                    <i className="far fa-newspaper" /> Nos articles
+                  </span>
+                  <h1>Blog & Ressources</h1>
+                  <p>
+                    Guides pratiques, conseils d&apos;experts et inspirations pour
+                    vos projets numériques.
+                  </p>
                 </div>
               </div>
             </div>
@@ -60,12 +63,12 @@ export default function BlogPage() {
         </div>
 
         {/* Blog Grid */}
-        <div className="blog-grid-area default-padding">
+        <div className="blog-grid-area pepro-blog-list-area">
           <div className="container">
-            <div className="row">
-              {blogData.map((blog: any) => (
+            <div className="row pepro-blog-list-grid justify-content-center">
+              {blogData.map((blog: BlogPost) => (
                 <div
-                  className="col-xl-4 col-lg-6 col-md-6 single-item"
+                  className="col-xl-5 col-lg-6 col-md-10 single-item"
                   key={blog.id}
                 >
                   <div className="blog-style-one-item">

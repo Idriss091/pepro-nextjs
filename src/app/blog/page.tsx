@@ -30,7 +30,7 @@ export default function BlogPage() {
         <HeaderV1 />
 
         {/* Page Banner */}
-        <div className="page-banner-area bg-gray">
+        <div className="page-banner-area bg-gray" style={{ paddingTop: "120px" }}>
           <div className="container">
             <div className="row">
               <div className="col-xl-12 text-center">

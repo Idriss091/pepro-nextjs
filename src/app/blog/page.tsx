@@ -42,7 +42,10 @@ export default function BlogPage() {
                       <li className="breadcrumb-item">
                         <Link href="/">Accueil</Link>
                       </li>
-                      <li className="breadcrumb-item active" aria-current="page">
+                      <li
+                        className="breadcrumb-item active"
+                        aria-current="page"
+                      >
                         Blog
                       </li>
                     </ol>
@@ -88,10 +91,7 @@ export default function BlogPage() {
                         <Link href={`/blog/${blog.id}`}>{blog.title}</Link>
                       </h4>
                       <p>{blog.excerpt}</p>
-                      <Link
-                        className="btn-full"
-                        href={`/blog/${blog.id}`}
-                      >
+                      <Link className="btn-full" href={`/blog/${blog.id}`}>
                         Lire plus <i className={blog.btnIcon} />
                       </Link>
                     </div>

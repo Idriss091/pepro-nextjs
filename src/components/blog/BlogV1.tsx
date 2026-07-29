@@ -87,10 +87,7 @@ const BlogV1 = ({ hasTitle, sectionClass, limit = 3 }: DataType) => {
                         <Link href={`/blog/${blog.id}`}>{blog.title}</Link>
                       </h4>
                       <p>{blog.excerpt}</p>
-                      <Link
-                        className="btn-full"
-                        href={`/blog/${blog.id}`}
-                      >
+                      <Link className="btn-full" href={`/blog/${blog.id}`}>
                         {blog.btnText} <i className={blog.btnIcon} />
                       </Link>
                     </div>

@@ -1,5 +1,5 @@
 "use client";
-import Link from 'next/link';
+import Link from "next/link";
 
 interface DataType {
   navbarPlacement?: string;
@@ -43,7 +43,6 @@ const MainMenu = ({ navbarPlacement, toggleSubMenu }: DataType) => {
           </Link>
         </li>
       </ul>
-
     </>
   );
 };

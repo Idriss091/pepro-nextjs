@@ -58,7 +58,10 @@ export default function BlogDetailContent({
                       <li className="breadcrumb-item">
                         <Link href="/blog">Blog</Link>
                       </li>
-                      <li className="breadcrumb-item active" aria-current="page">
+                      <li
+                        className="breadcrumb-item active"
+                        aria-current="page"
+                      >
                         {blog.title}
                       </li>
                     </ol>
@@ -92,11 +95,17 @@ export default function BlogDetailContent({
                       {blog.tag}
                     </span>
                     <span>
-                      <i className={blog.dateIcon} style={{ marginRight: "5px" }} />
+                      <i
+                        className={blog.dateIcon}
+                        style={{ marginRight: "5px" }}
+                      />
                       {blog.date}
                     </span>
                     <span style={{ marginLeft: "20px" }}>
-                      <i className={blog.authorIcon} style={{ marginRight: "5px" }} />
+                      <i
+                        className={blog.authorIcon}
+                        style={{ marginRight: "5px" }}
+                      />
                       {blog.author}
                     </span>
                   </div>
@@ -104,22 +113,39 @@ export default function BlogDetailContent({
                   {/* Article Content */}
                   <div className="blog-article-content">
                     <h2>{blog.title}</h2>
-                    {blog.content.split("\n\n").map((paragraph: string, index: number) => (
-                      <p key={index}>{paragraph}</p>
-                    ))}
+                    {blog.content
+                      .split("\n\n")
+                      .map((paragraph: string, index: number) => (
+                        <p key={index}>{paragraph}</p>
+                      ))}
                   </div>
 
                   {/* Share Article */}
                   <div className="blog-share-area">
                     <h4>Partager cet article</h4>
                     <div className="share-buttons">
-                      <a href={`https://www.facebook.com/sharer/sharer.php?u=${SITE_URL}/blog/${blog.id}`} target="_blank" rel="noopener noreferrer" className="share-btn">
+                      <a
+                        href={`https://www.facebook.com/sharer/sharer.php?u=${SITE_URL}/blog/${blog.id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="share-btn"
+                      >
                         <i className="fab fa-facebook-f" />
                       </a>
-                      <a href={`https://twitter.com/intent/tweet?url=${SITE_URL}/blog/${blog.id}&text=${blog.title}`} target="_blank" rel="noopener noreferrer" className="share-btn">
+                      <a
+                        href={`https://twitter.com/intent/tweet?url=${SITE_URL}/blog/${blog.id}&text=${blog.title}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="share-btn"
+                      >
                         <i className="fab fa-twitter" />
                       </a>
-                      <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${SITE_URL}/blog/${blog.id}`} target="_blank" rel="noopener noreferrer" className="share-btn">
+                      <a
+                        href={`https://www.linkedin.com/sharing/share-offsite/?url=${SITE_URL}/blog/${blog.id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="share-btn"
+                      >
                         <i className="fab fa-linkedin-in" />
                       </a>
                     </div>
@@ -148,7 +174,10 @@ export default function BlogDetailContent({
                   <div className="sidebar-widget">
                     <h4>Rechercher</h4>
                     <form className="search-form">
-                      <input type="text" placeholder="Rechercher un article..." />
+                      <input
+                        type="text"
+                        placeholder="Rechercher un article..."
+                      />
                       <button type="submit">
                         <i className="fas fa-search" />
                       </button>
@@ -159,13 +188,13 @@ export default function BlogDetailContent({
                   <div className="sidebar-widget">
                     <h4>Catégories</h4>
                     <ul className="category-list">
-                      {Array.from(new Set(blogData.map((b: BlogPost) => b.tag))).map(
-                        (tag: string) => (
-                          <li key={tag}>
-                            <Link href={`/blog?tag=${tag}`}>{tag}</Link>
-                          </li>
-                        )
-                      )}
+                      {Array.from(
+                        new Set(blogData.map((b: BlogPost) => b.tag)),
+                      ).map((tag: string) => (
+                        <li key={tag}>
+                          <Link href={`/blog?tag=${tag}`}>{tag}</Link>
+                        </li>
+                      ))}
                     </ul>
                   </div>
 
@@ -190,13 +219,20 @@ export default function BlogDetailContent({
                       <h4>Articles similaires</h4>
                       <div className="related-posts">
                         {relatedBlogs.map((relatedBlog: BlogPost) => (
-                          <Link key={relatedBlog.id} href={`/blog/${relatedBlog.id}`} className="related-post-item">
+                          <Link
+                            key={relatedBlog.id}
+                            href={`/blog/${relatedBlog.id}`}
+                            className="related-post-item"
+                          >
                             <Image
                               src={`/assets/img/blog/${relatedBlog.thumb}`}
                               alt={relatedBlog.title}
                               width={100}
                               height={100}
-                              style={{ objectFit: "cover", borderRadius: "4px" }}
+                              style={{
+                                objectFit: "cover",
+                                borderRadius: "4px",
+                              }}
                             />
                             <div className="post-info">
                               <h5>{relatedBlog.title}</h5>

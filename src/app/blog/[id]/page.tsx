@@ -31,9 +31,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-  const blog = blogData.find((b: BlogPost) => b.id === parseInt(params.id));
+  const { id } = await params;
+  const blog = blogData.find((b: BlogPost) => b.id.toString() === id);
 
   if (!blog) {
     return {
@@ -45,12 +46,12 @@ export async function generateMetadata({
     title: `${blog.title} - Blog Pepro`,
     description: blog.excerpt,
     alternates: {
-      canonical: `/blog/${params.id}`,
+      canonical: `/blog/${id}`,
     },
     openGraph: {
       title: blog.title,
       description: blog.excerpt,
-      url: `${SITE_URL}/blog/${params.id}`,
+      url: `${SITE_URL}/blog/${id}`,
       type: "article",
       images: [
         {
@@ -62,8 +63,9 @@ export async function generateMetadata({
   };
 }
 
-export default function BlogDetailPage({ params }: { params: { id: string } }) {
-  const blog = blogData.find((b: BlogPost) => b.id === parseInt(params.id));
+export default async function BlogDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const blog = blogData.find((b: BlogPost) => b.id.toString() === id);
 
   if (!blog) {
     notFound();

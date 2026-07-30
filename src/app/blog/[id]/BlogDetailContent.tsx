@@ -24,6 +24,9 @@ interface BlogPost {
   animationDelay: string;
   content?: string;
   pricingRows?: PricingRow[];
+  ctaTitle?: string;
+  ctaText?: string;
+  ctaWhatsappText?: string;
 }
 
 interface PricingRow {
@@ -38,6 +41,12 @@ interface BlogDetailContentProps {
 
 function renderArticleBlock(block: string, index: number) {
   const lines = block.split("\n");
+  const bulletLines = lines.every(
+    (line) => line.startsWith("- ") || line.startsWith("* "),
+  );
+  const paragraphWithBulletLines =
+    lines.length > 1 &&
+    lines.slice(1).every((line) => line.startsWith("- ") || line.startsWith("* "));
   const articleHeadings = new Set([
     "Le vrai problème n'est pas seulement le manque de contenu",
     "La super efficacité de l'IA pour produire du contenu",
@@ -50,26 +59,39 @@ function renderArticleBlock(block: string, index: number) {
     "Conclusion",
   ]);
 
-  if (lines.every((line) => line.startsWith("- "))) {
+  if (block.startsWith("## ")) {
+    return (
+      <h3 className="article-heading" key={index}>
+        {block.replace(/^##\s+/, "")}
+      </h3>
+    );
+  }
+
+  if (block.startsWith("### ")) {
+    return (
+      <h4 className="article-subheading" key={index}>
+        {block.replace(/^###\s+/, "")}
+      </h4>
+    );
+  }
+
+  if (bulletLines) {
     return (
       <ul className="article-list" key={index}>
         {lines.map((line) => (
-          <li key={line}>{line.replace("- ", "")}</li>
+          <li key={line}>{line.replace(/^[-*]\s+/, "")}</li>
         ))}
       </ul>
     );
   }
 
-  if (
-    lines.length > 1 &&
-    lines.slice(1).every((line) => line.startsWith("- "))
-  ) {
+  if (paragraphWithBulletLines) {
     return (
       <div className="article-block" key={index}>
         <p className="article-paragraph">{lines[0]}</p>
         <ul className="article-list">
           {lines.slice(1).map((line) => (
-            <li key={line}>{line.replace("- ", "")}</li>
+            <li key={line}>{line.replace(/^[-*]\s+/, "")}</li>
           ))}
         </ul>
       </div>
@@ -104,6 +126,9 @@ export default function BlogDetailContent({
     blog.text ||
     blog.excerpt ||
     "Le contenu de cet article n'est pas disponible.";
+  const whatsappMessage =
+    blog.ctaWhatsappText ||
+    "Bonjour, je souhaite échanger avec un conseiller Pepro au sujet de la formation IA et SEO.";
 
   return (
     <>
@@ -111,13 +136,50 @@ export default function BlogDetailContent({
         <HeaderV1 />
 
         {/* Page Banner */}
-        <div className="page-banner-area bg-gray compact-blog-banner">
+        <div
+          className="page-banner-area bg-gray compact-blog-detail-banner"
+          style={{
+            minHeight: 0,
+            height: "auto",
+            padding: "112px 0 52px",
+          }}
+        >
           <div className="container">
             <div className="row">
               <div className="col-xl-12 text-center">
-                <div className="page-banner-content">
-                  <h1>{blog.title}</h1>
-                  <nav aria-label="breadcrumb">
+                <div
+                  className="page-banner-content"
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 16,
+                    minHeight: 0,
+                    height: "auto",
+                    padding: 0,
+                  }}
+                >
+                  <h1
+                    style={{
+                      margin: 0,
+                      maxWidth: 900,
+                      fontSize: "clamp(34px, 4vw, 56px)",
+                      lineHeight: 1.08,
+                    }}
+                  >
+                    {blog.title}
+                  </h1>
+                  <nav
+                    aria-label="breadcrumb"
+                    style={{
+                      position: "static",
+                      display: "block",
+                      margin: 0,
+                      padding: 0,
+                      transform: "none",
+                    }}
+                  >
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item">
                         <Link href="/">Accueil</Link>
@@ -209,14 +271,14 @@ export default function BlogDetailContent({
 
                   <div className="advisor-cta">
                     <div>
-                      <h4>Besoin d&apos;un avis sur votre site ?</h4>
+                      <h4>{blog.ctaTitle || "Besoin d'un avis sur votre site ?"}</h4>
                       <p>
-                        Échangez avec un conseiller Pepro sur WhatsApp pour voir
-                        comment appliquer cette méthode à votre activité.
+                        {blog.ctaText ||
+                          "Échangez avec un conseiller Pepro sur WhatsApp pour voir comment appliquer cette méthode à votre activité."}
                       </p>
                     </div>
                     <a
-                      href="https://wa.me/33618663595?text=Bonjour%2C%20je%20souhaite%20%C3%A9changer%20avec%20un%20conseiller%20Pepro%20au%20sujet%20de%20la%20formation%20IA%20et%20SEO."
+                      href={`https://wa.me/33618663595?text=${encodeURIComponent(whatsappMessage)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="advisor-cta-button"
@@ -361,7 +423,7 @@ export default function BlogDetailContent({
 
       <style jsx>{`
         .blog-featured-image {
-          margin: 40px 0;
+          margin: 0 0 24px;
         }
 
         .blog-meta-info {
@@ -384,11 +446,12 @@ export default function BlogDetailContent({
         }
 
         .blog-article-content {
-          margin: 40px 0;
+          margin: 24px 0 40px;
           line-height: 1.8;
         }
 
         .blog-article-content h2 {
+          display: none;
           margin: 30px 0 20px;
           font-size: 28px;
           font-weight: 700;
@@ -816,12 +879,13 @@ export default function BlogDetailContent({
           color: #cbd5e1;
         }
 
-        .compact-blog-banner {
-          min-height: 0 !important;
-          height: auto !important;
-          padding: 92px 0 26px !important;
+        :global(.compact-blog-banner) {
+          min-height: 360px !important;
+          height: 360px !important;
+          padding: 116px 0 54px !important;
           display: flex;
           align-items: center;
+          overflow: hidden;
         }
 
         :global(nav.navbar.validnavs.no-background .desktop-nav .navbar-nav > li > a),
@@ -845,47 +909,85 @@ export default function BlogDetailContent({
           color: #38bdf8 !important;
         }
 
-        .page-banner-content {
-          padding: 8px 20px;
+        :global(.compact-blog-banner .page-banner-content) {
+          padding: 0 20px;
         }
 
-        .page-banner-content h1 {
-          max-width: 880px;
-          margin: 0 auto 10px;
-          font-size: 34px;
+        :global(.compact-blog-banner .page-banner-content h1) {
+          max-width: 920px;
+          margin: 0 auto 18px;
+          font-size: clamp(34px, 4vw, 56px);
           font-weight: 700;
-          line-height: 1.18;
+          line-height: 1.08;
+          letter-spacing: 0;
         }
 
-        .page-banner-content p {
+        :global(.compact-blog-banner .page-banner-content p) {
           font-size: 16px;
           color: #666;
           margin-bottom: 20px;
         }
 
-        .breadcrumb {
+        :global(.compact-blog-banner .breadcrumb) {
           background: none;
           padding: 0;
           margin: 0;
           justify-content: center;
+          row-gap: 8px;
         }
 
-        .breadcrumb-item + .breadcrumb-item::before {
+        :global(.compact-blog-banner .breadcrumb-item + .breadcrumb-item::before) {
           content: " / ";
           margin: 0 5px;
         }
 
-        .breadcrumb-item a {
+        :global(.compact-blog-banner .breadcrumb-item a) {
           color: #333;
           text-decoration: none;
         }
 
-        .breadcrumb-item a:hover {
+        :global(.compact-blog-banner .breadcrumb-item a:hover) {
           color: #007bff;
         }
 
-        .breadcrumb-item.active {
+        :global(.compact-blog-banner .breadcrumb-item.active) {
           color: #999;
+        }
+
+        @media (min-width: 768px) {
+          .blog-detail-area {
+            padding-top: 70px !important;
+          }
+
+          .blog-detail-content {
+            padding-right: 18px;
+          }
+
+          .blog-featured-image :global(.blog-featured-img) {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            height: auto;
+            border-radius: 14px !important;
+            box-shadow: 0 22px 58px rgba(15, 23, 42, 0.13);
+          }
+
+          .blog-meta-info {
+            padding: 16px 0 0;
+            border-top: 1px solid #eef0f2;
+          }
+
+          .blog-sidebar {
+            position: sticky;
+            top: 110px;
+          }
+
+          .sidebar-widget {
+            border: 1px solid #edf0f2;
+            border-radius: 14px;
+            background: #ffffff;
+            box-shadow: 0 16px 38px rgba(15, 23, 42, 0.045);
+          }
         }
 
         @media (max-width: 767px) {
@@ -950,6 +1052,7 @@ export default function BlogDetailContent({
           }
 
           .blog-article-content h2 {
+            display: block;
             margin: 0 0 18px;
             color: #070611;
             font-size: clamp(31px, 9.2vw, 40px);

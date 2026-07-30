@@ -10,7 +10,6 @@ const BannerV8 = () => {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [isPulsing, setIsPulsing] = useState(false);
-  const [isFocused, setIsFocused] = useState(false);
   const [isReducedMotion, setIsReducedMotion] = useState(false);
   const pulseTimeoutRef = useRef<number | null>(null);
 
@@ -53,7 +52,7 @@ const BannerV8 = () => {
     }
     pulseTimeoutRef.current = window.setTimeout(() => {
       setIsPulsing(false);
-    }, 220);
+    }, 720);
   };
 
   return (
@@ -133,7 +132,7 @@ const BannerV8 = () => {
             </div>
             <div className="col-xl-4">
               <div
-                className="thumb"
+                className={`thumb banner-hero-illustration ${isPulsing ? "is-pulsing" : ""}`}
                 role="button"
                 tabIndex={0}
                 aria-label="Animer l'illustration"
@@ -161,18 +160,13 @@ const BannerV8 = () => {
                     triggerPulse();
                   }
                 }}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
-                onMouseDown={() => setIsFocused(false)}
                 style={{
                   cursor: "pointer",
                   zIndex: 1,
-                  outline: isFocused ? "2px solid rgba(133, 222, 255, 0.9)" : "none",
-                  outlineOffset: 10,
                   borderRadius: 10,
                   transform: isReducedMotion
                     ? "rotate(-30deg)"
-                    : `perspective(1100px) rotate(-30deg) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${isPulsing ? 1.055 : isHovering ? 1.018 : 1})`,
+                    : `perspective(1100px) rotate(-30deg) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${isPulsing ? 1.12 : isHovering ? 1.018 : 1})`,
                   transition: isReducedMotion
                     ? "none"
                     : isHovering
@@ -203,11 +197,12 @@ const BannerV8 = () => {
                 <h4>Pepro</h4>
                 <div className="right">
                   <p>
-                    Au croisement de l&apos;innovation et de l&apos;ingénierie, Pepro
-                    conçoit des solutions logicielles sur-mesure pour redéfinir
-                    votre futur technologique.
+                    Pepro transforme vos besoins métiers en logiciels
+                    sur-mesure : plateformes web, automatisations IA, systèmes
+                    autonomes, maintenance prédictive et jumeaux numériques
+                    pour piloter, simuler et optimiser vos opérations.
                   </p>
-                  <Link className="btn-animation mt-10" href="/services">
+                  <Link className="btn-animation banner-services-cta mt-10" href="/services">
                     <i className="fas fa-arrow-right" />{" "}
                     <span>Découvrir nos services</span>
                   </Link>
@@ -215,16 +210,20 @@ const BannerV8 = () => {
               </div>
             </div>
             <div className="col-xl-4 offset-xl-1">
-              <div className="card-style-one">
+              <div className="card-style-one banner-stat-card">
                 <div className="bottom">
-                  <div className="fun-fact">
+                  <div className="fun-fact banner-stat">
                     <div className="counter">
                       <div className="timer">
-                        3
+                        2
                       </div>
-                      <div className="operator">+</div>
                     </div>
-                    <span className="medium">Expertises clés</span>
+                    <div className="banner-stat-copy">
+                      <span className="banner-stat-title">pôles</span>
+                      <span className="medium banner-stat-label">
+                        Une grande polyvalence de compétences
+                      </span>
+                    </div>
                   </div>
                   <Link
                     href="/services"
@@ -239,6 +238,68 @@ const BannerV8 = () => {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .banner-hero-illustration {
+          position: relative;
+          outline: none;
+        }
+
+        .banner-hero-illustration::after {
+          content: "";
+          position: absolute;
+          inset: 14%;
+          border-radius: 999px;
+          border: 2px solid rgba(76, 211, 255, 0);
+          pointer-events: none;
+        }
+
+        .banner-hero-illustration.is-pulsing::after {
+          animation: hero-illustration-ripple 720ms ease-out;
+        }
+
+        .banner-hero-illustration.is-pulsing :global(img) {
+          animation: hero-illustration-pop 720ms cubic-bezier(0.2, 1, 0.22, 1);
+        }
+
+        .banner-hero-illustration:focus-visible {
+          outline: 2px solid rgba(133, 222, 255, 0.9);
+          outline-offset: 10px;
+        }
+
+        @keyframes hero-illustration-ripple {
+          0% {
+            opacity: 0.9;
+            transform: scale(0.72);
+            border-color: rgba(76, 211, 255, 0.85);
+            box-shadow: 0 0 0 0 rgba(128, 255, 219, 0.32);
+          }
+
+          100% {
+            opacity: 0;
+            transform: scale(1.35);
+            border-color: rgba(76, 211, 255, 0);
+            box-shadow: 0 0 0 34px rgba(128, 255, 219, 0);
+          }
+        }
+
+        @keyframes hero-illustration-pop {
+          0% {
+            filter: drop-shadow(0 0 8px rgba(74, 179, 255, 0.12));
+          }
+
+          35% {
+            filter:
+              drop-shadow(0 0 22px rgba(74, 179, 255, 0.48))
+              drop-shadow(0 0 54px rgba(111, 233, 216, 0.36))
+              saturate(1.18);
+          }
+
+          100% {
+            filter: drop-shadow(0 0 8px rgba(74, 179, 255, 0.12));
+          }
+        }
+      `}</style>
     </>
   );
 };

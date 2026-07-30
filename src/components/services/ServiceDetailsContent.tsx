@@ -20,6 +20,93 @@ interface ServiceDetailsProps {
   sectionClass?: string;
 }
 
+const scientificIndustryTargets = [
+  {
+    name: "Santé, medtech & recherche clinique",
+    icon: "fas fa-heartbeat",
+    accent: "#08776f",
+    background: "linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(226, 244, 241, 0.86))",
+    context:
+      "Des équipes qui doivent exploiter des données sensibles, automatiser des analyses et transformer des prototypes scientifiques en outils fiables.",
+    needs: [
+      "Traitement et visualisation de données médicales",
+      "Outils d'aide à la décision et tableaux de bord R&D",
+      "Industrialisation de scripts Python ou MATLAB",
+      "Interfaces internes pour équipes cliniques et data",
+    ],
+  },
+  {
+    name: "Énergie, environnement & utilities",
+    icon: "fas fa-bolt",
+    accent: "#a15f08",
+    background: "linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(250, 235, 206, 0.88))",
+    context:
+      "Un secteur où la prévision, la supervision et l'optimisation opérationnelle créent rapidement de la valeur.",
+    needs: [
+      "Modèles de prévision et maintenance prédictive",
+      "Supervision d'actifs, capteurs et séries temporelles",
+      "Optimisation de rendement et détection d'anomalies",
+      "Jumeaux numériques pour installations techniques",
+    ],
+  },
+  {
+    name: "Aéronautique, spatial & défense",
+    icon: "fas fa-plane",
+    accent: "#284c9a",
+    background: "linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(226, 234, 249, 0.88))",
+    context:
+      "Des projets à fortes contraintes de simulation, traçabilité, performance logicielle et exploitation de données complexes.",
+    needs: [
+      "Post-traitement de simulations CFD, FEA ou multiphysiques",
+      "Outils de calcul et visualisation pour bureaux d'études",
+      "Automatisation de chaînes d'essais et de validation",
+      "Logiciels internes robustes pour équipes ingénierie",
+    ],
+  },
+  {
+    name: "Industrie manufacturière & maintenance",
+    icon: "fas fa-industry",
+    accent: "#994422",
+    background: "linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(247, 227, 216, 0.86))",
+    context:
+      "Moins visible, mais très demandeur : beaucoup d'outils internes vieillissants, de fichiers dispersés et de processus critiques à fiabiliser.",
+    needs: [
+      "Maintenance prédictive sur machines et lignes de production",
+      "Digitalisation de méthodes de calcul métier",
+      "Suivi qualité, traçabilité et analyse de non-conformités",
+      "Connexion entre ERP, données terrain et dashboards",
+    ],
+  },
+  {
+    name: "BTP, infrastructures & ingénierie civile",
+    icon: "fas fa-drafting-compass",
+    accent: "#66509f",
+    background: "linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(234, 229, 247, 0.88))",
+    context:
+      "Des métiers avec des volumes de calcul, documents, contraintes réglementaires et suivis terrain qui se prêtent très bien à l'externalisation logicielle.",
+    needs: [
+      "Outils de dimensionnement et automatisation d'études",
+      "Jumeaux numériques d'ouvrages ou d'équipements",
+      "Visualisation de données capteurs et monitoring structurel",
+      "Plateformes de suivi technique et reporting client",
+    ],
+  },
+  {
+    name: "Logistique, transport & services techniques",
+    icon: "fas fa-route",
+    accent: "#197184",
+    background: "linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(223, 241, 246, 0.88))",
+    context:
+      "Des secteurs parfois moins attractifs en image, mais avec des budgets réels pour gagner en productivité et réduire les erreurs opérationnelles.",
+    needs: [
+      "Optimisation de tournées, stocks et capacités",
+      "Prévision de charge, délais et incidents",
+      "Automatisation de workflows entre équipes terrain",
+      "Tableaux de bord décisionnels pour exploitation",
+    ],
+  },
+];
+
 const AiAutomationGeneratedVisual = () => {
   const nodes = [
     { x: 18, y: 62 },
@@ -360,6 +447,7 @@ const ServiceDetailsContent = ({
   const bannerSrc = banner ?? "/assets/img/banner/pepro-service-web.jpg";
   const useGeneratedAiVisual = id === 2 && !banner;
   const useGeneratedScientificVisual = id === 4;
+  const isScientificDataService = id === 4;
 
   return (
     <>
@@ -386,32 +474,156 @@ const ServiceDetailsContent = ({
                 </div>
               </div>
             </div>
-            <div className="row mt-4">
-              <div className="col-lg-7">
-                <h2>{title}</h2>
-                <h5 className="text-primary mb-3">{promise}</h5>
-                <p>{longDescription}</p>
+            {isScientificDataService ? (
+              <>
+                <div className="row mt-4 align-items-end">
+                  <div className="col-lg-7">
+                    <h2>Des logiciels scientifiques pour vos métiers critiques</h2>
+                    <h5 className="text-primary mb-3">
+                      Simulation, data, automatisation et outils d&apos;ingénierie
+                      développés pour les environnements où l&apos;erreur coûte cher.
+                    </h5>
+                    <p>
+                      Pepro accompagne les équipes techniques qui veulent externaliser
+                      le développement d&apos;outils fiables sans perdre la compréhension
+                      métier : post-traitement CFD ou FEA, jumeaux numériques,
+                      maintenance prédictive, visualisation de données complexes,
+                      moteurs de calcul et plateformes internes.
+                    </p>
+                  </div>
+                  <div className="col-lg-5 pl-60 pl-md-15 pl-xs-15">
+                    <h4>Ce que nous apportons</h4>
+                    <ul className="feature-list-item">
+                      {keyBenefits.map((benefit, index) => (
+                        <li key={index}>{benefit}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="row mt-50">
+                  <div className="col-lg-12">
+                    <div
+                      className="p-5 rounded"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, rgba(240, 253, 250, 0.92), rgba(239, 246, 255, 0.94))",
+                        border: "1px solid rgba(14, 165, 233, 0.18)",
+                        boxShadow: "0 24px 70px rgba(15, 23, 42, 0.08)",
+                      }}
+                    >
+                      <div className="row align-items-end mb-4">
+                        <div className="col-lg-7">
+                          <span
+                            className="badge mb-3"
+                            style={{
+                              color: "#075985",
+                              background: "rgba(14, 165, 233, 0.12)",
+                              border: "1px solid rgba(14, 165, 233, 0.18)",
+                            }}
+                          >
+                            Industries ciblées
+                          </span>
+                          <h3 className="mb-0">
+                            Là où l&apos;externalisation logicielle crée rapidement de la valeur
+                          </h3>
+                        </div>
+                        <div className="col-lg-5">
+                          <p className="mb-0">
+                            Nous couvrons les secteurs à forte exigence technique,
+                            mais aussi les industries plus discrètes où les budgets
+                            d&apos;outillage, de maintenance et d&apos;automatisation sont bien réels.
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="row">
+                        {scientificIndustryTargets.map((industry) => (
+                          <div className="col-lg-4 col-md-6 mb-4" key={industry.name}>
+                            <div
+                              className="scientific-industry-card h-100"
+                              style={{
+                                background: industry.background,
+                                borderColor: `${industry.accent}45`,
+                                boxShadow: `0 16px 38px rgba(15, 23, 42, 0.055), inset 0 3px 0 ${industry.accent}`,
+                              }}
+                            >
+                              <div
+                                aria-hidden="true"
+                                className="scientific-industry-orb"
+                                style={{
+                                  background: `linear-gradient(135deg, ${industry.accent}20, rgba(255,255,255,0.7))`,
+                                  border: `1px solid ${industry.accent}38`,
+                                }}
+                              />
+                              <div className="scientific-industry-header">
+                                <div
+                                  className="scientific-industry-icon"
+                                  style={{
+                                    color: industry.accent,
+                                    background: `${industry.accent}16`,
+                                    borderColor: `${industry.accent}3d`,
+                                  }}
+                                >
+                                  <i className={industry.icon} />
+                                </div>
+                                <h4>{industry.name}</h4>
+                              </div>
+                              <h5
+                                className="scientific-industry-kicker"
+                                style={{ color: industry.accent }}
+                              >
+                                Compétences externalisées
+                              </h5>
+                              <ul className="scientific-industry-list">
+                                {industry.needs.map((need) => (
+                                  <li key={need}>{need}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div className="row mt-4">
+                <div className="col-lg-7">
+                  <h2>{title}</h2>
+                  <h5 className="text-primary mb-3">{promise}</h5>
+                  <p>{longDescription}</p>
+                </div>
+                <div className="col-lg-5 pl-60 pl-md-15 pl-xs-15">
+                  <h4>Avantages clés</h4>
+                  <ul className="feature-list-item">
+                    {keyBenefits.map((benefit, index) => (
+                      <li key={index}>{benefit}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <div className="col-lg-5 pl-60 pl-md-15 pl-xs-15">
-                <h4>Avantages clés</h4>
-                <ul className="feature-list-item">
-                  {keyBenefits.map((benefit, index) => (
-                    <li key={index}>{benefit}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+            )}
 
             <div className="row mt-50 mt-xs-20">
               <div className="col-md-6 mb-30">
                 <div className="item bg-gray p-5 rounded h-100">
-                  <h4>Le Problème</h4>
+                  <h4>
+                    {isScientificDataService
+                      ? "Pourquoi externaliser ces développements ?"
+                      : "Le problème"}
+                  </h4>
                   <p>{problem}</p>
                 </div>
               </div>
               <div className="col-md-6 mb-30">
                 <div className="item bg-dark text-light p-5 rounded h-100">
-                  <h4 className="text-light">Notre Solution</h4>
+                  <h4 className="text-light">
+                    {isScientificDataService
+                      ? "Comment Pepro intervient ?"
+                      : "Notre solution"}
+                  </h4>
                   <p className="text-light">{solution}</p>
                 </div>
               </div>
@@ -429,10 +641,10 @@ const ServiceDetailsContent = ({
                       "0 12px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.03)",
                   }}
                 >
-                  <h4>Public Cible</h4>
+                  <h4>Public cible</h4>
                   <p>{targetAudience}</p>
 
-                  <h4 className="mt-4">Technologies et Outils</h4>
+                  <h4 className="mt-4">Technologie et outils</h4>
                   <div className="mt-3">
                     {technologies.map((tech, index) => (
                       <span
@@ -456,37 +668,39 @@ const ServiceDetailsContent = ({
                 </div>
               </div>
             </div>
-            <div className="services-more mt-100 mt-xs-30">
-              <h2 className="mb-20">Services populaires</h2>
-              <div className="row">
-                {services.slice(0, 6).map((service) => (
-                  <div className="col-lg-4 col-md-6" key={service.id}>
-                    <div className="item">
-                      <Image
-                        className="regular-img"
-                        src={`/assets/img/icon/${service.icon}`}
-                        alt={`Icône ${service.title}`}
-                        width={75}
-                        height={60}
-                      />
-                      <Image
-                        className="light-img"
-                        src={`/assets/img/icon/${service.iconLight}`}
-                        alt={`Icône ${service.title}`}
-                        width={75}
-                        height={60}
-                      />
-                      <h4>
-                        <Link href={getServicePath(service)}>
-                          {service.title}
-                        </Link>
-                      </h4>
-                      <p>{service.text}</p>
+            {!isScientificDataService && (
+              <div className="services-more mt-100 mt-xs-30">
+                <h2 className="mb-20">Services populaires</h2>
+                <div className="row">
+                  {services.slice(0, 6).map((service) => (
+                    <div className="col-lg-4 col-md-6" key={service.id}>
+                      <div className="item">
+                        <Image
+                          className="regular-img"
+                          src={`/assets/img/icon/${service.icon}`}
+                          alt={`Icône ${service.title}`}
+                          width={75}
+                          height={60}
+                        />
+                        <Image
+                          className="light-img"
+                          src={`/assets/img/icon/${service.iconLight}`}
+                          alt={`Icône ${service.title}`}
+                          width={75}
+                          height={60}
+                        />
+                        <h4>
+                          <Link href={getServicePath(service)}>
+                            {service.title}
+                          </Link>
+                        </h4>
+                        <p>{service.text}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

@@ -68,7 +68,7 @@ const FooterV1 = ({ sectionClass }: DataType) => {
                     <Link href="/politique-cookies">Politique de Cookies</Link>
                   </li>
                   <li>
-                    <Link href="/mentions-legales">Mentions Légales</Link>
+                    <Link href="/mentions-legales">Mentions légales</Link>
                   </li>
                 </ul>
                 <div className="footer-contact">

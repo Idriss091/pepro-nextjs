@@ -4,7 +4,7 @@ import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 import LayoutV1 from "@/components/layouts/LayoutV1";
 
 export const metadata: Metadata = {
-  title: "Pepro - Mentions Légales",
+  title: "Pepro - Mentions légales",
   description:
     "Mentions légales du site Pepro, société par actions simplifiée immatriculée au RCS de Paris.",
   alternates: {
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function LegalMentionsPage() {
   return (
     <LayoutV1>
-      <Breadcrumb title="Mentions Légales" breadCrumb="mentions-legales" />
+      <Breadcrumb title="Mentions légales" breadCrumb="Mentions légales" />
       <div className="default-padding">
         <div className="container">
           <div className="row">

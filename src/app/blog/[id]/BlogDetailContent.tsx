@@ -27,6 +27,9 @@ interface BlogPost {
   ctaTitle?: string;
   ctaText?: string;
   ctaWhatsappText?: string;
+  ctaHref?: string;
+  ctaButtonText?: string;
+  ctaIcon?: string;
 }
 
 interface PricingRow {
@@ -129,6 +132,12 @@ export default function BlogDetailContent({
   const whatsappMessage =
     blog.ctaWhatsappText ||
     "Bonjour, je souhaite échanger avec un conseiller Pepro au sujet de la formation IA et SEO.";
+  const ctaHref =
+    blog.ctaHref ||
+    `https://wa.me/33618663595?text=${encodeURIComponent(whatsappMessage)}`;
+  const ctaButtonText =
+    blog.ctaButtonText || "Je contacte un conseiller sur WhatsApp";
+  const ctaIcon = blog.ctaIcon || "fab fa-whatsapp";
 
   return (
     <>
@@ -278,13 +287,13 @@ export default function BlogDetailContent({
                       </p>
                     </div>
                     <a
-                      href={`https://wa.me/33618663595?text=${encodeURIComponent(whatsappMessage)}`}
+                      href={ctaHref}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="advisor-cta-button"
                     >
-                      <i className="fab fa-whatsapp" aria-hidden="true" />
-                      Je contacte un conseiller sur WhatsApp
+                      <i className={ctaIcon} aria-hidden="true" />
+                      {ctaButtonText}
                     </a>
                   </div>
 

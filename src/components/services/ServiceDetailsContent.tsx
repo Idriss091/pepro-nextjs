@@ -359,7 +359,7 @@ const ServiceDetailsContent = ({
 
   const bannerSrc = banner ?? "/assets/img/banner/pepro-service-web.jpg";
   const useGeneratedAiVisual = id === 2 && !banner;
-  const useGeneratedScientificVisual = id === 3;
+  const useGeneratedScientificVisual = id === 4;
 
   return (
     <>
@@ -459,7 +459,7 @@ const ServiceDetailsContent = ({
             <div className="services-more mt-100 mt-xs-30">
               <h2 className="mb-20">Services populaires</h2>
               <div className="row">
-                {services.slice(0, 3).map((service) => (
+                {services.slice(0, 6).map((service) => (
                   <div className="col-lg-4 col-md-6" key={service.id}>
                     <div className="item">
                       <Image

@@ -9,6 +9,27 @@ interface DataType {
 }
 
 const ServicesV1 = ({ hasTitle, sectionClass }: DataType) => {
+  const servicePoles = [
+    {
+      id: "digital",
+      title: "Pepro Digital",
+      label: "Présence, acquisition et productivité",
+      description:
+        "Des expériences digitales claires pour présenter votre offre, vendre vos services et automatiser vos opérations quotidiennes.",
+      className: "pole-digital",
+      services: services.filter((service) => service.pole === "digital"),
+    },
+    {
+      id: "engineering",
+      title: "Pepro Engineering",
+      label: "Logiciels, data et systèmes techniques",
+      description:
+        "Une ingénierie solide pour structurer vos systèmes, fiabiliser vos architectures et industrialiser vos outils complexes.",
+      className: "pole-engineering",
+      services: services.filter((service) => service.pole === "engineering"),
+    },
+  ];
+
   return (
     <>
       <div
@@ -21,7 +42,7 @@ const ServicesV1 = ({ hasTitle, sectionClass }: DataType) => {
               <div className="row">
                 <div className="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 text-center">
                   <div className="site-heading">
-                    <h4 className="sub-title">Nos expertises</h4>
+                    <h4 className="sub-title">Nos pôles d&apos;expertise</h4>
                     <h2 className="title split-text">
                       <SplitText
                         delay={40}
@@ -37,7 +58,7 @@ const ServicesV1 = ({ hasTitle, sectionClass }: DataType) => {
                         threshold={0.2}
                         rootMargin="-50px"
                       >
-                        Des solutions sur-mesure pour chaque défi
+                        Deux pôles pour couvrir vos enjeux digitaux et techniques
                       </SplitText>
                     </h2>
                   </div>
@@ -49,44 +70,54 @@ const ServicesV1 = ({ hasTitle, sectionClass }: DataType) => {
 
         <div className="container">
           <div className="services-style-one-items">
-            <div className="row">
-              {services.slice(0, 3).map((service) => (
-                <div
-                  className="col-xl-4 col-lg-6 col-md-6 single-item"
-                  key={service.id}
+            <div className="pepro-poles-grid">
+              {servicePoles.map((pole) => (
+                <section
+                  className={`pepro-service-pole ${pole.className}`}
+                  key={pole.id}
                 >
-                  <div className="services-style-one-item">
-                    <div className="icon">
-                      <Image
-                        className="regular-img"
-                        src={`/assets/img/icon/${service.icon}`}
-                        alt={`Icône ${service.title}`}
-                        width={75}
-                        height={60}
-                      />
-
-                      <Image
-                        className="light-img"
-                        src={`/assets/img/icon/${service.iconLight}`}
-                        alt={`Icône ${service.title}`}
-                        width={75}
-                        height={60}
-                      />
-                    </div>
-                    <h4>
-                      <Link href={getServicePath(service)}>
-                        {service.title}
-                      </Link>
-                    </h4>
-                    <p>{service.text}</p>
-                    <Link
-                      className="btn-full"
-                      href={getServicePath(service)}
-                    >
-                      En savoir plus <i className="fas fa-arrow-right" />
-                    </Link>
+                  <div className="pepro-service-pole-header">
+                    <span>{pole.label}</span>
+                    <h3>{pole.title}</h3>
+                    <p>{pole.description}</p>
                   </div>
-                </div>
+
+                  <div className="pepro-service-pole-cards">
+                    {pole.services.map((service) => (
+                      <article
+                        className={`pepro-service-card pepro-service-card-${service.id}`}
+                        key={service.id}
+                      >
+                        <Link
+                          className="pepro-service-card-media"
+                          href={getServicePath(service)}
+                          aria-label={`En savoir plus sur ${service.title}`}
+                        >
+                          <Image
+                            src={service.banner}
+                            alt={`Illustration ${service.title}`}
+                            width={760}
+                            height={420}
+                          />
+                        </Link>
+                        <div className="pepro-service-card-body">
+                          <h4>
+                            <Link href={getServicePath(service)}>
+                              {service.title}
+                            </Link>
+                          </h4>
+                          <p>{service.text}</p>
+                          <Link
+                            className="btn-full"
+                            href={getServicePath(service)}
+                          >
+                            En savoir plus <i className="fas fa-arrow-right" />
+                          </Link>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </section>
               ))}
             </div>
           </div>

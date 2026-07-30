@@ -35,7 +35,7 @@ const TestimonialV3 = ({ sectionClass }: TestimonialV3Props) => {
             </div>
             <div className="col-lg-4 text-end">
               <div className="testimonial-three-quote">
-                <h2>4.9</h2>
+                <h2>5.0</h2>
                 <div className="info">
                   <div className="ratings">
                     <i className="fas fa-star" />

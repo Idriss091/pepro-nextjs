@@ -152,6 +152,7 @@ export default function BlogDetailContent({
                       alt={blog.title}
                       width={800}
                       height={500}
+                      className="blog-featured-img"
                       style={{ objectFit: "cover", borderRadius: "8px" }}
                     />
                   </div>
@@ -889,7 +890,152 @@ export default function BlogDetailContent({
 
         @media (max-width: 767px) {
           .compact-blog-banner {
-            padding: 76px 0 22px !important;
+            display: none !important;
+          }
+
+          .blog-detail-area {
+            padding: 22px 0 58px !important;
+            background: #ffffff;
+          }
+
+          .blog-detail-content {
+            max-width: 100%;
+            overflow: hidden;
+          }
+
+          .blog-featured-image {
+            margin: 0 0 20px;
+          }
+
+          .blog-featured-image :global(.blog-featured-img) {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 10.5;
+            border-radius: 14px !important;
+            box-shadow: 0 16px 42px rgba(15, 23, 42, 0.1);
+          }
+
+          .blog-meta-info {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px 12px;
+            margin: 0 0 22px;
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.2;
+          }
+
+          .blog-meta-info span {
+            display: inline-flex;
+            align-items: center;
+            margin: 0 !important;
+            gap: 6px;
+            white-space: nowrap;
+          }
+
+          .blog-tag {
+            padding: 9px 14px;
+            border-radius: 999px;
+            background: #f2f4f5;
+            color: #4b5563;
+            font-size: 12px;
+            line-height: 1;
+          }
+
+          .blog-article-content {
+            margin: 0;
+            line-height: 1.72;
+          }
+
+          .blog-article-content h2 {
+            margin: 0 0 18px;
+            color: #070611;
+            font-size: clamp(31px, 9.2vw, 40px);
+            line-height: 1.08;
+            letter-spacing: 0;
+          }
+
+          .blog-article-content p,
+          .blog-article-content :global(.article-paragraph) {
+            margin-bottom: 18px;
+            color: #4b5563;
+            font-size: 18px;
+            line-height: 1.72;
+          }
+
+          .blog-article-content :global(.article-heading) {
+            margin: 30px 0 12px;
+            color: #111827;
+            font-size: 24px;
+            line-height: 1.2;
+          }
+
+          .blog-article-content :global(.article-list) {
+            margin: 0 0 24px;
+            padding-left: 20px;
+            color: #4b5563;
+            font-size: 17px;
+          }
+
+          .pricing-table-section,
+          .advisor-cta,
+          .blog-share-area,
+          .blog-navigation {
+            margin-left: 0;
+            margin-right: 0;
+          }
+
+          .advisor-cta {
+            align-items: flex-start;
+            flex-direction: column;
+            margin: 32px 0;
+            padding: 22px;
+            border-radius: 16px;
+          }
+
+          .advisor-cta h4 {
+            font-size: 21px;
+            line-height: 1.25;
+          }
+
+          .advisor-cta-button {
+            width: 100%;
+            min-height: 52px;
+            text-align: center;
+          }
+
+          .blog-share-area {
+            padding: 18px;
+            border-radius: 14px;
+          }
+
+          .blog-navigation {
+            align-items: stretch;
+            flex-direction: column;
+            gap: 12px;
+          }
+
+          .prev-blog,
+          .next-blog {
+            display: flex;
+            justify-content: center;
+            padding: 14px 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 999px;
+          }
+
+          .blog-sidebar {
+            display: none;
+          }
+
+          :global(.bg-dark) .blog-detail-area {
+            background: #0b0f14;
+          }
+
+          :global(.floating-whatsapp) {
+            display: none;
           }
 
           .page-banner-content {
@@ -901,14 +1047,6 @@ export default function BlogDetailContent({
             line-height: 1.24;
           }
 
-          .advisor-cta {
-            align-items: flex-start;
-            flex-direction: column;
-          }
-
-          .advisor-cta-button {
-            width: 100%;
-          }
         }
       `}</style>
     </>

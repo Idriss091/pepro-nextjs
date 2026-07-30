@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 import { projectCaseStudies } from "@/data/projectCaseStudies";
 import styles from "./ProjectV1.module.css";
 
@@ -34,6 +37,46 @@ const cardContent: Record<
 };
 
 const ProjectV1 = () => {
+  const projectsLoop = [...projectCaseStudies, ...projectCaseStudies];
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    let frameId = 0;
+    let previousTime = performance.now();
+    let offset = 0;
+    let loopDistance = 0;
+
+    const measure = () => {
+      const firstDuplicate = track.children[projectCaseStudies.length] as HTMLElement | undefined;
+      loopDistance = firstDuplicate?.offsetLeft ?? track.scrollWidth / 2;
+    };
+
+    const animate = (time: number) => {
+      const delta = time - previousTime;
+      previousTime = time;
+      measure();
+
+      if (loopDistance > 0) {
+        offset = (offset + delta * 0.07) % loopDistance;
+        track.style.transform = `translate3d(${-offset}px, 0, 0)`;
+      }
+
+      frameId = requestAnimationFrame(animate);
+    };
+
+    measure();
+    frameId = requestAnimationFrame(animate);
+    window.addEventListener("resize", measure);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      window.removeEventListener("resize", measure);
+    };
+  }, []);
+
   return (
     <section className={`default-padding ${styles.section}`}>
       <div className="container">
@@ -59,16 +102,22 @@ const ProjectV1 = () => {
             </div>
           </div>
 
-          <div className={styles.cards}>
-            {projectCaseStudies.map((project) => {
+          <div className={styles.marquee} aria-label="Réalisations Pepro">
+            <div className={styles.cards} ref={trackRef}>
+              {projectsLoop.map((project, index) => {
               const content = cardContent[project.id] ?? {
                 title: project.title,
                 tag: project.tag,
                 summary: project.summary,
               };
+              const isDuplicate = index >= projectCaseStudies.length;
 
               return (
-              <article key={project.id} className={styles.card}>
+              <article
+                key={`${project.id}-${index}`}
+                className={styles.card}
+                aria-hidden={isDuplicate ? "true" : undefined}
+              >
                 <div className={styles.imageFrame}>
                   <Image
                     src={project.thumb}
@@ -89,6 +138,7 @@ const ProjectV1 = () => {
                     <Link
                       href={`/project-details/${project.id}`}
                       className={styles.cardTitleLink}
+                      tabIndex={isDuplicate ? -1 : undefined}
                     >
                       {content.title}
                     </Link>
@@ -112,6 +162,7 @@ const ProjectV1 = () => {
                     <Link
                       className={styles.cardLink}
                       href={`/project-details/${project.id}`}
+                      tabIndex={isDuplicate ? -1 : undefined}
                     >
                       Voir l&apos;étude de cas
                     </Link>
@@ -120,6 +171,7 @@ const ProjectV1 = () => {
               </article>
             );
             })}
+            </div>
           </div>
         </div>
       </div>

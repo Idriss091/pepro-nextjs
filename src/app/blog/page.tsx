@@ -37,6 +37,8 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
+  const orderedBlogData = [...blogData].reverse();
+
   return (
     <>
       <div className="smooth-scroll-container">
@@ -66,7 +68,7 @@ export default function BlogPage() {
         <div className="blog-grid-area pepro-blog-list-area">
           <div className="container">
             <div className="row pepro-blog-list-grid justify-content-center">
-              {blogData.map((blog: BlogPost) => (
+              {orderedBlogData.map((blog: BlogPost) => (
                 <div
                   className="col-xl-5 col-lg-6 col-md-10 single-item"
                   key={blog.id}

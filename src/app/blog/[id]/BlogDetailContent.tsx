@@ -120,6 +120,7 @@ export default function BlogDetailContent({
   blog,
   blogData,
 }: BlogDetailContentProps) {
+  const orderedBlogData = [...blogData].reverse();
   const relatedBlogs = blogData
     .filter((b: BlogPost) => b.id !== blog.id && b.tag === blog.tag)
     .slice(0, 3);
@@ -379,14 +380,16 @@ export default function BlogDetailContent({
                   <div className="sidebar-widget">
                     <h4>Articles récents</h4>
                     <ul className="recent-posts">
-                      {blogData.slice(0, 5).map((recentBlog: BlogPost) => (
-                        <li key={recentBlog.id}>
-                          <Link href={`/blog/${recentBlog.id}`}>
-                            {recentBlog.title}
-                          </Link>
-                          <span>{recentBlog.date}</span>
-                        </li>
-                      ))}
+                      {orderedBlogData
+                        .slice(0, 5)
+                        .map((recentBlog: BlogPost) => (
+                          <li key={recentBlog.id}>
+                            <Link href={`/blog/${recentBlog.id}`}>
+                              {recentBlog.title}
+                            </Link>
+                            <span>{recentBlog.date}</span>
+                          </li>
+                        ))}
                     </ul>
                   </div>
 

@@ -25,7 +25,10 @@ interface BlogPost {
 }
 
 const BlogV1 = ({ hasTitle, sectionClass, limit = 3 }: DataType) => {
-  const displayedBlogs = limit ? blogData.slice(0, limit) : blogData;
+  const orderedBlogData = [...blogData].reverse();
+  const displayedBlogs = limit
+    ? orderedBlogData.slice(0, limit)
+    : orderedBlogData;
 
   return (
     <>

@@ -18,8 +18,8 @@ const ContactV1 = ({ sectionClass }: DataType) => {
                 <div className="contact-style-one-info">
                   <ul className="contact-address">
                     <li>
-                      <a className="phone-link" href="tel:+33618663595">
-                        <i className="fas fa-user-headset" /> +33 6 18 66 35 95
+                      <a className="phone-link" href="tel:+33781911992">
+                        <i className="fas fa-user-headset" /> +33 7 81 91 19 92
                       </a>
                     </li>
                     <li>

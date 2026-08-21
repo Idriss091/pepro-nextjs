@@ -5,6 +5,7 @@ import FooterV1 from "@/components/footer/FooterV1";
 import ThemeDark from "@/components/switcher/ThemeDark";
 import Link from "next/link";
 import Image from "next/image";
+import { compareBlogPostsByDateDesc } from "@/lib/blog";
 import { SITE_URL } from "@/lib/site";
 
 interface BlogPost {
@@ -120,7 +121,7 @@ export default function BlogDetailContent({
   blog,
   blogData,
 }: BlogDetailContentProps) {
-  const orderedBlogData = [...blogData].reverse();
+  const orderedBlogData = [...blogData].sort(compareBlogPostsByDateDesc);
   const relatedBlogs = blogData
     .filter((b: BlogPost) => b.id !== blog.id && b.tag === blog.tag)
     .slice(0, 3);
@@ -135,7 +136,7 @@ export default function BlogDetailContent({
     "Bonjour, je souhaite échanger avec un conseiller Pepro au sujet de la formation IA et SEO.";
   const ctaHref =
     blog.ctaHref ||
-    `https://wa.me/33618663595?text=${encodeURIComponent(whatsappMessage)}`;
+    `https://wa.me/33781911992?text=${encodeURIComponent(whatsappMessage)}`;
   const ctaButtonText =
     blog.ctaButtonText || "Je contacte un conseiller sur WhatsApp";
   const ctaIcon = blog.ctaIcon || "fab fa-whatsapp";

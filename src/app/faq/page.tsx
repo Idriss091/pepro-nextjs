@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function FaqPage() {
   return (
     <LayoutV1>
-      <Breadcrumb title="Questions Fréquentes" breadCrumb="faq" />
+      <Breadcrumb title="Questions Fréquentes" breadCrumb="FAQ" />
       <FaqV1 sectionClass="bg-gray default-padding-bottom" />
       <QuickContactPepro />
       <ThemeDark />

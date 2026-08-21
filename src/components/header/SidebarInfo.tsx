@@ -83,7 +83,7 @@ const SidebarInfo = ({ openInfoBar, isInfoOpen, closeInfoBar }: SidebarInfoProps
                                     <li>
                                         <div className="content">
                                             <p>Téléphone</p>
-                                            <strong>+33 6 18 66 35 95</strong>
+                                            <strong>+33 7 81 91 19 92</strong>
                                         </div>
                                     </li>
                                 </ul>

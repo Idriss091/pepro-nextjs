@@ -57,7 +57,7 @@ export default function LegalMentionsPage() {
                     <a href="mailto:contact@pepro.fr">contact@pepro.fr</a>
                   </li>
                   <li>
-                    <strong>Téléphone :</strong> +33 6 18 66 35 95
+                    <strong>Téléphone :</strong> +33 7 81 91 19 92
                   </li>
                 </ul>
 

@@ -21,8 +21,8 @@ const ProjectIdeaPepro = () => {
                 </div>
                 <div className="info">
                   <h4>Telephone</h4>
-                  <a className="phone-link" href="tel:+33618663595">
-                    +33 6 18 66 35 95
+                  <a className="phone-link" href="tel:+33781911992">
+                    +33 7 81 91 19 92
                   </a>
                 </div>
               </li>

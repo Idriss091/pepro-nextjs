@@ -2,6 +2,7 @@ import SplitText from "../animation/SplitText.jsx";
 import Link from "next/link";
 import Image from "next/image";
 import blogData from "@/assets/jsonData/blog/BlogPeproData.json";
+import { compareBlogPostsByDateDesc } from "@/lib/blog";
 
 interface DataType {
   hasTitle?: boolean;
@@ -25,7 +26,7 @@ interface BlogPost {
 }
 
 const BlogV1 = ({ hasTitle, sectionClass, limit = 3 }: DataType) => {
-  const orderedBlogData = [...blogData].reverse();
+  const orderedBlogData = [...blogData].sort(compareBlogPostsByDateDesc);
   const displayedBlogs = limit
     ? orderedBlogData.slice(0, limit)
     : orderedBlogData;

@@ -77,7 +77,7 @@ const FooterV1 = ({ sectionClass }: DataType) => {
                       <a href="mailto:contact@pepro.fr">contact@pepro.fr</a>
                     </li>
                     <li>
-                      <a href="tel:+33618663595">+33 6 18 66 35 95</a>
+                      <a href="tel:+33781911992">+33 7 81 91 19 92</a>
                     </li>
                   </ul>
                 </div>

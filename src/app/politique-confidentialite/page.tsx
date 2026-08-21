@@ -102,8 +102,8 @@ export default function PrivacyPolicyPage() {
                     <a href="mailto:contact@pepro.fr" className="btn btn-light">
                       <i className="fas fa-envelope" /> contact@pepro.fr
                     </a>
-                    <a href="tel:+33618663595" className="btn btn-light">
-                      <i className="fas fa-phone" /> +33 6 18 66 35 95
+                    <a href="tel:+33781911992" className="btn btn-light">
+                      <i className="fas fa-phone" /> +33 7 81 91 19 92
                     </a>
                   </div>
                 </div>

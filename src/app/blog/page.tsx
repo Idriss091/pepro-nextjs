@@ -5,6 +5,7 @@ import ThemeDark from "@/components/switcher/ThemeDark";
 import Link from "next/link";
 import Image from "next/image";
 import blogData from "@/assets/jsonData/blog/BlogPeproData.json";
+import { compareBlogPostsByDateDesc } from "@/lib/blog";
 import { SITE_URL } from "@/lib/site";
 
 interface BlogPost {
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  const orderedBlogData = [...blogData].reverse();
+  const orderedBlogData = [...blogData].sort(compareBlogPostsByDateDesc);
 
   return (
     <>

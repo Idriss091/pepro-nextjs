@@ -56,7 +56,8 @@ const NewsletterV2 = () => {
 
       form.reset();
       setMessage("Merci pour votre inscription !");
-      trackEvent("newsletter_submit_success", {
+      trackEvent("sign_up", {
+        method: "newsletter_footer",
         placement: "footer",
       });
     } catch (error) {

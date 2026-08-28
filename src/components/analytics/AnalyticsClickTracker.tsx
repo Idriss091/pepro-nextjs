@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { trackEvent } from "@/lib/analytics";
 
 const LINKEDIN_HOST = "linkedin.com";
+const WHATSAPP_HOSTS = ["wa.me", "whatsapp.com"];
 
 const AnalyticsClickTracker = () => {
   useEffect(() => {
@@ -38,6 +39,14 @@ const AnalyticsClickTracker = () => {
         const url = new URL(href, window.location.origin);
         if (url.hostname.includes(LINKEDIN_HOST)) {
           trackEvent("click_linkedin", {
+            destination: url.href,
+            location: window.location.pathname,
+          });
+          return;
+        }
+
+        if (WHATSAPP_HOSTS.some((host) => url.hostname.includes(host))) {
+          trackEvent("click_whatsapp", {
             destination: url.href,
             location: window.location.pathname,
           });

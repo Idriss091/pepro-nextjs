@@ -70,7 +70,8 @@ const ContactForm = () => {
       });
 
       if (response.ok) {
-        trackEvent("contact_form_submit_success", {
+        trackEvent("generate_lead", {
+          lead_source: "contact_form",
           location: "/contact-us",
         });
         setStatus({

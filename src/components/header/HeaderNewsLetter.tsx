@@ -57,7 +57,8 @@ const HeaderNewsLetter = () => {
 
             form.reset();
             setMessage("Merci pour votre inscription.");
-            trackEvent("newsletter_submit_success", {
+            trackEvent("sign_up", {
+                method: "newsletter_header",
                 placement: "header",
             });
         } catch (error) {

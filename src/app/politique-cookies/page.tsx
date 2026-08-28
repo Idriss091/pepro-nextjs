@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
 };
 
-const LAST_UPDATE = "21 septembre 2025";
+const LAST_UPDATE = "29 août 2026";
 
 export default function CookiesPolicyPage() {
   return (
@@ -49,39 +49,101 @@ export default function CookiesPolicyPage() {
                   Usage actuel des cookies sur notre Site
                 </h3>
                 <p className="mb-3">
-                  Nous utilisons uniquement un mécanisme technique indispensable
-                  :
+                  Pepro utilise Google Analytics 4, un service de mesure
+                  d&apos;audience fourni par Google, afin de comprendre de manière
+                  agrégée comment le Site est consulté et d&apos;améliorer ses
+                  contenus et ses parcours.
                 </p>
                 <ul className="list-unstyled mb-5">
                   <li className="mb-2">
                     <i className="fas fa-check-circle text-primary me-2" />
-                    <strong>Cache du service worker</strong> — pour assurer la
-                    disponibilité du Site. Ce mécanisme ne permet pas de suivre
-                    votre navigation.
+                    <strong>Finalité :</strong> mesure de la fréquentation, des
+                    pages consultées, de la provenance générale des visites et
+                    des interactions utiles, telles que les demandes de contact.
+                  </li>
+                  <li className="mb-2">
+                    <i className="fas fa-check-circle text-primary me-2" />
+                    <strong>Fournisseur :</strong> Google Ireland Limited, Gordon
+                    House, Barrow Street, Dublin 4, Irlande.
+                  </li>
+                  <li className="mb-2">
+                    <i className="fas fa-check-circle text-primary me-2" />
+                    <strong>Cookies susceptibles d&apos;être déposés :</strong>{" "}
+                    <code>_ga</code> et <code>_ga_&lt;identifiant&gt;</code>, utilisés
+                    pour distinguer les utilisateurs et conserver l&apos;état des
+                    sessions.
+                  </li>
+                  <li className="mb-2">
+                    <i className="fas fa-check-circle text-primary me-2" />
+                    <strong>Durée maximale par défaut :</strong> jusqu&apos;à deux
+                    ans, sous réserve des limitations appliquées par votre
+                    navigateur et de la configuration du service.
+                  </li>
+                  <li className="mb-2">
+                    <i className="fas fa-check-circle text-primary me-2" />
+                    <strong>Base légale :</strong> votre consentement préalable.
+                  </li>
+                  <li className="mb-2">
+                    <i className="fas fa-check-circle text-primary me-2" />
+                    <strong>Conservation de votre choix :</strong> six mois dans
+                    le stockage local de votre navigateur, afin de ne pas vous
+                    solliciter à chaque visite.
                   </li>
                 </ul>
 
+                <h3 className="mb-3">Données traitées</h3>
+                <p className="mb-5">
+                  Selon votre navigation et la configuration du service, les
+                  informations traitées peuvent notamment comprendre les pages
+                  consultées, les événements réalisés sur le Site, le type
+                  d&apos;appareil et de navigateur, la source de la visite ainsi
+                  qu&apos;une zone géographique approximative. Ces informations ne
+                  doivent pas contenir les données que vous saisissez dans le
+                  formulaire de contact. Google peut traiter certaines données
+                  depuis des pays situés hors de l&apos;Espace économique européen,
+                  conformément aux mécanismes de transfert et garanties décrits
+                  dans sa politique de confidentialité.
+                </p>
+
                 <h3 className="mb-3">Votre consentement et vos choix</h3>
                 <p className="mb-3">
-                  Aucun bandeau de consentement n&apos;est affiché car nous
-                  n&apos;utilisons aucune technologie nécessitant votre accord
-                  préalable. Vous pouvez :
+                  Les cookies de mesure d&apos;audience ne sont pas indispensables
+                  au fonctionnement du Site. Ils ne doivent être déposés qu&apos;après
+                  votre consentement préalable. Vous devez pouvoir accepter ou
+                  refuser ces cookies avec la même simplicité, puis modifier votre
+                  choix à tout moment depuis le mécanisme de gestion des cookies
+                  mis à votre disposition sur le Site.
                 </p>
                 <ul className="list-unstyled mb-4">
                   <li className="mb-2">
                     <i className="fas fa-angle-right text-primary me-2" />
-                    Supprimer les données de site depuis les paramètres de votre
-                    navigateur
+                    Refuser les cookies de mesure d&apos;audience sans perdre
+                    l&apos;accès au Site
                   </li>
                   <li className="mb-2">
                     <i className="fas fa-angle-right text-primary me-2" />
-                    Vider le cache ou le stockage local de votre navigateur
+                    Retirer ultérieurement votre consentement
                   </li>
                   <li className="mb-2">
                     <i className="fas fa-angle-right text-primary me-2" />
-                    Nous contacter pour obtenir de l&apos;assistance
+                    Supprimer les cookies déjà enregistrés depuis les paramètres
+                    de votre navigateur
                   </li>
                 </ul>
+
+                <h3 className="mb-3">En savoir plus</h3>
+                <p className="mb-5">
+                  Vous pouvez consulter la{" "}
+                  <a
+                    href="https://policies.google.com/privacy"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    politique de confidentialité de Google
+                  </a>{" "}
+                  pour obtenir davantage d&apos;informations sur ses traitements et
+                  ses mécanismes de transfert de données.
+                </p>
 
                 <h3 className="mb-3">Nous contacter</h3>
                 <ul className="list-unstyled">

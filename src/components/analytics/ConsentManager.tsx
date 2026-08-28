@@ -85,23 +85,31 @@ const ConsentManager = () => {
 
       {isReady && isOpen && (
         <section
-          className={styles.banner}
+          className={`${styles.banner} ${
+            showPreferences ? styles.preferencesBanner : styles.compactBanner
+          }`}
           role="dialog"
           aria-labelledby="cookie-consent-title"
           aria-describedby="cookie-consent-description"
         >
-          <div className={styles.accent} aria-hidden="true" />
           <div className={styles.content}>
-            <div>
-              <span className={styles.eyebrow}>Votre vie privée</span>
+            <div className={styles.copy}>
+              <span className={styles.eyebrow}>Cookies &amp; confidentialité</span>
               <h2 className={styles.title} id="cookie-consent-title">
-                Des statistiques, seulement avec votre accord
+                {showPreferences
+                  ? "Vos préférences"
+                  : "Peut-on mesurer votre visite ?"}
               </h2>
               <p className={styles.description} id="cookie-consent-description">
-                Nous utilisons Google Analytics pour comprendre les parcours et
-                améliorer Pepro.fr. Vous pouvez accepter, refuser ou personnaliser
-                ce choix sans conséquence sur l&apos;accès au site. Consultez notre{" "}
-                <Link href="/politique-cookies">politique de cookies</Link>.
+                {showPreferences ? (
+                  "Choisissez si vous autorisez la mesure d’audience. Votre accès au site reste identique quel que soit votre choix."
+                ) : (
+                  <>
+                    Avec votre accord, Google Analytics nous aide à améliorer
+                    Pepro.fr. Aucun dépôt avant votre choix.{" "}
+                    <Link href="/politique-cookies">En savoir plus</Link>
+                  </>
+                )}
               </p>
             </div>
 
@@ -116,17 +124,17 @@ const ConsentManager = () => {
                 </button>
                 <button
                   type="button"
-                  className={`${styles.button} ${styles.preferencesButton}`}
-                  onClick={() => setShowPreferences(true)}
-                >
-                  Personnaliser
-                </button>
-                <button
-                  type="button"
                   className={`${styles.button} ${styles.primaryButton}`}
                   onClick={() => saveChoice("granted")}
                 >
                   Tout accepter
+                </button>
+                <button
+                  type="button"
+                  className={`${styles.button} ${styles.preferencesButton}`}
+                  onClick={() => setShowPreferences(true)}
+                >
+                  Choisir
                 </button>
               </div>
             )}
@@ -136,12 +144,11 @@ const ConsentManager = () => {
                 <div className={styles.preferenceRow}>
                   <div>
                     <span className={styles.preferenceTitle}>
-                      Mesure d&apos;audience Google Analytics
+                      Mesure d&apos;audience
                     </span>
                     <p className={styles.preferenceDescription}>
-                      Pages consultées, provenance générale et interactions avec
-                      le site. Aucune donnée saisie dans le formulaire n&apos;est
-                      envoyée à Analytics.
+                      Google Analytics : pages consultées, provenance générale et
+                      interactions. Aucune saisie de formulaire n&apos;est envoyée.
                     </p>
                   </div>
                   <button
@@ -162,10 +169,17 @@ const ConsentManager = () => {
                 <div className={styles.preferenceActions}>
                   <button
                     type="button"
+                    className={`${styles.button} ${styles.backButton}`}
+                    onClick={() => setShowPreferences(false)}
+                  >
+                    Retour
+                  </button>
+                  <button
+                    type="button"
                     className={`${styles.button} ${styles.primaryButton}`}
                     onClick={() => saveChoice(analyticsChoice)}
                   >
-                    Enregistrer mes choix
+                    Enregistrer
                   </button>
                 </div>
               </div>

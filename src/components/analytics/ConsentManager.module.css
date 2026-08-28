@@ -1,94 +1,98 @@
 .banner {
   position: fixed;
   z-index: 9998;
-  right: clamp(16px, 4vw, 56px);
-  bottom: clamp(16px, 4vw, 42px);
-  left: clamp(16px, 4vw, 56px);
-  max-width: 1180px;
+  right: 16px;
+  bottom: 16px;
+  left: 16px;
   margin: 0 auto;
   overflow: hidden;
   color: #f8f9f4;
-  background:
-    radial-gradient(circle at 92% 15%, rgba(201, 243, 29, 0.16), transparent 30%),
-    #0e0f11;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 22px;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
-  animation: bannerEnter 360ms ease-out both;
+  background: rgba(14, 15, 17, 0.97);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  box-shadow: 0 16px 52px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(14px);
+  animation: bannerEnter 260ms ease-out both;
 }
 
-.accent {
-  height: 4px;
-  background: linear-gradient(90deg, #c9f31d, #add40c 54%, transparent);
+.compactBanner {
+  max-width: 960px;
+}
+
+.preferencesBanner {
+  max-width: 560px;
 }
 
 .content {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 32px;
-  align-items: end;
-  padding: 26px 28px 28px;
+  gap: 20px;
+  align-items: center;
+  padding: 18px 20px;
+}
+
+.copy {
+  min-width: 0;
 }
 
 .eyebrow {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
+  gap: 7px;
+  margin-bottom: 5px;
   color: #c9f31d;
-  font-size: 0.76rem;
+  font-size: 0.66rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .eyebrow::before {
-  width: 22px;
+  width: 14px;
   height: 1px;
   content: "";
   background: currentColor;
 }
 
 .title {
-  margin: 0 0 8px;
+  margin: 0 0 4px;
   color: #ffffff;
   font-family: var(--font-heading, sans-serif);
-  font-size: clamp(1.3rem, 2vw, 1.8rem);
-  line-height: 1.15;
+  font-size: 1.08rem;
+  line-height: 1.25;
 }
 
 .description {
-  max-width: 760px;
+  max-width: 600px;
   margin: 0;
   color: rgba(255, 255, 255, 0.76);
-  font-size: 0.98rem;
-  line-height: 1.6;
+  font-size: 0.82rem;
+  line-height: 1.45;
 }
 
 .description a {
   color: #ffffff;
   text-decoration: underline;
   text-decoration-color: #c9f31d;
-  text-underline-offset: 4px;
+  text-underline-offset: 3px;
 }
 
 .actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: flex-end;
-  min-width: 390px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(112px, 1fr));
+  gap: 8px;
+  min-width: 232px;
 }
 
 .button {
-  min-height: 46px;
-  padding: 11px 18px;
+  min-height: 40px;
+  padding: 9px 15px;
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 999px;
   color: #ffffff;
   background: transparent;
   font: inherit;
-  font-size: 0.9rem;
+  font-size: 0.78rem;
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
@@ -97,7 +101,7 @@
 
 .button:hover {
   border-color: #ffffff;
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .button:focus-visible,
@@ -109,7 +113,7 @@
 
 .primaryButton,
 .rejectButton {
-  min-width: 132px;
+  min-width: 112px;
 }
 
 .primaryButton {
@@ -124,26 +128,48 @@
 }
 
 .rejectButton {
-  border-color: rgba(255, 255, 255, 0.72);
+  border-color: #c9f31d;
+  color: #0e0f11;
+  background: #c9f31d;
+}
+
+.rejectButton:hover {
+  border-color: #d8ff3f;
+  color: #0e0f11;
+  background: #d8ff3f;
+}
+
+.preferencesButton {
+  grid-column: 1 / -1;
+  min-height: 30px;
+  padding-block: 4px;
+  border-color: transparent;
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.preferencesButton:hover,
+.backButton:hover {
   background: rgba(255, 255, 255, 0.08);
 }
 
 .preferences {
   grid-column: 1 / -1;
-  padding-top: 22px;
+  padding-top: 14px;
   border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .preferenceRow {
   display: flex;
-  gap: 22px;
+  gap: 16px;
   align-items: center;
   justify-content: space-between;
 }
 
 .preferenceTitle {
   display: block;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
   color: #ffffff;
   font-weight: 700;
 }
@@ -151,14 +177,15 @@
 .preferenceDescription {
   margin: 0;
   color: rgba(255, 255, 255, 0.66);
-  font-size: 0.9rem;
+  font-size: 0.78rem;
+  line-height: 1.45;
 }
 
 .toggle {
   position: relative;
   flex: 0 0 auto;
-  width: 54px;
-  height: 30px;
+  width: 48px;
+  height: 28px;
   padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.36);
   border-radius: 999px;
@@ -171,8 +198,8 @@
   position: absolute;
   top: 4px;
   left: 4px;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   content: "";
   border-radius: 50%;
   background: #ffffff;
@@ -186,13 +213,18 @@
 
 .toggleEnabled::after {
   background: #0e0f11;
-  transform: translateX(24px);
+  transform: translateX(20px);
 }
 
 .preferenceActions {
   display: flex;
+  gap: 8px;
   justify-content: flex-end;
-  margin-top: 20px;
+  margin-top: 14px;
+}
+
+.backButton {
+  border-color: rgba(255, 255, 255, 0.24);
 }
 
 .manageButton {
@@ -238,11 +270,11 @@
 @media (max-width: 900px) {
   .content {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 14px;
   }
 
   .actions {
-    justify-content: flex-start;
+    width: 100%;
     min-width: 0;
   }
 }
@@ -252,32 +284,30 @@
     right: 10px;
     bottom: 10px;
     left: 10px;
-    border-radius: 17px;
+    border-radius: 14px;
   }
 
   .content {
-    max-height: min(78vh, 620px);
-    padding: 20px;
+    max-height: min(72vh, 520px);
+    padding: 16px;
     overflow-y: auto;
   }
 
   .actions {
-    display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 100%;
   }
 
   .button {
     width: 100%;
   }
 
-  .preferencesButton {
-    grid-column: 1 / -1;
-    grid-row: 2;
-  }
-
   .preferenceRow {
     align-items: flex-start;
+  }
+
+  .preferenceActions .button {
+    width: auto;
+    flex: 1 1 0;
   }
 }
 

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1055" height="1491" viewBox="0 0 1055 1491">
+  <image href="pepro-affiches-a4-prestations-it-v3-raw.png" width="1055" height="1491"/>
+
+  <!-- Functional QR code for the upper A5 flyer. -->
+  <rect x="868" y="592" width="128" height="168" fill="#fff"/>
+  <image href="pepro-fr-qr.png" x="877" y="603" width="111" height="111"
+    style="image-rendering: pixelated; image-rendering: crisp-edges"/>
+  <text x="932.5" y="741" text-anchor="middle" fill="#000"
+    font-family="Arial, Helvetica, sans-serif" font-size="12">Découvrez nos services</text>
+
+  <!-- Functional QR code for the lower A5 flyer. -->
+  <rect x="868" y="1257" width="128" height="168" fill="#fff"/>
+  <image href="pepro-fr-qr.png" x="877" y="1267" width="111" height="111"
+    style="image-rendering: pixelated; image-rendering: crisp-edges"/>
+  <text x="932.5" y="1405" text-anchor="middle" fill="#000"
+    font-family="Arial, Helvetica, sans-serif" font-size="12">Découvrez nos services</text>
+</svg>

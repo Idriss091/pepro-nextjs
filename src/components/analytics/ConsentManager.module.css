@@ -1,119 +1,91 @@
 .banner {
   position: fixed;
   z-index: 9998;
-  right: 16px;
-  bottom: 16px;
-  left: 16px;
-  margin: 0 auto;
+  left: 28px;
+  bottom: 28px;
   overflow: hidden;
-  color: #f8f9f4;
-  background: rgba(14, 15, 17, 0.97);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 16px;
-  box-shadow: 0 16px 52px rgba(0, 0, 0, 0.32);
-  backdrop-filter: blur(14px);
+  color: #242424;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 8px;
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.14);
   animation: bannerEnter 260ms ease-out both;
 }
 
 .compactBanner {
-  max-width: 960px;
+  width: min(440px, calc(100vw - 56px));
 }
 
 .preferencesBanner {
-  max-width: 560px;
+  width: min(480px, calc(100vw - 56px));
 }
 
 .content {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 20px;
-  align-items: center;
-  padding: 18px 20px;
+  padding: 22px 26px 20px;
 }
 
 .copy {
   min-width: 0;
 }
 
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  margin-bottom: 5px;
-  color: #c9f31d;
-  font-size: 0.66rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.eyebrow::before {
-  width: 14px;
-  height: 1px;
-  content: "";
-  background: currentColor;
-}
-
 .title {
-  margin: 0 0 4px;
-  color: #ffffff;
+  margin: 0 0 12px;
+  color: #242424;
   font-family: var(--font-heading, sans-serif);
-  font-size: 1.08rem;
-  line-height: 1.25;
+  font-size: 1.12rem;
+  line-height: 1.3;
 }
 
 .description {
-  max-width: 600px;
   margin: 0;
-  color: rgba(255, 255, 255, 0.76);
-  font-size: 0.82rem;
-  line-height: 1.45;
+  color: #353535;
+  font-size: 0.9rem;
+  line-height: 1.65;
 }
 
 .description a {
-  color: #ffffff;
+  color: #315efb;
   text-decoration: underline;
-  text-decoration-color: #c9f31d;
   text-underline-offset: 3px;
 }
 
 .actions {
   display: grid;
-  grid-template-columns: repeat(2, minmax(112px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
-  min-width: 232px;
+  margin-top: 16px;
 }
 
 .button {
-  min-height: 40px;
-  padding: 9px 15px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 999px;
-  color: #ffffff;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #c9f31d;
+  border-radius: 0;
+  color: #111315;
   background: transparent;
   font: inherit;
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: 0.82rem;
+  font-weight: 600;
   line-height: 1;
   cursor: pointer;
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
 }
 
 .button:hover {
-  border-color: #ffffff;
+  border-color: #111315;
   transform: translateY(-1px);
 }
 
 .button:focus-visible,
 .manageButton:focus-visible,
 .toggle:focus-visible {
-  outline: 3px solid #c9f31d;
+  outline: 3px solid #315efb;
   outline-offset: 3px;
 }
 
 .primaryButton,
 .rejectButton {
-  min-width: 112px;
+  min-width: 0;
 }
 
 .primaryButton {
@@ -140,24 +112,22 @@
 }
 
 .preferencesButton {
-  grid-column: 1 / -1;
-  min-height: 30px;
-  padding-block: 4px;
-  border-color: transparent;
-  color: rgba(255, 255, 255, 0.78);
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  grid-column: auto;
+  min-height: 44px;
+  border-color: #c9f31d;
+  color: #111315;
+  text-decoration: none;
 }
 
 .preferencesButton:hover,
 .backButton:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: #f2f5e8;
 }
 
 .preferences {
-  grid-column: 1 / -1;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
 }
 
 .preferenceRow {
@@ -170,13 +140,13 @@
 .preferenceTitle {
   display: block;
   margin-bottom: 2px;
-  color: #ffffff;
+  color: #242424;
   font-weight: 700;
 }
 
 .preferenceDescription {
   margin: 0;
-  color: rgba(255, 255, 255, 0.66);
+  color: #5e6268;
   font-size: 0.78rem;
   line-height: 1.45;
 }
@@ -187,9 +157,9 @@
   width: 48px;
   height: 28px;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.36);
+  border: 1px solid #aeb3bb;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
+  background: #e5e7eb;
   cursor: pointer;
   transition: background 180ms ease, border-color 180ms ease;
 }
@@ -203,6 +173,7 @@
   content: "";
   border-radius: 50%;
   background: #ffffff;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.25);
   transition: transform 180ms ease;
 }
 
@@ -224,7 +195,7 @@
 }
 
 .backButton {
-  border-color: rgba(255, 255, 255, 0.24);
+  border-color: #c9f31d;
 }
 
 .manageButton {
@@ -267,38 +238,31 @@
   }
 }
 
-@media (max-width: 900px) {
-  .content {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .actions {
-    width: 100%;
-    min-width: 0;
-  }
-}
-
 @media (max-width: 600px) {
   .banner {
     right: 10px;
-    bottom: 10px;
+    bottom: calc(env(safe-area-inset-bottom) + 10px);
     left: 10px;
-    border-radius: 14px;
+    width: auto;
+    border-radius: 8px;
   }
 
   .content {
     max-height: min(72vh, 520px);
-    padding: 16px;
+    padding: 20px;
     overflow-y: auto;
   }
 
   .actions {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .button {
     width: 100%;
+  }
+
+  .preferencesButton {
+    grid-column: auto;
   }
 
   .preferenceRow {

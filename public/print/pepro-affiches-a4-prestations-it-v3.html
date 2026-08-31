@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Pepro — Deux affiches A5</title>
+    <style>
+      @page { size: A4 portrait; margin: 0; }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; width: 1055px; height: 1491px; overflow: hidden; background: #fff; }
+      .poster { display: block; width: 1055px; height: 1491px; }
+      .qr-block { position: absolute; width: 128px; height: 168px; background: #fff; text-align: center; }
+      .qr-block.top { left: 868px; top: 592px; }
+      .qr-block.bottom { left: 868px; top: 1257px; }
+      .qr-block img { display: block; width: 111px; height: 111px; margin: 11px auto 0; image-rendering: pixelated; }
+      .qr-block span { display: block; margin-top: 14px; color: #000; font: 12px Arial, Helvetica, sans-serif; white-space: nowrap; }
+      @media print {
+        html, body, .poster { width: 210mm; height: 297mm; }
+        .qr-block { transform-origin: top left; transform: scale(0.7526); }
+      }
+    </style>
+  </head>
+  <body>
+    <img class="poster" src="pepro-affiches-a4-prestations-it-v3-raw.png" alt="Deux affiches Pepro au format A5">
+    <div class="qr-block top"><img src="pepro-fr-qr.png" alt="QR code vers pepro.fr"><span>Découvrez nos services</span></div>
+    <div class="qr-block bottom"><img src="pepro-fr-qr.png" alt="QR code vers pepro.fr"><span>Découvrez nos services</span></div>
+  </body>
+</html>

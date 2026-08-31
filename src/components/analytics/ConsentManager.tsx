@@ -50,6 +50,12 @@ const ConsentManager = () => {
     return () => window.cancelAnimationFrame(animationFrame);
   }, []);
 
+  useEffect(() => {
+    document.body.classList.toggle("cookie-consent-open", isOpen);
+
+    return () => document.body.classList.remove("cookie-consent-open");
+  }, [isOpen]);
+
   const saveChoice = (analytics: AnalyticsConsent) => {
     const wasLoaded = shouldLoadGtm;
 
@@ -94,20 +100,22 @@ const ConsentManager = () => {
         >
           <div className={styles.content}>
             <div className={styles.copy}>
-              <span className={styles.eyebrow}>Cookies &amp; confidentialité</span>
               <h2 className={styles.title} id="cookie-consent-title">
                 {showPreferences
                   ? "Vos préférences"
-                  : "Peut-on mesurer votre visite ?"}
+                  : "Cookies et confidentialité"}
               </h2>
               <p className={styles.description} id="cookie-consent-description">
                 {showPreferences ? (
                   "Choisissez si vous autorisez la mesure d’audience. Votre accès au site reste identique quel que soit votre choix."
                 ) : (
                   <>
-                    Avec votre accord, Google Analytics nous aide à améliorer
-                    Pepro.fr. Aucun dépôt avant votre choix.{" "}
-                    <Link href="/politique-cookies">En savoir plus</Link>
+                    Nous utilisons des cookies pour améliorer votre expérience de
+                    navigation et analyser l&apos;utilisation de notre site. En
+                    cliquant sur « Accepter », vous consentez à leur utilisation.{" "}
+                    <Link href="/politique-cookies">
+                      Politique relative aux cookies
+                    </Link>
                   </>
                 )}
               </p>
@@ -117,24 +125,24 @@ const ConsentManager = () => {
               <div className={styles.actions}>
                 <button
                   type="button"
+                  className={`${styles.button} ${styles.preferencesButton}`}
+                  onClick={() => setShowPreferences(true)}
+                >
+                  Personnaliser
+                </button>
+                <button
+                  type="button"
                   className={`${styles.button} ${styles.rejectButton}`}
                   onClick={() => saveChoice("denied")}
                 >
-                  Tout refuser
+                  Refuser
                 </button>
                 <button
                   type="button"
                   className={`${styles.button} ${styles.primaryButton}`}
                   onClick={() => saveChoice("granted")}
                 >
-                  Tout accepter
-                </button>
-                <button
-                  type="button"
-                  className={`${styles.button} ${styles.preferencesButton}`}
-                  onClick={() => setShowPreferences(true)}
-                >
-                  Choisir
+                  Accepter
                 </button>
               </div>
             )}
@@ -147,15 +155,15 @@ const ConsentManager = () => {
                       Mesure d&apos;audience
                     </span>
                     <p className={styles.preferenceDescription}>
-                      Google Analytics : pages consultées, provenance générale et
-                      interactions. Aucune saisie de formulaire n&apos;est envoyée.
+                      Pages consultées, provenance générale et interactions.
+                      Aucune saisie de formulaire n&apos;est envoyée.
                     </p>
                   </div>
                   <button
                     type="button"
                     role="switch"
                     aria-checked={analyticsChoice === "granted"}
-                    aria-label="Autoriser la mesure d'audience Google Analytics"
+                    aria-label="Autoriser la mesure d'audience"
                     className={`${styles.toggle} ${
                       analyticsChoice === "granted" ? styles.toggleEnabled : ""
                     }`}

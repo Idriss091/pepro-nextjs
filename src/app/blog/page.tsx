@@ -1,119 +1,31 @@
 import type { Metadata } from "next";
-import HeaderV1 from "@/components/header/HeaderV1";
-import FooterV1 from "@/components/footer/FooterV1";
-import ThemeDark from "@/components/switcher/ThemeDark";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight, CalendarDays, UserRound } from "lucide-react";
+import { Manrope, Syne } from "next/font/google";
 import blogData from "@/assets/jsonData/blog/BlogPeproData.json";
+import V2Footer from "@/components/v2/V2Footer";
+import V2Header from "@/components/v2/V2Header";
 import { compareBlogPostsByDateDesc } from "@/lib/blog";
 import { SITE_URL } from "@/lib/site";
+import styles from "./blog.module.css";
 
-interface BlogPost {
-  id: number;
-  date: string;
-  dateIcon: string;
-  author: string;
-  authorIcon: string;
-  tag: string;
-  title: string;
-  excerpt: string;
-  btnIcon: string;
-  thumb: string;
-}
+const display = Syne({ subsets: ["latin"], variable: "--v2-display", display: "swap" });
+const body = Manrope({ subsets: ["latin"], variable: "--v2-body", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Blog Pepro - Actualités et tendances technologiques",
-  description:
-    "Découvrez nos articles sur le développement logiciel, l'IA, la sécurité, DevOps et les dernières tendances technologiques.",
-  alternates: {
-    canonical: "/blog",
-  },
-  openGraph: {
-    title: "Blog Pepro - Actualités et tendances technologiques",
-    description:
-      "Découvrez nos articles sur le développement logiciel, l'IA, la sécurité, DevOps et les dernières tendances technologiques.",
-    url: `${SITE_URL}/blog`,
-    type: "website",
-  },
+  title: "Blog Pepro — Guides numériques et ingénierie",
+  description: "Guides pratiques sur les sites web, le SEO, l’intelligence artificielle, les logiciels métier et l’ingénierie.",
+  alternates: { canonical: "/blog" },
+  openGraph: { title: "Blog Pepro — Guides numériques et ingénierie", description: "Guides pratiques et retours d’expérience pour vos projets numériques.", url: `${SITE_URL}/blog`, type: "website" },
 };
 
 export default function BlogPage() {
-  const orderedBlogData = [...blogData].sort(compareBlogPostsByDateDesc);
-
-  return (
-    <>
-      <div className="smooth-scroll-container">
-        <HeaderV1 />
-
-        {/* Page Banner */}
-        <div className="page-banner-area bg-gray compact-blog-list-banner">
-          <div className="container">
-            <div className="row">
-              <div className="col-xl-12 text-center">
-                <div className="page-banner-content">
-                  <span className="pepro-blog-eyebrow">
-                    <i className="far fa-newspaper" /> Nos articles
-                  </span>
-                  <h1>Blog & Ressources</h1>
-                  <p>
-                    Guides pratiques, conseils d&apos;experts et inspirations pour
-                    vos projets numériques.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Blog Grid */}
-        <div className="blog-grid-area pepro-blog-list-area">
-          <div className="container">
-            <div className="row pepro-blog-list-grid justify-content-center">
-              {orderedBlogData.map((blog: BlogPost) => (
-                <div
-                  className="col-xl-5 col-lg-6 col-md-10 single-item"
-                  key={blog.id}
-                >
-                  <div className="blog-style-one-item">
-                    <div className="blog-thumb">
-                      <Link href={`/blog/${blog.id}`}>
-                        <Image
-                          src={`/assets/img/blog/${blog.thumb}`}
-                          alt={blog.title}
-                          width={400}
-                          height={300}
-                          style={{ objectFit: "cover" }}
-                        />
-                      </Link>
-                      <span className="blog-tag">{blog.tag}</span>
-                    </div>
-                    <div className="blog-content">
-                      <div className="blog-meta">
-                        <span>
-                          <i className={blog.dateIcon} /> {blog.date}
-                        </span>
-                        <span>
-                          <i className={blog.authorIcon} /> {blog.author}
-                        </span>
-                      </div>
-                      <h4>
-                        <Link href={`/blog/${blog.id}`}>{blog.title}</Link>
-                      </h4>
-                      <p>{blog.excerpt}</p>
-                      <Link className="btn-full" href={`/blog/${blog.id}`}>
-                        Lire plus <i className={blog.btnIcon} />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <FooterV1 />
-        <ThemeDark />
-      </div>
-    </>
-  );
+  const posts = [...blogData].sort(compareBlogPostsByDateDesc);
+  return <main className={`${styles.root} ${display.variable} ${body.variable}`}><V2Header/>
+    <header className={styles.hero}><p><span/>Conseils & ressources</p><h1>Des idées utiles pour mieux construire.</h1><div>SEO, IA, logiciels et ingénierie expliqués à partir de situations concrètes.</div></header>
+    <section className={styles.list} aria-label="Articles Pepro">{posts.map((post,index)=><article className={styles.card} key={post.id}>
+      <Link className={styles.cardImage} href={`/blog/${post.id}`}><Image src={`/assets/img/blog/${post.thumb}`} alt={post.title} fill priority={index===0} sizes="(max-width: 760px) 100vw, 48vw"/></Link>
+      <div className={styles.cardBody}><p className={styles.tag}>{post.tag}</p><h2><Link href={`/blog/${post.id}`}>{post.title}</Link></h2><p className={styles.excerpt}>{post.excerpt}</p><div className={styles.meta}><span><CalendarDays aria-hidden="true"/>{post.date}</span><span><UserRound aria-hidden="true"/>{post.author}</span></div><Link className={styles.readLink} href={`/blog/${post.id}`}>Lire l’article <ArrowUpRight aria-hidden="true"/></Link></div>
+    </article>)}</section><V2Footer/></main>;
 }

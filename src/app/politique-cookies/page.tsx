@@ -153,7 +153,7 @@ export default function CookiesPolicyPage() {
                   </li>
                   <li className="mb-2">
                     <i className="fas fa-link text-primary me-2" /> Formulaire :{" "}
-                    <Link href="/contact-us">page de contact</Link>
+                    <Link href="/contact">page de contact</Link>
                   </li>
                   <li>
                     <i className="fas fa-map-marker-alt text-primary me-2" />{" "}

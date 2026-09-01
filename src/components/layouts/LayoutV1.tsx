@@ -1,20 +1,21 @@
-import FooterV4 from "../footer/FooterV4";
-import HeaderV1 from "../header/HeaderV1";
+import { Manrope, Syne } from "next/font/google";
+import V2Footer from "@/components/v2/V2Footer";
+import V2Header from "@/components/v2/V2Header";
+import styles from "./LayoutV1.module.css";
+
+const display = Syne({ subsets: ["latin"], variable: "--v2-display", display: "swap" });
+const body = Manrope({ subsets: ["latin"], variable: "--v2-body", display: "swap" });
 
 interface LayoutProps {
-    children?: React.ReactNode;
+  children?: React.ReactNode;
 }
 
-const LayoutV1 = ({ children }: LayoutProps) => {
-    return (
-        <>
-            <div className="smooth-scroll-container">
-                <HeaderV1 />
-                {children}
-                <FooterV4 sectionClass='bg-gray' />
-            </div>
-        </>
-    );
-};
-
-export default LayoutV1;
+export default function LayoutV1({ children }: LayoutProps) {
+  return (
+    <main className={`${styles.root} ${display.variable} ${body.variable}`}>
+      <V2Header />
+      {children}
+      <V2Footer />
+    </main>
+  );
+}

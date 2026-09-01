@@ -286,3 +286,92 @@
     transition: none;
   }
 }
+
+.v2Banner {
+  color: #f5f8fa;
+  border-color: rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 100% 0, rgba(33, 230, 255, 0.12), transparent 42%),
+    rgba(5, 9, 11, 0.94);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.52);
+  backdrop-filter: blur(22px);
+}
+
+.v2Banner .title {
+  color: #f5f8fa;
+  font-family: var(--v2-display, sans-serif);
+  font-weight: 550;
+  letter-spacing: -0.025em;
+}
+
+.v2Banner .description,
+.v2Banner .preferenceDescription {
+  color: #9aa6ad;
+}
+
+.v2Banner .description a {
+  color: #bdf4ff;
+}
+
+.v2Banner .button {
+  border-color: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  color: #eaf0f3;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.v2Banner .button:hover {
+  border-color: rgba(33, 230, 255, 0.65);
+  color: #ffffff;
+  background: rgba(33, 230, 255, 0.08);
+}
+
+.v2Banner .primaryButton {
+  border-color: #f5f8fa;
+  color: #041014;
+  background: #f5f8fa;
+}
+
+.v2Banner .primaryButton:hover {
+  border-color: #bdf4ff;
+  color: #041014;
+  background: #bdf4ff;
+}
+
+.v2Banner .preferences,
+.v2Banner .preferenceRow {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.v2Banner .preferenceTitle {
+  color: #f5f8fa;
+}
+
+.v2Banner .toggleEnabled {
+  border-color: #21e6ff;
+  background: #21e6ff;
+}
+
+.v2ManageButton .manageDot {
+  background: #21e6ff;
+  box-shadow: 0 0 0 4px rgba(33, 230, 255, 0.14);
+}
+
+@media (max-width: 600px) {
+  .v2Banner {
+    border-radius: 16px;
+  }
+
+  .v2Banner .content {
+    padding: 18px;
+  }
+
+  .v2Banner .actions {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .v2Banner .preferencesButton {
+    grid-column: 1 / -1;
+  }
+}

@@ -1,0 +1,34 @@
+.stage {
+  position: relative;
+  isolation: isolate;
+}
+
+.brand {
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 45%;
+  color: rgba(205, 207, 255, 0.065);
+  font-family: var(--v2-display), sans-serif;
+  font-size: clamp(12rem, 25vw, 27rem);
+  font-weight: 500;
+  letter-spacing: -0.08em;
+  line-height: 0.7;
+  pointer-events: none;
+  transform: translate(-50%, -64%);
+  user-select: none;
+  white-space: nowrap;
+}
+
+.word {
+  display: inline;
+}
+
+@media (max-width: 720px) {
+  .brand {
+    top: 18%;
+    left: 38%;
+    font-size: 47vw;
+    transform: translate(-50%, -50%);
+  }
+}

@@ -1,7 +1,7 @@
 export const SITE_NAME = "Pepro";
 export const SITE_URL = "https://pepro.fr";
 export const SITE_DESCRIPTION =
-  "Agence de développement logiciel sur-mesure, IA et calcul scientifique.";
+  "Pepro conçoit des sites web, logiciels métier, solutions IA et produits numériques sur mesure depuis Ris-Orangis.";
 export const SITE_PHONE = "+33781911992";
 export const SITE_EMAIL = "contact@pepro.fr";
 export const LINKEDIN_URL =

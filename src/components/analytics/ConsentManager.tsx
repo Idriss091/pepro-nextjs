@@ -91,7 +91,7 @@ const ConsentManager = () => {
 
       {isReady && isOpen && (
         <section
-          className={`${styles.banner} ${
+          className={`${styles.banner} ${styles.v2Banner} ${
             showPreferences ? styles.preferencesBanner : styles.compactBanner
           }`}
           role="dialog"
@@ -199,7 +199,7 @@ const ConsentManager = () => {
       {isReady && !isOpen && (
         <button
           type="button"
-          className={styles.manageButton}
+          className={`${styles.manageButton} ${styles.v2ManageButton}`}
           onClick={openPreferences}
           aria-label="Gérer mes préférences de cookies"
         >

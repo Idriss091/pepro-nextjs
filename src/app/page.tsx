@@ -1,14 +1,5 @@
 import type { Metadata } from "next";
-import AboutV6 from "@/components/about/AboutV6";
-import BannerV8 from "@/components/banner/BannerV8";
-import FooterV1 from "@/components/footer/FooterV1";
-import HeaderV1 from "@/components/header/HeaderV1";
-import ProjectV1 from "@/components/project/ProjectV1";
-import ServicesV1 from "@/components/services/ServicesV1";
-import MultiSectionPepro from "@/components/multi/MultiSectionPepro";
-import TestimonialV3 from "@/components/testimonial/TestimonialV3";
-import ThemeDark from "@/components/switcher/ThemeDark";
-import BlogV1 from "@/components/blog/BlogV1";
+import V2HomePage from "@/components/v2/V2HomePage";
 import {
   DEFAULT_OG_IMAGE,
   LINKEDIN_URL,
@@ -19,23 +10,24 @@ import {
   SITE_URL,
 } from "@/lib/site";
 
+const homeTitle = "Pepro — Sites web, logiciels, IA & ingénierie";
+const homeDescription =
+  "Pepro conçoit des sites web, boutiques e-commerce, logiciels métier et automatisations IA sur mesure à Ris-Orangis et partout en France.";
+
 export const metadata: Metadata = {
-  title: "Pepro - Agence de développement logiciel sur-mesure à Paris",
-  description:
-    "Pepro conçoit des applications web, logiciels métiers, solutions IA et plateformes sur-mesure pour startups, PME et ETI.",
-  alternates: {
-    canonical: "/",
-  },
+  title: homeTitle,
+  description: homeDescription,
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Pepro - Agence de développement logiciel sur-mesure à Paris",
-    description: SITE_DESCRIPTION,
+    title: homeTitle,
+    description: homeDescription,
     url: SITE_URL,
-    images: [{ url: DEFAULT_OG_IMAGE, alt: "Pepro - Services numériques" }],
+    images: [{ url: DEFAULT_OG_IMAGE, alt: "Pepro — Solutions numériques sur mesure" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pepro - Agence de développement logiciel sur-mesure à Paris",
-    description: SITE_DESCRIPTION,
+    title: homeTitle,
+    description: homeDescription,
     images: [DEFAULT_OG_IMAGE],
   },
 };
@@ -63,11 +55,12 @@ export default function Home() {
     address: {
       "@type": "PostalAddress",
       addressCountry: "FR",
-      addressLocality: "Paris",
+      addressLocality: "Ris-Orangis",
+      addressRegion: "Île-de-France",
     },
     contactPoint: {
       "@type": "ContactPoint",
-      contactType: "customer support",
+      contactType: "customer service",
       email: SITE_EMAIL,
       telephone: SITE_PHONE,
       areaServed: "FR",
@@ -78,26 +71,16 @@ export default function Home() {
   return (
     <>
       <script
+        id="pepro-website-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd) }}
       />
       <script
+        id="pepro-business-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
       />
-
-      <div className="smooth-scroll-container">
-        <HeaderV1 />
-        <BannerV8 />
-        <AboutV6 sectionClass="default-padding" />
-        <ServicesV1 sectionClass="bg-gray default-padding" hasTitle={true} />
-        <ProjectV1 />
-        <TestimonialV3 sectionClass="bg-gray" />
-        <BlogV1 sectionClass="default-padding" hasTitle={true} />
-        <MultiSectionPepro />
-        <FooterV1 />
-        <ThemeDark />
-      </div>
+      <V2HomePage />
     </>
   );
 }

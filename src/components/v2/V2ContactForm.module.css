@@ -5,7 +5,10 @@
 .form label > span { color:#21e6ff; }
 .form input:not([type="checkbox"]),.form select,.form textarea { width:100%; padding:16px 0; border:0; border-bottom:1px solid rgba(255,255,255,.18); border-radius:0; outline:0; color:#f5f8fa; background:transparent; font:500 .95rem/1.5 var(--v2-body),sans-serif; letter-spacing:normal; text-transform:none; transition:border-color .2s ease; }
 .form textarea { resize:vertical; }
-.form select { color:#dbe3e7; color-scheme:dark; }
+.form select { color:#f5f8fa; color-scheme:dark; cursor:pointer; }
+.form select option { color:#071013; background:#f5f8fa; }
+.form select option:disabled { color:#56636a; }
+.form select option:checked { color:#031014; background:#bff7fa; }
 .form input:focus,.form select:focus,.form textarea:focus { border-color:#21e6ff; }
 .form textarea::placeholder { color:#59656c; }
 .consent { flex-direction:row!important; gap:13px!important; align-items:flex-start; font-size:.72rem!important; font-weight:500!important; letter-spacing:0!important; line-height:1.6; text-transform:none!important; }

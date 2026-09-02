@@ -55,8 +55,8 @@ export default function HeroAurora() {
           exposure={2.55}
           contrast={1.08}
           color="#21e6ff"
-          midColor="#7cffe0"
-          deepColor="#9b8cff"
+          midColor="#8af2ff"
+          deepColor="#087f9f"
           hueDrift={0.35}
           grain={0.035}
           backgroundColor="transparent"

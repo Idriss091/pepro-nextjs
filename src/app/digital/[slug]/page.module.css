@@ -128,3 +128,19 @@
   .footer { grid-template-columns: 1fr; width: calc(100% - 32px); padding: 38px 0; }
   .footer div { justify-self: start; }
 }
+
+.hero{overflow:hidden;background:radial-gradient(circle at 78% 56%,color-mix(in srgb,var(--offer-accent) 20%,transparent),transparent 31%),radial-gradient(circle at 38% 86%,rgba(198,166,255,.1),transparent 34%),linear-gradient(145deg,#020608 18%,#071116 68%,#030608)}
+.heroGlow{animation:offerGlow 10s ease-in-out infinite alternate}
+.heroCopy>.eyebrow{opacity:0;animation:offerEnter .65s .08s ease-out forwards}
+.heroCopy>h1{opacity:0;animation:offerEnter .82s .2s cubic-bezier(.22,1,.36,1) forwards}
+.heroCopy>p:last-child,.priceNote{opacity:0;animation:offerEnter .78s .36s cubic-bezier(.22,1,.36,1) forwards}
+.showcase{transition:border-color .3s ease,box-shadow .3s ease,transform .4s cubic-bezier(.22,1,.36,1)}
+.showcase:hover{border-color:color-mix(in srgb,var(--offer-accent) 38%,rgba(255,255,255,.14));box-shadow:0 58px 150px rgba(0,0,0,.55),0 0 100px color-mix(in srgb,var(--offer-accent) 8%,transparent);transform:translateY(-5px)}
+.imageFrame{height:auto;min-height:0;aspect-ratio:16/9}
+.imageFrame img{object-fit:contain;object-position:center;background:linear-gradient(145deg,#081116,#030709)}
+.argument,.scope,.process,.faq{position:relative}
+.scope::before,.faq::before{position:absolute;z-index:-1;top:5%;left:50%;width:min(820px,78vw);height:520px;border-radius:50%;content:"";background:color-mix(in srgb,var(--offer-accent) 6%,transparent);filter:blur(145px);transform:translateX(-50%)}
+@keyframes offerEnter{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes offerGlow{from{opacity:.12;transform:translate3d(0,0,0) scale(.9)}to{opacity:.24;transform:translate3d(-7%,-4%,0) scale(1.08)}}
+@media(max-width:700px){.imageFrame{height:auto;min-height:0;aspect-ratio:16/9}}
+@media(prefers-reduced-motion:reduce){.heroGlow,.heroCopy>.eyebrow,.heroCopy>h1,.heroCopy>p:last-child,.priceNote{animation:none}.heroCopy>.eyebrow,.heroCopy>h1,.heroCopy>p:last-child,.priceNote{opacity:1}.showcase{transition:none}}

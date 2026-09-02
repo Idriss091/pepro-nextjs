@@ -125,25 +125,9 @@ export default async function DigitalOfferPage({
         </div>
       </section>
 
-      <section className={styles.process} aria-labelledby="process-title">
-        <div className={styles.processHeading}>
-          <p className={styles.sectionIndex}>03 / La méthode</p>
-          <h2 id="process-title">Quatre mouvements.<br />Une progression visible.</h2>
-        </div>
-        <div className={styles.processRail}>
-          {offer.process.map((step, index) => (
-            <article key={step.title}>
-              <span>0{index + 1}</span>
-              <h3>{step.title}</h3>
-              <p>{step.copy}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section className={styles.faq} aria-labelledby="faq-title">
         <div>
-          <p className={styles.sectionIndex}>04 / Questions utiles</p>
+          <p className={styles.sectionIndex}>03 / Questions utiles</p>
           <h2 id="faq-title">Avant de commencer.</h2>
         </div>
         <div className={styles.faqList}>

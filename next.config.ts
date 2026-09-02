@@ -49,6 +49,15 @@ const legacyServiceDetails = [
 ] as const;
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
+      },
+    ],
+  },
   turbopack: {
     root: configDir,
   },

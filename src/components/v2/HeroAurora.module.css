@@ -15,7 +15,7 @@
 .staticGlow {
   background:
     radial-gradient(ellipse 70% 42% at 50% 68%, rgba(33, 230, 255, 0.23), transparent 68%),
-    radial-gradient(ellipse 54% 40% at 68% 65%, rgba(155, 140, 255, 0.17), transparent 72%),
+    radial-gradient(ellipse 54% 40% at 68% 65%, rgba(92, 211, 238, 0.14), transparent 72%),
     radial-gradient(ellipse 44% 32% at 25% 72%, rgba(0, 178, 255, 0.16), transparent 70%);
   filter: blur(24px);
 }

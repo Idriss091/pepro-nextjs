@@ -1,3 +1,6 @@
+import type { StaticImageData } from "next/image";
+import finoviaDesktop from "../../direction/references/finovia-desktop.png";
+
 export interface DigitalOffer {
   slug: string;
   number: string;
@@ -8,7 +11,7 @@ export interface DigitalOffer {
   priceNote: string;
   accent: string;
   accentSoft: string;
-  image: string;
+  image: string | StaticImageData;
   imageAlt: string;
   visualLabel: string;
   problemTitle: string;
@@ -34,8 +37,8 @@ export const digitalOffers: DigitalOffer[] = [
     priceNote: "Site vitrine à partir de",
     accent: "#21e6ff",
     accentSoft: "#bff7ff",
-    image: "/assets/img/projects/school-landing.png",
-    imageAlt: "Exemple d’interface web conçue par Pepro",
+    image: finoviaDesktop,
+    imageAlt: "Interface de l’application financière Finovia conçue par Pepro",
     visualLabel: "Design d’interface / Développement / Mise en ligne",
     problemTitle: "Être présent ne suffit plus.",
     problem:
@@ -65,19 +68,19 @@ export const digitalOffers: DigitalOffer[] = [
     ],
     faqs: [
       {
-        question: "Le référencement naturel est-il inclus ?",
+        question: "Combien de temps faut-il pour mettre le site en ligne ?",
         answer:
-          "Le socle SEO technique et la structuration des pages sont inclus dans le périmètre d’un site vitrine. Une stratégie éditoriale ou locale plus large est chiffrée selon les objectifs.",
+          "Un site vitrine resserré demande généralement quatre à huit semaines. Le calendrier dépend surtout du nombre de pages, de la disponibilité des contenus et de la rapidité des validations ; il est confirmé après le cadrage.",
       },
       {
-        question: "Pouvez-vous reprendre un site existant ?",
+        question: "Que devons-nous préparer avant de commencer ?",
         answer:
-          "Oui. Nous commençons par examiner les contenus, les URL utiles et les contraintes techniques afin de décider ce qui doit être conservé, amélioré ou reconstruit.",
+          "Vos objectifs, vos offres, les contenus déjà disponibles et les accès à l’existant constituent le meilleur point de départ. Si certains éléments manquent, nous vous aidons à les hiérarchiser pendant le cadrage.",
       },
       {
-        question: "Pourrai-je modifier mes contenus ?",
+        question: "Le site et ses accès nous appartiendront-ils ?",
         answer:
-          "Oui, lorsque le projet le nécessite nous prévoyons une gestion de contenu adaptée, accompagnée d’une prise en main lors de la livraison.",
+          "Oui. Les livrables et accès prévus au devis vous sont remis à la livraison. Le domaine, l’hébergement et les comptes stratégiques sont autant que possible ouverts à votre nom pour éviter toute dépendance inutile.",
       },
     ],
     sibling: { label: "Découvrir l’e-commerce", href: "/digital/e-commerce" },
@@ -124,19 +127,19 @@ export const digitalOffers: DigitalOffer[] = [
     ],
     faqs: [
       {
-        question: "Travaillez-vous avec PrestaShop ?",
+        question: "Peut-on migrer notre boutique sans perdre le catalogue ni le référencement ?",
         answer:
-          "Oui. Pepro conçoit et fait évoluer des boutiques PrestaShop, notamment pour des catalogues B2B importants et des besoins de livraison spécifiques.",
+          "Oui, après un audit des produits, clients, commandes et URL existantes. Nous préparons la correspondance des données, les imports et les redirections ; les limites éventuelles sont identifiées avant la migration.",
       },
       {
-        question: "Le paiement et la livraison sont-ils compris ?",
+        question: "La boutique peut-elle se connecter à notre stock, notre ERP ou nos transporteurs ?",
         answer:
-          "Le prix de départ comprend la mise en place du paiement en ligne et de la boutique. Les transporteurs, règles tarifaires ou connexions spécifiques sont cadrés selon votre fonctionnement.",
+          "Oui lorsque les outils disposent d’une API, d’un connecteur fiable ou d’un format d’échange exploitable. Nous vérifions les flux, les volumes et les cas d’erreur avant de chiffrer l’intégration.",
       },
       {
-        question: "Pouvez-vous reprendre un catalogue existant ?",
+        question: "Quels coûts restent à prévoir après la mise en ligne ?",
         answer:
-          "Oui, après examen de sa structure, de la qualité des données et du volume à migrer. Cette étape permet de sécuriser le périmètre avant tout engagement.",
+          "Selon la solution : hébergement, modules ou licences, commissions de paiement, maintenance et futures évolutions. Ces coûts récurrents sont distingués du budget de réalisation avant le démarrage.",
       },
     ],
     sibling: { label: "Découvrir les sites vitrines", href: "/digital/creation-site-internet" },
@@ -183,19 +186,19 @@ export const digitalOffers: DigitalOffer[] = [
     ],
     faqs: [
       {
-        question: "Le SEO est-il compris dans la création d’un site ?",
+        question: "En combien de temps peut-on voir des résultats ?",
         answer:
-          "Le socle SEO technique et la structuration initiale des pages sont compris dans le périmètre d’un site vitrine. Un travail éditorial ou local plus large fait l’objet d’un cadrage séparé.",
+          "Les corrections techniques peuvent produire des signaux rapidement, mais une progression durable se mesure généralement sur plusieurs mois. Le délai dépend de l’historique du domaine, de la concurrence et du travail éditorial nécessaire.",
       },
       {
-        question: "Pouvez-vous intervenir sur un site existant ?",
+        question: "Comment saurons-nous si le travail porte ses fruits ?",
         answer:
-          "Oui. Nous examinons d’abord les pages, les contenus et les contraintes techniques afin de produire des recommandations priorisées et réalistes.",
+          "Nous suivons des indicateurs reliés à votre activité : visibilité sur les recherches prioritaires, pages qui progressent, trafic qualifié et prises de contact. Les actions réalisées et les prochaines priorités restent lisibles.",
       },
       {
-        question: "Pouvez-vous garantir une première position ?",
+        question: "Faut-il refaire le site avant de travailler le SEO ?",
         answer:
-          "Non. Aucun prestataire sérieux ne peut garantir une position précise. Nous nous engageons sur la qualité du travail, la clarté des priorités et leur mise en œuvre mesurable.",
+          "Pas systématiquement. Un audit permet de distinguer ce qui peut être corrigé sur l’existant de ce qui exige une refonte. Nous privilégions les améliorations utiles avant de recommander une reconstruction.",
       },
     ],
     sibling: { label: "Découvrir les sites vitrines", href: "/digital/creation-site-internet" },
@@ -242,19 +245,19 @@ export const digitalOffers: DigitalOffer[] = [
     ],
     faqs: [
       {
-        question: "Qu’est-ce qui est compris dans le prix de départ ?",
+        question: "Comment savoir si un logiciel sur mesure est vraiment nécessaire ?",
         answer:
-          "Le prix de départ correspond à un prototype fonctionnel et une interface sur mesure. Le périmètre exact dépend des rôles, données, règles métier et intégrations nécessaires.",
+          "Nous comparons d’abord le coût des tâches manuelles et des outils dispersés avec les solutions déjà disponibles. Le sur-mesure devient pertinent lorsqu’un processus stable et fréquent reste mal couvert par le marché.",
       },
       {
-        question: "Pouvez-vous remplacer nos tableurs ?",
+        question: "Serons-nous propriétaires du code et de nos données ?",
         answer:
-          "Oui lorsque leurs usages et règles peuvent être clairement cartographiés. Nous vérifions d’abord les données existantes et les exceptions avant de proposer une migration.",
+          "Oui. La propriété des livrables, l’accès au dépôt de code, l’hébergement et la restitution des données sont précisés au contrat. Vous ne devez pas dépendre d’un prestataire pour récupérer votre propre produit.",
       },
       {
-        question: "L’outil pourra-t-il évoluer ?",
+        question: "Comment éviter que le budget ne dérape ?",
         answer:
-          "Oui. L’objectif d’un MVP est précisément de valider le cœur de l’usage puis de faire évoluer le produit à partir de besoins observés.",
+          "Nous séparons le besoin essentiel des fonctions secondaires, puis avançons par jalons démontrables. Toute demande qui modifie le périmètre est évaluée avant d’être développée.",
       },
     ],
     sibling: { label: "Découvrir l’IA & automatisation", href: "/digital/ia-automatisation" },
@@ -301,19 +304,19 @@ export const digitalOffers: DigitalOffer[] = [
     ],
     faqs: [
       {
-        question: "Que comprend le prix de départ ?",
+        question: "Quel processus vaut réellement la peine d’être automatisé ?",
         answer:
-          "Il correspond à l’automatisation d’un processus clairement délimité et à son intégration aux outils nécessaires. Un système multi-processus ou une application complète demande un cadrage distinct.",
+          "Un processus fréquent, répétitif, mesurable et suffisamment stable constitue un bon candidat. Nous commençons par le point de friction qui coûte réellement du temps, même si une automatisation classique suffit sans IA.",
       },
       {
-        question: "Travaillez-vous avec nos outils actuels ?",
+        question: "Où vont les données utilisées par l’IA ?",
         answer:
-          "Oui lorsque leurs API, exports ou mécanismes d’intégration le permettent. Cette compatibilité est vérifiée pendant le cadrage.",
+          "Cela dépend du modèle et de l’architecture retenus. Avant tout développement, nous précisons les données transmises, leur durée de conservation et les prestataires impliqués, puis nous limitons le flux au strict nécessaire.",
       },
       {
-        question: "L’humain peut-il garder la validation finale ?",
+        question: "Que se passe-t-il lorsque l’IA se trompe ?",
         answer:
-          "Oui. Pour les usages sensibles, nous prévoyons une étape de contrôle humain et une traçabilité adaptée au processus.",
+          "Les cas incertains peuvent être bloqués, signalés ou transmis à une personne. Seuils de confiance, journalisation et validation humaine sont définis selon le risque métier au lieu de supposer que le modèle aura toujours raison.",
       },
     ],
     sibling: { label: "Découvrir les outils métier", href: "/digital/logiciel-metier" },
@@ -360,19 +363,19 @@ export const digitalOffers: DigitalOffer[] = [
     ],
     faqs: [
       {
-        question: "Quelle différence entre Essentiel et Pro ?",
+        question: "Dans quel délai intervenez-vous lorsqu’un problème survient ?",
         answer:
-          "Essentiel débute à 290 € HT par mois et couvre mises à jour, sauvegardes, surveillance et support. Pro débute à 590 € HT par mois et ajoute maintenance complète, sécurité, corrections prioritaires, performance et suivi SEO.",
+          "Le délai de prise en charge dépend de la criticité et du forfait retenu. Les horaires, canaux de contact et niveaux de priorité sont écrits dans la proposition ; une astreinte permanente n’est prévue que si elle est contractualisée.",
       },
       {
-        question: "Pouvez-vous reprendre un site que vous n’avez pas créé ?",
+        question: "Les sauvegardes permettront-elles réellement de restaurer le site ?",
         answer:
-          "Oui, après un diagnostic technique. Celui-ci permet de vérifier l’état du site, ses accès, ses dépendances et les risques avant de confirmer le périmètre de maintenance.",
+          "Une sauvegarde utile doit couvrir les fichiers et les données, être conservée séparément et pouvoir être restaurée. La fréquence, la rétention et les contrôles possibles sont définis selon votre environnement.",
       },
       {
-        question: "Les nouvelles fonctionnalités sont-elles incluses ?",
+        question: "Qu’est-ce qui n’est pas compris dans le forfait ?",
         answer:
-          "Les évolutions importantes sont cadrées séparément. Le forfait définit les opérations récurrentes et le niveau de support couvert.",
+          "Les nouvelles fonctionnalités, refontes importantes, licences tierces et interventions hors périmètre sont chiffrées séparément. Le forfait détaille précisément les opérations récurrentes et le volume de support inclus.",
       },
     ],
     sibling: { label: "Découvrir les outils métier", href: "/digital/logiciel-metier" },

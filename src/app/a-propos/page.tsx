@@ -1,17 +1,5 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowUpRight, Mail, MapPin } from "lucide-react";
-import { Manrope, Syne } from "next/font/google";
-import V2Footer from "@/components/v2/V2Footer";
-import V2Header from "@/components/v2/V2Header";
-import styles from "../v2-commercial.module.css";
+import { redirect } from "next/navigation";
 
-const display=Syne({subsets:["latin"],variable:"--v2-display",display:"swap"});const body=Manrope({subsets:["latin"],variable:"--v2-body",display:"swap"});
-export const metadata:Metadata={title:"À propos — Pepro",description:"Pepro réunit design, développement logiciel, intelligence artificielle et ingénierie avec un interlocuteur direct.",alternates:{canonical:"/a-propos"}};
-const principles=[["01","Comprendre avant de construire","Le besoin, les utilisateurs et les contraintes passent avant le choix d’une technologie."],["02","Rendre la complexité lisible","Une interface doit simplifier le travail sans masquer les décisions importantes."],["03","Construire pour durer","Nous privilégions des bases maintenables, documentées et capables d’évoluer."],["04","Rester directement joignables","Les personnes présentes dans les échanges sont celles qui conçoivent le projet."]] as const;
-export default function AboutPage(){return <main className={`${styles.root} ${display.variable} ${body.variable}`}><V2Header/>
-<section className={`${styles.commercialHero} ${styles.aboutHero}`} aria-labelledby="about-title"><div className={styles.grid}/><p className={styles.eyebrow}><span/>À propos de Pepro</p><h1 id="about-title">Une équipe courte. Une vision large du numérique.</h1><div className={styles.heroFoot}><p>Design, logiciel, IA et ingénierie réunis pour traiter un projet dans son ensemble — de ce que voit le client à ce qui fait fonctionner l’entreprise.</p><span className={styles.location}><MapPin/>Ris-Orangis · France</span></div></section>
-<section className={styles.aboutStatement}><p className={styles.sectionIndex}>01 / Pourquoi Pepro</p><div><h2>Moins d’intermédiaires.<br/>Plus de compréhension.</h2><p>Pepro est né d’une conviction simple : un projet numérique progresse mieux lorsque les décisions commerciales, visuelles et techniques ne sont pas séparées par des couches inutiles.</p><p>Nous travaillons directement avec les entreprises pour comprendre leur réalité, concevoir l’expérience et construire le socle qui la rend possible.</p></div></section>
-<section className={styles.teamSection} aria-labelledby="team-title"><div className={styles.sectionHeading}><p className={styles.sectionIndex}>02 / L’équipe</p><h2 id="team-title">Les personnes que vous rencontrez construisent le projet.</h2></div><div className={styles.aboutTeam}><article><div aria-hidden="true">WL</div><span>Co-fondateur · CEO</span><h3>Walid Lakas</h3><p>Architecture · Cloud · Intelligence artificielle</p><a href="mailto:walid@pepro.fr"><Mail/>Écrire à Walid</a></article><article><div aria-hidden="true">IL</div><span>Co-fondateur · CTO</span><h3>Idriss Lakas</h3><p>Cybersécurité · Intelligence artificielle · Infrastructure</p><a href="mailto:idriss@pepro.fr"><Mail/>Écrire à Idriss</a></article></div></section>
-<section className={styles.principles}><div className={styles.sectionHeading}><p className={styles.sectionIndex}>03 / Nos principes</p><h2>La technique n’est utile que lorsqu’elle sert le travail réel.</h2></div><div>{principles.map(([i,title,copy])=><article key={i}><span>{i}</span><h3>{title}</h3><p>{copy}</p></article>)}</div></section>
-<section className={styles.commercialCta}><p className={styles.eyebrow}><span/>Parlons directement</p><h2>Un besoin clair, complexe ou encore difficile à formuler ?</h2><Link href="/contact">Échanger avec Pepro <ArrowUpRight/></Link></section><V2Footer/></main>}
+export default function AboutPage() {
+  redirect("/");
+}

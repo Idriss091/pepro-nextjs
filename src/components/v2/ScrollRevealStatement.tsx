@@ -49,9 +49,6 @@ export default function ScrollRevealStatement({ id, text }: ScrollRevealStatemen
 
   return (
     <div ref={sectionRef} className={styles.stage}>
-      <span className={styles.brand} aria-hidden="true">
-        Pepro
-      </span>
       <h2 id={id} aria-label={text}>
         {words.map((word, index) => (
           <span className={styles.word} key={`${word}-${index}`}>

@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pepro — site vitrine
 
-## Getting Started
+Site commercial de [Pepro](https://pepro.fr), agence digitale et logicielle basée à Ris-Orangis. Il présente les offres, les tarifs, les réalisations et les conseils de l’agence, puis oriente les visiteurs vers le formulaire de contact ou WhatsApp.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 avec App Router
+- React 19 et TypeScript strict
+- CSS Modules et Tailwind CSS 4
+- Formspree pour le formulaire de contact
+- Google Tag Manager après consentement explicite
+
+## Démarrage
+
+Prérequis : une version récente de Node.js et pnpm 10.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Le site est disponible sur <http://localhost:3000>.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm lint
+pnpm build
+pnpm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+pnpm est l’unique gestionnaire de paquets du projet. Le fichier `pnpm-lock.yaml` doit rester versionné.
 
-## Learn More
+## Configuration
 
-To learn more about Next.js, take a look at the following resources:
+Créer un fichier `.env.local` pour activer les intégrations externes :
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```env
+NEXT_PUBLIC_FORMSPREE_CONTACT_ENDPOINT=https://formspree.io/f/...
+NEXT_PUBLIC_GTM_ID=GTM-...
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Sans endpoint Formspree, le site fonctionne mais le formulaire signale la configuration manquante. Sans identifiant GTM, aucun script analytique n’est chargé.
 
-## Deploy on Vercel
+## Organisation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```text
+src/app/                 Routes, métadonnées, sitemap et pages légales
+src/components/v2/       Interface actuelle et composants interactifs
+src/data/                Offres, projets et contenu structuré de l’accueil
+src/lib/                 Configuration du site, consentement et analytics
+src/assets/jsonData/     Articles et témoignages
+public/                  Images, logos et captures des réalisations
+direction/               Décisions de conception, SEO et migration
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Les offres et réalisations sont générées statiquement depuis `src/data`. Le projet ne dépend d’aucune base de données ni d’un CMS.
+
+## Routes principales
+
+- `/` — accueil
+- `/digital` et `/digital/[slug]` — offres
+- `/realisations` et `/realisations/[slug]` — études de cas
+- `/tarifs`, `/a-propos`, `/contact`
+- `/blog` et `/blog/[id]`
+
+Les anciennes URL sont redirigées dans `next.config.ts`. Le proxy `src/proxy.ts` normalise `www.pepro.fr` vers `pepro.fr` et laisse Next.js gérer le cache de chaque route.
+
+## Modifier le contenu
+
+- Accueil : `src/data/homeContent.ts` et `src/components/v2/V2HomePage.tsx`
+- Offres : `src/data/digitalOffers.ts`
+- Réalisations : `src/data/projectCaseStudies.ts` et `src/data/v2Projects.ts`
+- Blog : `src/assets/jsonData/blog/BlogPeproData.json`
+- Coordonnées et domaine : `src/lib/site.ts`
+
+Avant livraison, exécuter `pnpm lint` et `pnpm build`.

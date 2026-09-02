@@ -9,6 +9,7 @@
   --v2-green: #7cff6b;
   --v2-violet: #9b8cff;
   min-height: 100vh;
+  overflow-x: clip;
   color: var(--v2-text);
   background: var(--v2-background);
   font-family: var(--v2-body), sans-serif;
@@ -26,6 +27,101 @@
   outline-offset: 4px;
 }
 
+.root > section,
+.root > footer {
+  position: relative;
+  z-index: 1;
+}
+
+.pageAtmosphere {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 76% 62% at 7% 68%, rgba(33, 230, 255, 0.095), transparent 67%),
+    radial-gradient(ellipse 66% 58% at 91% 28%, rgba(20, 179, 207, 0.1), transparent 69%),
+    radial-gradient(ellipse 58% 52% at 58% 82%, rgba(0, 128, 160, 0.07), transparent 72%);
+}
+
+.pageAtmosphere::before {
+  position: absolute;
+  inset: -48vmax;
+  content: "";
+  background: conic-gradient(
+    from 20deg at 50% 50%,
+    transparent 0deg,
+    transparent 72deg,
+    rgba(33, 230, 255, 0.018) 91deg,
+    rgba(89, 231, 248, 0.18) 109deg,
+    rgba(188, 247, 255, 0.045) 132deg,
+    transparent 158deg,
+    transparent 360deg
+  );
+  filter: blur(62px);
+  mix-blend-mode: screen;
+  animation: whiteLightOrbit 22s linear infinite;
+  -webkit-mask-image: radial-gradient(ellipse 38% 31% at 50% 50%, #000 0%, rgba(0, 0, 0, 0.82) 43%, transparent 76%);
+  mask-image: radial-gradient(ellipse 38% 31% at 50% 50%, #000 0%, rgba(0, 0, 0, 0.82) 43%, transparent 76%);
+}
+
+.pageAtmosphere::after {
+  position: absolute;
+  inset: -14%;
+  content: "";
+  background:
+    radial-gradient(ellipse 48% 27% at 22% 46%, rgba(33, 230, 255, 0.11), transparent 72%),
+    radial-gradient(ellipse 42% 25% at 75% 61%, rgba(20, 179, 207, 0.085), transparent 74%);
+  filter: blur(48px);
+  animation: colorFieldDrift 17s ease-in-out infinite alternate;
+}
+
+.pageAtmosphere span {
+  position: absolute;
+  top: 22%;
+  left: -24vw;
+  width: 48vw;
+  height: 13vw;
+  min-height: 90px;
+  border-radius: 50%;
+  background: rgba(68, 225, 245, 0.14);
+  filter: blur(58px);
+  mix-blend-mode: screen;
+  opacity: 0.75;
+  transform: rotate(-13deg);
+  animation: whiteLightSweep 15s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+}
+
+@keyframes whiteLightOrbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes whiteLightSweep {
+  0% {
+    transform: translate3d(0, -5vh, 0) rotate(-13deg) scale(0.82);
+    opacity: 0.35;
+  }
+  48% {
+    opacity: 0.88;
+  }
+  100% {
+    transform: translate3d(118vw, 48vh, 0) rotate(16deg) scale(1.12);
+    opacity: 0.42;
+  }
+}
+
+@keyframes colorFieldDrift {
+  from {
+    transform: translate3d(-2%, -1%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(3%, 2%, 0) scale(1.08);
+  }
+}
+
 .hero {
   position: relative;
   display: flex;
@@ -34,7 +130,7 @@
   overflow: hidden;
   background:
     radial-gradient(circle at 50% 100%, rgba(23, 78, 97, 0.26), transparent 45%),
-    var(--v2-background);
+    rgba(3, 6, 8, 0.42);
 }
 
 .hero::before {
@@ -118,7 +214,7 @@
 
 .title span {
   color: transparent;
-  background: linear-gradient(92deg, #d8ceff 5%, #b6dfff 52%, #7cf5ff 100%);
+  background: linear-gradient(92deg, #d3f8ff 5%, #9cecff 52%, #53e7ff 100%);
   background-clip: text;
   -webkit-background-clip: text;
 }
@@ -2249,6 +2345,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .pageAtmosphere::before,
+  .pageAtmosphere::after,
+  .pageAtmosphere span {
+    animation: none;
+  }
+
   .serviceScene {
     position: relative;
     top: auto !important;

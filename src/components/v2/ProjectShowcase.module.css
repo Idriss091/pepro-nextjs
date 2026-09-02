@@ -1,0 +1,416 @@
+.layout {
+  display: block;
+}
+
+.previewColumn {
+  display: none;
+}
+
+.preview {
+  --project-accent: #21e6ff;
+  position: relative;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--project-accent) 28%, rgba(255, 255, 255, 0.12));
+  border-radius: 26px;
+  background: #080d10;
+  box-shadow:
+    0 48px 120px rgba(0, 0, 0, 0.45),
+    0 0 100px color-mix(in srgb, var(--project-accent) 10%, transparent);
+}
+
+.lime {
+  --project-accent: #c8ff45;
+}
+
+.blue {
+  --project-accent: #35bdf7;
+}
+
+.gold {
+  --project-accent: #dfb528;
+}
+
+.sand {
+  --project-accent: #e6a62e;
+}
+
+.cyan {
+  --project-accent: #21e6ff;
+}
+
+.violet {
+  --project-accent: #b89cff;
+}
+
+.previewImage {
+  position: absolute;
+  inset: 42px 0 0;
+  background:
+    radial-gradient(circle at 50% 18%, color-mix(in srgb, var(--project-accent) 14%, transparent), transparent 58%),
+    linear-gradient(145deg, #071014, #030709 72%);
+}
+
+.previewImage::after,
+.mobilePreview::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(2, 5, 7, 0.84), transparent 45%);
+}
+
+.previewImage img,
+.mobilePreview img {
+  object-fit: contain;
+  object-position: center;
+}
+
+.previewChrome {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 43px;
+  padding: 0 17px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(245, 248, 250, 0.48);
+  background: rgba(3, 7, 9, 0.94);
+  font-size: 0.52rem;
+  letter-spacing: 0.14em;
+}
+
+.previewChrome span:last-child {
+  color: var(--project-accent);
+}
+
+.previewCaption {
+  position: absolute;
+  z-index: 3;
+  right: 24px;
+  bottom: 22px;
+  left: 24px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.previewCaption span {
+  color: #fff;
+  font-family: var(--v2-display), sans-serif;
+  font-size: clamp(1.65rem, 2.5vw, 2.65rem);
+  letter-spacing: -0.045em;
+}
+
+.previewCaption strong {
+  max-width: 190px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.58rem;
+  letter-spacing: 0.11em;
+  line-height: 1.5;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.list {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+  padding: 54px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+  color: inherit;
+  text-decoration: none;
+}
+
+.rowContent {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(420px, 1.18fr);
+  gap: clamp(42px, 6vw, 92px);
+  align-items: center;
+}
+
+.copy {
+  position: relative;
+  min-width: 0;
+  padding-right: 58px;
+}
+
+.index {
+  padding-top: 7px;
+  color: rgba(245, 248, 250, 0.35);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  transition: color 180ms ease;
+}
+
+.copy > p:first-child {
+  margin: 0;
+  color: rgba(245, 248, 250, 0.55);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.rowContent h3 {
+  max-width: 610px;
+  margin: 12px 0 0;
+  color: rgba(245, 248, 250, 0.67);
+  font-family: var(--v2-display), sans-serif;
+  font-size: clamp(1.65rem, 2.55vw, 2.85rem);
+  font-weight: 520;
+  letter-spacing: -0.047em;
+  line-height: 1.04;
+  transition: color 180ms ease;
+}
+
+.summary {
+  max-width: 580px;
+  margin: 14px 0 0;
+  color: rgba(245, 248, 250, 0.45);
+  font-size: 0.76rem;
+  line-height: 1.65;
+  transition: color 180ms ease;
+}
+
+.arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  color: rgba(245, 248, 250, 0.5);
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.arrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+.row:hover h3,
+.row:focus-visible h3,
+.active h3 {
+  color: #fff;
+}
+
+.row:hover .summary,
+.row:focus-visible .summary,
+.active .summary {
+  color: rgba(245, 248, 250, 0.7);
+}
+
+.row:hover .index,
+.row:focus-visible .index,
+.active .index {
+  color: #21e6ff;
+}
+
+.row:hover .arrow,
+.row:focus-visible .arrow,
+.active .arrow {
+  border-color: #f5f8fa;
+  color: #071014;
+  background: #f5f8fa;
+  transform: translate(2px, -2px);
+}
+
+.projectPreview {
+  --project-accent: #21e6ff;
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--project-accent) 34%, rgba(255, 255, 255, 0.12));
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 50% 18%, color-mix(in srgb, var(--project-accent) 14%, transparent), transparent 58%),
+    linear-gradient(145deg, #071014, #030709 72%);
+  box-shadow:
+    0 34px 90px rgba(0, 0, 0, 0.38),
+    0 0 72px color-mix(in srgb, var(--project-accent) 8%, transparent);
+  transition: border-color 240ms ease, box-shadow 240ms ease, transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.projectPreview::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(2, 5, 7, 0.34), transparent 34%);
+}
+
+.projectPreview img {
+  object-fit: contain;
+  object-position: center;
+  padding-top: 42px;
+}
+
+.row:hover .projectPreview,
+.row:focus-visible .projectPreview {
+  border-color: color-mix(in srgb, var(--project-accent) 62%, rgba(255, 255, 255, 0.16));
+  box-shadow:
+    0 42px 105px rgba(0, 0, 0, 0.44),
+    0 0 92px color-mix(in srgb, var(--project-accent) 13%, transparent);
+  transform: translateY(-5px);
+}
+
+.mobilePreview {
+  display: none;
+}
+
+/* Homepage keeps its compact sticky index; the portfolio uses one frame per row. */
+.stickyLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
+  gap: clamp(52px, 7vw, 108px);
+  align-items: start;
+}
+
+.stickyLayout .previewColumn {
+  position: sticky;
+  top: 92px;
+  display: block;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.stickyLayout .list {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.stickyLayout .row {
+  grid-template-columns: 32px minmax(0, 1fr) 46px;
+  gap: 20px;
+  align-items: start;
+  padding: 30px 0 32px;
+}
+
+.stickyLayout .rowContent {
+  display: block;
+}
+
+.stickyLayout .rowContent > p:first-child {
+  margin: 0;
+  color: rgba(245, 248, 250, 0.55);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.stickyLayout .arrow {
+  position: static;
+}
+
+@media (max-width: 980px) {
+  .rowContent {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .stickyLayout {
+    grid-template-columns: 1fr;
+    gap: 54px;
+  }
+
+  .stickyLayout .previewColumn {
+    position: relative;
+    top: auto;
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .stickyLayout .list {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 720px) {
+  .row {
+    grid-template-columns: 24px minmax(0, 1fr);
+    gap: 12px;
+    padding: 34px 0 38px;
+  }
+
+  .rowContent h3 {
+    font-size: clamp(1.65rem, 8.5vw, 2.4rem);
+  }
+
+  .summary {
+    font-size: 0.73rem;
+  }
+
+  .arrow {
+    width: 34px;
+    height: 34px;
+  }
+
+  .projectPreview {
+    aspect-ratio: 16 / 10;
+    border-radius: 14px;
+  }
+
+  .projectPreview img {
+    padding-top: 34px;
+  }
+
+  .stickyLayout {
+    gap: 0;
+  }
+
+  .stickyLayout .previewColumn {
+    display: none;
+  }
+
+  .stickyLayout .list {
+    grid-row: 1;
+  }
+
+  .stickyLayout .row {
+    grid-template-columns: 24px minmax(0, 1fr) 36px;
+    padding: 25px 0 28px;
+  }
+
+  .stickyLayout .mobilePreview {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 10;
+    margin-top: 22px;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--project-accent) 28%, rgba(255, 255, 255, 0.12));
+    border-radius: 14px;
+    background:
+      radial-gradient(circle at 50% 18%, color-mix(in srgb, var(--project-accent) 14%, transparent), transparent 58%),
+      #050a0d;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .index,
+  .rowContent h3,
+  .summary,
+  .arrow {
+    transition: none;
+  }
+
+  .projectPreview {
+    transition: none;
+  }
+}

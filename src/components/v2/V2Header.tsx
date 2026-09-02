@@ -10,7 +10,6 @@ const links = [
   { label: "Services", href: "/digital" },
   { label: "Réalisations", href: "/realisations" },
   { label: "Tarifs", href: "/tarifs" },
-  { label: "À propos", href: "/a-propos" },
   { label: "Conseils", href: "/blog" },
 ];
 

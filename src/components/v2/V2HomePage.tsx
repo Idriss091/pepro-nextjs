@@ -26,6 +26,7 @@ import {
   homeFaqs,
   homePrices,
 } from "@/data/homeContent";
+import { compareBlogPostsByDateDesc } from "@/lib/blog";
 import styles from "./V2HomePage.module.css";
 import prototype from "./V3Prototype.module.css";
 
@@ -53,6 +54,10 @@ const practices = [
   { index: "02", title: "Software", detail: "Outils métier · IA" },
   { index: "03", title: "Engineering", detail: "Simulation · Data" },
 ] as const;
+
+const latestBlogPosts = [...blogPosts]
+  .sort(compareBlogPostsByDateDesc)
+  .slice(0, 2);
 
 export default function V2HomePage() {
   return (
@@ -329,7 +334,7 @@ export default function V2HomePage() {
           </Link>
         </div>
         <div className={styles.insightGrid}>
-          {blogPosts.slice(0, 2).map((post, index) => (
+          {latestBlogPosts.map((post, index) => (
             <Link href={`/blog/${post.id}`} key={post.id} className={styles.insightCard}>
               <div className={styles.insightImage}>
                 <Image

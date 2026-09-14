@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { ArrowLeft, ArrowRight, CalendarDays, ExternalLink, UserRound } from "lucide-react";
 import { Manrope, Syne } from "next/font/google";
 import V2Footer from "@/components/v2/V2Footer";
@@ -12,16 +13,32 @@ interface PricingRow { audience: string; price: string; }
 interface BlogPost { id:number; date:string; author:string; tag:string; title:string; text:string; excerpt:string; thumbFull:string; thumb:string; content?:string; pricingRows?:PricingRow[]; ctaTitle?:string; ctaText?:string; ctaWhatsappText?:string; ctaHref?:string; ctaButtonText?:string; }
 interface Props { blog:BlogPost; blogData:BlogPost[]; }
 
+function renderInlineMarkdown(value:string):ReactNode[]{
+  const parts:ReactNode[]=[];
+  const linkPattern=/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+  let cursor=0;
+  let match:RegExpExecArray|null;
+
+  while((match=linkPattern.exec(value))!==null){
+    if(match.index>cursor)parts.push(value.slice(cursor,match.index));
+    parts.push(<a href={match[2]} key={`${match.index}-${match[2]}`} style={{color:"#8defff",textUnderlineOffset:"3px"}} target="_blank" rel="noopener noreferrer">{match[1]}</a>);
+    cursor=match.index+match[0].length;
+  }
+
+  if(cursor<value.length)parts.push(value.slice(cursor));
+  return parts;
+}
+
 function renderArticleBlock(block:string,index:number){
   const lines=block.split("\n");
   const bullets=lines.every(line=>/^[-*] /.test(line));
   const paragraphWithBullets=lines.length>1&&lines.slice(1).every(line=>/^[-*] /.test(line));
   if(block.startsWith("## "))return <h2 className={styles.articleHeading} key={index}>{block.replace(/^##\s+/,"")}</h2>;
   if(block.startsWith("### "))return <h3 className={styles.articleSubheading} key={index}>{block.replace(/^###\s+/,"")}</h3>;
-  if(bullets)return <ul className={styles.articleList} key={index}>{lines.map(line=><li key={line}>{line.replace(/^[-*]\s+/,"")}</li>)}</ul>;
-  if(paragraphWithBullets)return <div key={index}><p>{lines[0]}</p><ul className={styles.articleList}>{lines.slice(1).map(line=><li key={line}>{line.replace(/^[-*]\s+/,"")}</li>)}</ul></div>;
+  if(bullets)return <ul className={styles.articleList} key={index}>{lines.map(line=><li key={line}>{renderInlineMarkdown(line.replace(/^[-*]\s+/,""))}</li>)}</ul>;
+  if(paragraphWithBullets)return <div key={index}><p>{renderInlineMarkdown(lines[0])}</p><ul className={styles.articleList}>{lines.slice(1).map(line=><li key={line}>{renderInlineMarkdown(line.replace(/^[-*]\s+/,""))}</li>)}</ul></div>;
   if(/^[0-9]+\. /.test(block))return <h2 className={styles.articleHeading} key={index}>{block}</h2>;
-  return <p key={index}>{block}</p>;
+  return <p key={index}>{renderInlineMarkdown(block)}</p>;
 }
 
 const display=Syne({subsets:["latin"],variable:"--v2-display",display:"swap"});
